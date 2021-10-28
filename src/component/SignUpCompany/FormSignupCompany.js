@@ -1,8 +1,8 @@
 import React , {useState} from 'react';
 import {useSelector , useDispatch} from 'react-redux';
-import {signUp} from '../../features/userSlice'
-
-import validate from './validateInfo'
+import {signUp} from '../../features/userSlice';
+import validate from './validateInfo';
+import url from '../../variables';
 
 const FormSignupCompany = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -42,37 +42,43 @@ const FormSignupCompany = () => {
         
     };
 
-    function signup()
+    const signup = () =>
     {
         if(con)
         {
-        let item={namecompany,nameowner,username,email,password}
-        console.warn(item)
+            let item = {
+                name: namecompany,
+                ownerName: nameowner,
+                username,
+                email,
+                password
+            }
+            console.warn(item)
 
-        fetch("#",{
-            method:'POST',
-            headers:{
-                'Accept':'application/json',
-                'Concept-type':'application/json'
-            },
-            body:JSON.stringify(item)
-        })
-        .then(res=>res.json())
-        .then((item)=>{            
-            console.log(item);
-            this.setState({resData:item.token,
-            isAuthenticated:true
-        })
-                        
-        },
-        (error) =>{
-            console.log(error)
-            this.setState({
-                isAuthenticated:false,
-                resData:'No Data From Server'
+            fetch(url + "/signup/company",{
+                method:'POST',
+                headers: {'Content-Type' : 'application/json'},
+                body:JSON.stringify(item)
             })
-        }
-        );
+            .then(res=>res.json())
+            .then((item) => {            
+                console.log(item);
+                this.setState(
+                    {
+                        resData:item.token,
+                        isAuthenticated:true
+                });
+                        
+                },
+                (error) =>{
+                    console.log(error)
+                    this.setState({
+                        isAuthenticated:false,
+                        resData:'No Data From Server'
+                    })
+                }
+            )
+            .catch(err => console.log(err));
         }
         
 
@@ -126,7 +132,7 @@ const FormSignupCompany = () => {
                     {errors.username && <p>{errors.username}!</p>} 
                 </div>
 
-                <div class="input-box">
+                <div className="input-box">
                     <span className="details">Email</span>
                     <input
                     id="email"
