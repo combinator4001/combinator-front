@@ -2,73 +2,57 @@ import React , {useState} from 'react';
 import './Login.css';
 import {useSelector , useDispatch} from 'react-redux';
 import {login} from '../../features/userSlice'
+import url from '../../variables';
 //import {login} from '../../actions/index';
 //import {signUp} from '../../actions/index';
 
 
 const Login =() => {
-  const [username,setName]=useState("");
-  const [pass,setpass]=useState("");
+	const [username,setName]=useState("");
+	const [pass,setpass]=useState("");
 
-  const dispach = useDispatch();
-  const handleSubmit = (e)=>{
-    e.preventDefault();
-    
-      dispach(login({
-        name:username,
-        pass:pass,
-        isLoggedIn:true
-  
-      })
-    );
-    
-    
-  };
+	const dispach = useDispatch();
+  	
+	const loginButton = (event) =>
+	{
+		if(username && pass)
+		{
+			fetch(url + "/login",{
+				method:'POST',
+				headers: {'Content-Type' : 'application/json'},
+				body:JSON.stringify({
+					username: username,
+					password : pass
+				})
+			})
+			.then(res=>{
+				if(res.status === 200){
+					return res.json();
+				}else{
+					throw new Error ("failed to login");
+				}
+			})
+			.then((res)=>{
+				alert(`welcome ${res.username} with ${res.role} role`);
+				event.preventDefault();
+				dispach(login({
+					name: username,
+					isLoggedIn : true
+				}))            
+			})
+			.catch( err => console.log(err));
+		}
+		else{
+			alert('fill');
+		}     
+	}	     
 
-  function login()
-  {
-    if(username.trim() && pass.trim())
-  {
-    let item={username,pass}
-    console.warn(item)
-
-    fetch("#",{
-      method:'POST',
-      headers:{
-          'Accept':'application/json',
-          'Concept-type':'application/json'
-      },
-      body:JSON.stringify(item)
-  })
-  .then(res=>res.json())
-  .then((item)=>{            
-      console.log(item);
-      this.setState({resData:item.token,
-      isAuthenticated:true
-  })
-                  
-  },
-  (error) =>{
-      console.log(error)
-      this.setState({
-          isAuthenticated:false,
-          resData:'No Data From Server'
-      })
-  }
-  );
-    
-
-    
-  }
-
-    
-}
   return (
     <>
     <div className="main_body1">
     <div className="container1">
         <div className="title1">Log in</div>
-        <form onSubmit={(e)=>handleSubmit(e)}>
+        <form>
             <div className="user-details1">
                 <div className="input-box1">
                     <span className="details1">Username</span>
@@ -98,7 +82,7 @@ const Login =() => {
                 </div>
             </div>            
             <div className="button1">
-                <input type="submit" onChange={login}  value="Log in"/>
+                <input type="submit" onClick={loginButton}  value="Log in"/>
             </div>
         </form>
 
