@@ -1,0 +1,101 @@
+.fa3{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background: linear-gradient(135deg,#70b7e6,rgb(255, 0, 119));
+}
+.container3
+{
+    max-width: 350Px;
+    max-height: 280px;    
+    width: 100%;
+    background: #fff;
+    padding: 25px 30px;
+    border-radius: 5px;
+}
+.container3 .title3
+{
+    font-size:25px;
+    font-weight: bold;
+    
+    text-align: center;
+    position: relative;
+}
+.container3 form .user-details3
+{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin: 13px 0 0 0;
+}
+.container3 form .user-details3 .input-box3
+{
+     width: 100%; 
+     margin-bottom: 15px; 
+}
+.container3 form .user-details3 .input-box3 .details3
+{
+    display: block;
+    font-weight:bold;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    
+}
+.container3 form .user-details3 .input-box3 input{
+    font-size: 16px;
+    height: 45px;
+    width: 100%;
+    margin-bottom: 7px;
+    outline: none;
+    border-radius: 5px;
+    border:1px solid #ccc;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+    padding-left:15px        
+}
+.container3 form .user-details3 .input-box3 input:focus,
+.container3 form .user-details3 .input-box3 input:valid
+{
+    border-color:#9b59b6
+
+}
+.choose-detail3 a{
+    text-decoration: none;
+    color: rgb(104, 199, 8);
+    font-weight: bold;
+}
+form .button3 
+{
+    height: 45px;
+    margin:30px 0 ;
+}
+form .button3 input
+{
+    height: 70%;
+    width: 100%;
+    outline:none;
+    color: #fff;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border-radius: 5px;
+    background: rgb(8, 117, 219);
+}
+input:read-only
+{
+    background-color: rgb(190, 190, 190);
+
+}
+form .button3 input:hover{
+    background: rgb(6, 6, 158);
+    transition: all 0.3s ease;
+}
+.input-box3 p{
+    color:red;
+}
+

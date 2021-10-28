@@ -1,0 +1,139 @@
+
+.main_body{
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background: linear-gradient(135deg,#70b7e6,rgb(255, 0, 119));
+}
+.container
+{
+    width: auto;
+    max-width: 700Px;
+    width: 100%;
+    background: #fff;
+    padding: 25px 30px;
+    border-radius: 5px;
+}
+.container .title
+{
+    font-size:25px;
+    font-weight: bold;
+    
+    text-align: center;
+    position: relative;
+}
+.container form .user-details
+{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 13px 0 12px 0;
+}
+.container form .user-details .input-box
+{
+     width: calc(100% /2 - 20px); 
+     margin-bottom: 15px; 
+}
+.container form .user-details .input-box .details
+{
+    display: block;
+    font-weight:bold;
+    margin-bottom: 5px;
+    
+}
+.container form .user-details .input-box input{
+    font-size: 16px;
+    height: 30px;
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border:1px solid #ccc;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+    padding-left:15px        
+}
+.container form .user-details .input-box input:focus,
+.container form .user-details .input-box input:valid
+{
+    border-color:#9b59b6
+
+}
+.link
+{
+    
+    margin-top: 15px;
+}
+
+form .login
+{   
+    margin-top: 25px;
+}
+form .login .check
+{
+    
+    font-size: 20px;
+}
+form .login a
+{
+    text-decoration: none;
+    color: rgb(104, 199, 8);
+    font-weight: bold;
+}
+form .button 
+{
+    height: 45px;
+    margin:45px 0 ;
+}
+form .button input
+{
+    height: 80%;
+    width: 100%;
+    outline:none;
+    color: #fff;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border-radius: 5px;
+    background: rgb(8, 117, 219);
+}
+form .button input:hover{
+    background: rgb(6, 6, 158);
+    transition: all 0.3s ease;
+}
+.input-box p
+{
+    color:red;
+    font-size: 13px;
+    font-weight: bold;
+}
+.regis
+{
+    font-size: large;
+}
+
+@media (max-width: 650px)
+{
+    .container
+    {
+        max-width: 100%;
+    }
+    .container form .user-details .input-box
+    {     
+     margin-bottom: 15px; 
+     width: 100%;
+    }
+
+    .container form .user-details
+    {
+        max-height: 300px;
+        overflow-y: scroll;
+    }
+
+    .user-details::-webkit-scrollbar
+    {
+        width: 0;
+    }
+}
