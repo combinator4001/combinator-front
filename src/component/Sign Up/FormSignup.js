@@ -3,6 +3,7 @@ import {useSelector , useDispatch} from 'react-redux';
 import {signUp} from '../../features/userSlice'
 import './Form.css'
 import validate from './validateInfo'
+import url from '../../variables';
 
 const FormSignup = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -47,28 +48,39 @@ const FormSignup = () => {
         
     };
 
-    function signup()
+    const signup = () =>
     {
         if(con)
         {
-        let item={firstname,lastname,username,email,password}
-        console.warn(item)
+            let item = {
+                firstName: firstname,
+                lastName : lastname,
+                username,
+                email,
+                password
+            };
+            console.warn(item);
 
-        fetch("#",{
-            method:'POST',
-            body:JSON.stringify(item)
-        })
-        }
-
-        
-        
-
-        
+            fetch(url + "/signup/person",{
+                method:'POST',
+                headers: {'Content-Type' : 'application/json'},
+                body:JSON.stringify(item)
+            })
+            .then( response => {
+                if(response.status === 200){
+                    return response.json();
+                }else{
+                    throw new Error('failed to sign up!\n' + response.statusText);
+                }
+            })
+            .then(response => alert(response))
+            .catch( err => console.log(err));
+        }        
 
     }
 
     return (
-        <>
+    <>
         <div className="main_body">
         <div className="container">
         <div className="title">Sign up</div>
