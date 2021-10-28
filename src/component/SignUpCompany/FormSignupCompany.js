@@ -3,6 +3,8 @@ import {useSelector , useDispatch} from 'react-redux';
 import {signUp} from '../../features/userSlice';
 import validate from './validateInfo';
 import url from '../../variables';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
 
 const FormSignupCompany = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -177,11 +179,11 @@ const FormSignupCompany = () => {
                 <div className="login">
                     <div className="link">
                     <span className="check">Are you ready have an account? </span>
-                    <a href="#">Log in</a>
+                    <Link to="/">Login</Link>
                     </div>
                     <div className="link">
                     <span className="check">Are you user? </span>
-                    <a href="#">Signup</a>
+                    <Link to="/FormSignup">Sign up user</Link>
                     </div>
                 </div>
             </div>            

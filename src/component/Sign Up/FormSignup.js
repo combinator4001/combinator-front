@@ -4,6 +4,7 @@ import {signUp} from '../../features/userSlice'
 import './Form.css'
 import validate from './validateInfo'
 import url from '../../variables';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 const FormSignup = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -172,11 +173,11 @@ const FormSignup = () => {
                 <div className="login">
                     <div className="link">
                     <span className="check">Are you ready have an account? </span>
-                    <a href="#">Log in</a>
+                    <Link to="/">Login page</Link>
                     </div>
                     <div className="link">
                     <span className="check">Are you Company? </span>
-                    <a href="#">Signup</a>
+                    <Link to="/signupcompany">Sign up your Company</Link>
                     </div>
                 </div>
             </div>            

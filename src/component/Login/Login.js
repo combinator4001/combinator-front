@@ -3,6 +3,7 @@ import './Login.css';
 import {useSelector , useDispatch} from 'react-redux';
 import {login} from '../../features/userSlice'
 import url from '../../variables';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 //import {login} from '../../actions/index';
 //import {signUp} from '../../actions/index';
 
@@ -78,7 +79,8 @@ const Login =() => {
             <div className="choose-detail1">
                 <div className="login1">
                     <span className="check1">Dont have an account? </span>
-                    <a href="#">Sign up</a>
+                    <Link to="/FormSignup">Sign up</Link>
+
                 </div>
             </div>            
             <div className="button1">
@@ -92,28 +94,6 @@ const Login =() => {
     </>
   );
 }
-/*function required(){
-  const username = document.forms["mainForm"]["username"].value;
-  const pass = document.forms["mainForm"]["pass"].value;
-  if(username ==""||pass=="")
-  {
-    alert("Please input a Value");
-    return false;
-  }
-  else 
-  {
-    alert('Code has accepted : you can try another');
-    return true; 
-  }
-  
-  /*if(document. getElementById("pass"). value == null ||document. getElementById("pass"). value == " " ||document. getElementById("username"). value == null ||document. getElementById("username"). value == " ")
-  {
-  alert("empty")
-  return false;
-  }else{
-    return true;
-  }
 
-}*/
 
 export default Login;
