@@ -2,6 +2,7 @@ import React , {useState} from 'react';
 import {useSelector , useDispatch} from 'react-redux';
 import {signUp} from '../../features/userSlice';
 import validate from './validateInfo';
+import valid1 from './valid';
 import url from '../../variables';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
@@ -20,14 +21,16 @@ const FormSignupCompany = () => {
     const [password,setlpass]=useState("");
     const [password2,setlpass2]=useState("");
 
-    const [errors,con]=validate({namecompany,nameowner,username,email,password,password2});
+    const [errors, setErrors] = useState({});
+    const check=valid1({namecompany,nameowner,username,email,password,password2})
     const dispach = useDispatch();
 
     const handleSubmit = (e) => {
         setIsSubmitting(true);
+        setErrors(validate({namecompany,nameowner,username,email,password,password2}));
         e.preventDefault();
         
-        if(con){
+        if(check){
             dispach(signUp({
                 namecompany:namecompany ,
                 nameowner:nameowner,
@@ -46,7 +49,7 @@ const FormSignupCompany = () => {
 
     const signup = () =>
     {
-        if(con)
+        if(check)
         {
             let item = {
                 name: namecompany,
@@ -88,114 +91,108 @@ const FormSignupCompany = () => {
 
     return (
         <>
-        <div className="main_body">
-        <div className="container">
-        <div className="title">Sign up</div>
-        <form className="form" onSubmit={(e)=>handleSubmit(e)} >
-            <div className="user-details">
+            <div className="main_body">
+                <div className="container">
+                    <div className="title">Sign up</div>
+                    <form className="form" onSubmit={(e)=>handleSubmit(e)} >
+                        <div className="user-details">
+                            <div className="input-box">
+                                <span className="details">Name of Company</span>
+                                <input
+                                id="namecompany"
+                                type="text" 
+                                placeholder="Enter your name of company"
+                                name="namecompany"
+                                value={namecompany}
+                                onChange={ (e)=> setNamecom(e.target.value)}
+                                />                   
+                                {errors.namecompany && <p>{errors.namecompany}!</p>}                
+                            </div>
 
-                <div className="input-box">
-                    <span className="details">Name of Company</span>
-                    <input
-                    id="namecompany"
-                    type="text" 
-                    placeholder="Enter your name of company"
-                    name="namecompany"
-                   value={namecompany}
-                   onChange={ (e)=> setNamecom(e.target.value)}
-                    />                   
-                    {errors.namecompany && <p>{errors.namecompany}!</p>}                
+                            <div className="input-box">
+                                <span className="details">Name of owner</span>
+                                <input
+                                id="nameowner"
+                                type="text" 
+                                placeholder="Enter name of owner" 
+                                name="nameowner"
+                                value={nameowner}
+                                onChange={ (e)=> setnameowner(e.target.value)}
+                                />
+                                {errors.nameowner && <p>{errors.nameowner}!</p>} 
+                            </div>
+ 
+                            <div className="input-box">
+                                <span className="details">Username</span>
+                                <input 
+                                id="username"
+                                type="text" 
+                                placeholder="Enter your username" 
+                                name="username"
+                                value={username}
+                                onChange={ (e)=> setusername(e.target.value)}
+                                />
+                                {errors.username && <p>{errors.username}!</p>} 
+                            </div>
+
+                            <div className="input-box">
+                                <span className="details">Email</span>
+                                <input
+                                id="email"
+                                type="email" 
+                                placeholder="Enter your email" 
+                                name="email"
+                                value={email}
+                                onChange={ (e)=> setemail(e.target.value)}
+                                />
+                                {errors.email && <p>{errors.email}!</p>}                   
+                            </div>
+
+                            <div className="input-box">
+                                <span className="details">Password</span>
+                                <input
+                                id="password"
+                                type="password" 
+                                placeholder="Enter your password" 
+                                name="password"
+                                value={password}
+                                onChange={ (e)=> setlpass(e.target.value)}
+                                />
+                                {errors.password && <p>{errors.password}!</p>} 
+                            </div>
+
+                            <div className="input-box">
+                                <span className="details">Confirm Password</span>
+                                <input
+                                id="password2"
+                                type="password" 
+                                placeholder="Confirm your password" 
+                                name="password2"
+                                value={password2}
+                                onChange={(e)=>setlpass2(e.target.value) }         
+                                />
+                                {errors.password2 && <p>{errors.password2}!</p>} 
+                            </div>               
+                        </div>
+                        <div className="choose-detail">
+                            <div className="login">
+                                <div className="link">
+                                    <span className="check">Are you ready have an account? </span>
+                                    <Link to="/">Login</Link>
+                                </div>
+                                <div className="link">
+                                    <span className="check">Are you user? </span>
+                                    <Link to="/FormSignup">Sign up user</Link>
+                                </div>
+                            </div>
+                        </div>            
+                        <div className="button">
+                            <input type="submit" onClick={signup} value="Sign up"/>                             
+                        </div>
+                    </form>
                 </div>
-
-                <div className="input-box">
-                    <span className="details">Name of owner</span>
-                    <input
-                    id="nameowner"
-                    type="text" 
-                    placeholder="Enter name of owner" 
-                    name="nameowner"
-                    value={nameowner}
-                    onChange={ (e)=> setnameowner(e.target.value)}
-                    />
-                    {errors.nameowner && <p>{errors.nameowner}!</p>} 
-                </div>
-
-                
-                <div className="input-box">
-                    <span className="details">Username</span>
-                    <input 
-                    id="username"
-                    type="text" 
-                    placeholder="Enter your username" 
-                    name="username"
-                    value={username}
-                    onChange={ (e)=> setusername(e.target.value)}
-                    />
-                    {errors.username && <p>{errors.username}!</p>} 
-                </div>
-
-                <div className="input-box">
-                    <span className="details">Email</span>
-                    <input
-                    id="email"
-                    type="email" 
-                    placeholder="Enter your email" 
-                    name="email"
-                    value={email}
-                    onChange={ (e)=> setemail(e.target.value)}
-                    />
-                    {errors.email && <p>{errors.email}!</p>}                   
-                </div>
-
-
-                <div className="input-box">
-                    <span className="details">Password</span>
-                    <input
-                    id="password"
-                    type="password" 
-                    placeholder="Enter your password" 
-                    name="password"
-                    value={password}
-                    onChange={ (e)=> setlpass(e.target.value)}
-                    />
-                    {errors.password && <p>{errors.password}!</p>} 
-                </div>
-
-                <div className="input-box">
-                    <span className="details">Confirm Password</span>
-                    <input
-                    id="password2"
-                    type="password" 
-                    placeholder="Confirm your password" 
-                    name="password2"
-                    value={password2}
-                    onChange={(e)=>setlpass2(e.target.value) }         
-                    />
-                    {errors.password2 && <p>{errors.password2}!</p>} 
-                </div>               
             </div>
-            <div className="choose-detail">
-
-                <div className="login">
-                    <div className="link">
-                    <span className="check">Are you ready have an account? </span>
-                    <Link to="/">Login</Link>
-                    </div>
-                    <div className="link">
-                    <span className="check">Are you user? </span>
-                    <Link to="/FormSignup">Sign up user</Link>
-                    </div>
-                </div>
-            </div>            
-            <div className="button">
-                <input type="submit" onClick={signup} value="Sign up"/>                             
-            </div>
-        </form>
-
-    </div>
-        </div>
-        
-    </>
+        </>
     )
 }
 
