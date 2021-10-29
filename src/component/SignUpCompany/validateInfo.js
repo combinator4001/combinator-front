@@ -1,49 +1,41 @@
+import handle from "./FormSignupCompany";
 export default function validateInfo(values) {
     let errors={}
-    let condition = true;
+    
     if(!values.namecompany.trim()) {
-        errors.namecompany ="Name of company required "
-        condition = false;
+        errors.namecompany ="Name of company required "        
     }
 
     if(!values.nameowner.trim()) {
-        errors.nameowner="Name of owner required "
-        condition = false;
+        errors.nameowner="Name of owner required "        
     }
 
     if(!values.username.trim()) {
-        errors.username ="Username required "
-        condition = false;
+        errors.username ="Username required "        
     }
-
     //Email
-    if(!values.email.trim()){
+    if(!values.email){
         errors.email="Email required"
-        condition = false;
-    } else if(!/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i.test(values.email))
+        
+    } 
+    else if(!/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i.test(values.email))
     {
-        errors.email="Email address is invalid"
-        condition = false;
+        errors.email="Email address is invalid"        
     }
-
-    if(!values.password.trim())
+    if(!values.password)
     {
-        errors.password ='Password is required'
-        condition = false;
-    }else if(values.password.length<6){
-        errors.password='Password needs to be 6 characters or more'
-        condition = false;
+        errors.password ='Password is required'        
     }
-
-    if(!values.password2.trim())
-    {
-        errors.password2='Password is required'
-        condition = false;
-    }else if(!values.password2.trim())
-    {
-        errors.password2='Password do not match'
-        condition = false;
+    else if(values.password.length<6){
+        errors.password='Password needs to be 6 characters or more'       
     }
-
-    return [errors,condition]
+    if(!values.password2)
+    {
+        errors.password2 ='Password is required'        
+    }
+    else if(values.password2!==values.password)
+    {
+        errors.password2='Password do not match'        
+    }
+    return errors
 }
