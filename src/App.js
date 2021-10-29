@@ -8,6 +8,7 @@ import FormSignup from "./component/Sign Up/FormSignup";
 import Logout from './component/Logout/Logout';
 import ForgetPass from './component/ForgetPass/ForgetPass'
 import FormSignupCompany from './component/SignUpCompany/FormSignupCompany';
+import Notfound from './component/Notfound/Notfound'
 
 const App =()=> {
   const user = useSelector(selectuser);
@@ -22,6 +23,7 @@ const App =()=> {
         <Route path="/FormSignup" component={FormSignup} />
         <Route path="/signupcompany" component={FormSignupCompany} />
         <Route path="/forgetpassword" component={ForgetPass} />
+        <Route component={Notfound} />
 
       </switch>
     </div>
