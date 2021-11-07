@@ -1,9 +1,10 @@
 import React , {useState} from 'react';
 import './Login.css';
-import { useDispatch} from 'react-redux';
+import {useSelector , useDispatch} from 'react-redux';
 import {login} from '../../features/userSlice'
 import url from '../../variables';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
 //import {login} from '../../actions/index';
 //import {signUp} from '../../actions/index';
 
@@ -50,44 +51,42 @@ const Login =() => {
 
   return (
     <>
-        <div className="main_body1">
-            <div className="container1">
-                <div className="title1">Log in</div>
-                <form>
-                    <div className="user-details1">
-                        <div className="input-box1">
-                            <span className="details1">Username</span>
-                            <input 
-                            type="text" 
-                            placeholder="Enter your username" 
-                            required 
-                            value={username}
-                            onChange={(e)=> setName(e.target.value)}/>
-                        </div>
+    <div className="main_body1">
+    <div className="container1">
+        <div className="title1">Log in</div>		
+        <form>
+            <div className="user-details1">
+                <div className="input-box1">
+                    <span className="details1">Username</span>
+                    <input 
+                    type="text" 
+                    placeholder="Enter your username" 
+                    required 
+                    value={username}
+                    onChange={(e)=> setName(e.target.value)}/>
+                </div>
 
-                        <div className="input-box1">
-                            <span className="details1">Password</span>
-                            <input 
-                            type="password" 
-                            placeholder="Enter your Password" 
-                            required
-                            value={pass}
-                            onChange={(e)=> setpass(e.target.value)}/>
-                            
-                        </div>
-                    </div>
-                    <div className="choose-detail1">
-                        <div className="login1">
-                            <span className="check1">Dont have an account? </span>
-                            <Link to="/FormSignup">Sign up</Link>
-                        </div>
-                    </div>            
-                    <div className="button1">
-                        <input type="submit" onClick={loginButton}  value="Log in"/>
-                    </div>
-                </form>
+                <div className="input-box1">
+                    <span className="details1">Password</span>
+                    <input 
+                    type="password" 
+                    placeholder="Enter your Password" 
+                    required
+                    value={pass}
+                    onChange={(e)=> setpass(e.target.value)}/>
+                    
+                </div>
             </div>
-        </div>      
+            <p className="signup1">Don't have an Account? <Link to="/FormSignup">Sign UP</Link></p>
+           
+            <div className="button1">
+                <input type="submit" onClick={loginButton}  value="Log in"/>
+            </div>
+        </form>
+
+    </div>
+    </div>
+      
     </>
   );
 }

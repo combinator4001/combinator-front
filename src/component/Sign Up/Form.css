@@ -70,17 +70,12 @@ form .login
 {   
     margin-top: 25px;
 }
-form .login .check
-{
-    
-    font-size: 20px;
-}
-form .login a
-{
+.check a{
+    font-weight: 600;
     text-decoration: none;
-    color: rgb(104, 199, 8);
-    font-weight: bold;
-}
+    color:#677eff
+  
+  }
 form .button 
 {
     height: 45px;

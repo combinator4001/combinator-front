@@ -9,10 +9,12 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 
 ReactDOM.render(
-  <Provider store={store}>
-    <Router>
-    <App/>
-    </Router>,
-  </Provider>, document.getElementById('root')
+  <React.StrictMode>
+    <Provider store={store}>
+      <Router>
+        <App/>
+      </Router>
+    </Provider>
+  </React.StrictMode>,
+  document.getElementById("root")
 );
-reportWebVitals();
