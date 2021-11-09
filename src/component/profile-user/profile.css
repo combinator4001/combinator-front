@@ -1,0 +1,83 @@
+.img5{
+    height: 304px;
+    width: 304px;
+    background-color: rgb(201, 207, 198);
+    border-radius: 50%;
+    margin-top: 95px;
+    margin-left: 38px;
+}
+.name5{
+    margin-top: 30px;
+    margin-left: 38px;
+    font-weight: bold;
+    font-size: 20px;
+}
+.usernam5{
+    margin-top: 5px;
+    margin-left: 38px;
+    font-size: 17px;
+    color: rgba(41, 40, 38, 0.623);
+}
+.bio5{
+    margin-top: 15px;
+    margin-left: 38px;
+    font-size: 18px;
+}
+.btn5{
+    width: 304px;
+    height: 30.4px;
+    margin-top: 19px;
+    margin-left: 38px;
+    border-radius: 5px;    
+}
+.namepro6{
+    width: 304px;
+    height: 30.4px;
+    margin-top: 19px;
+    margin-left: 38px;
+    border-radius: 5px;  
+}
+.form6{
+    display: flex;
+    flex-direction: column;
+}
+.lastpro6{
+    width: 304px;
+    height: 30.4px;
+    margin-top: 19px;
+    margin-left: 38px;
+    border-radius: 5px;  
+}
+.userpro6{
+    width: 304px;
+    height: 30.4px;
+    margin-top: 19px;
+    margin-left: 38px;
+    border-radius: 5px; 
+}
+.biopro6{
+    width: 304px;
+    height: 90px;
+    margin-top: 19px;
+    margin-left: 38px;
+    border-radius: 5px; 
+
+}
+.btn6{
+    margin-left: 38px;
+    border-radius: 5px;
+    height: 30.4px;
+    width: 59px;
+    margin-top:17px;
+    background-color: green;
+
+}
+
+@media (max-width: 650px)
+{
+    .img5{
+        height: 104px;
+        width: 104px;
+    }
+}
+

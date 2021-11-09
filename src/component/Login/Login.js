@@ -1,5 +1,6 @@
 import React , {useState} from 'react';
 import './Login.css';
+import SimpleReactValidator from 'simple-react-validator';
 import {useSelector , useDispatch} from 'react-redux';
 import {login} from '../../features/userSlice'
 import url from '../../variables';
@@ -78,6 +79,7 @@ const Login =() => {
                 </div>
             </div>
             <p className="signup1">Don't have an Account? <Link to="/FormSignup">Sign UP</Link></p>
+			<p className="signup1"><Link to="/profileuser">profile</Link></p>
            
             <div className="button1">
                 <input type="submit" onClick={loginButton}  value="Log in"/>

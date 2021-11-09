@@ -6,12 +6,13 @@ import validate from './validateInfo'
 import valid1 from './valid'
 import url from '../../variables';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { resetRowIndex } from '@syncfusion/ej2-grids';
+import { toast } from 'react-toastify';
+
 
 const FormSignup = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const [message, setMessage] = useState();    
-
-  //setErrors(validate(values));
+   
         
   
     
@@ -27,12 +28,21 @@ const FormSignup = () => {
     const [errors, setErrors] = useState({});
     const check= valid1 ({firstname,lastname,username,email,password,password2})
 
+    const reset =() =>{
+        setfName("");
+        setlname("");
+        setusername("");
+        setemail("");
+        setlpass("");
+        setlpass2("");
+    }
+
     const dispach = useDispatch();
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (event) => {
         setIsSubmitting(true);
         setErrors(validate({firstname,lastname,username,email,password,password2}));
-        e.preventDefault();
+        event.preventDefault();        
         
         if(check){
             dispach(signUp({
@@ -73,13 +83,24 @@ const FormSignup = () => {
             })
             .then( response => {
                 if(response.status === 200){
-                    setMessage('sign up successfully!');
+                    toast.success("sign up successfully!", {
+                        position: "top-center",
+                        closeOnClick: true
+                    });
+                    localStorage.setItem("token",response.data.token);
+                    reset();
                     return response.json();
                 }else if(response.status === 400){
-                    setMessage('Username already exists!');
+                    toast.error("Username already exists!", {
+                        position: "top-center",
+                        closeOnClick: true
+                    });
                     throw new Error('Username already exists!\n' + response.statusText);
                 }else {
-                    setMessage('Failed to register, try again later.');
+                    toast.error("Failed to register, try again later", {
+                        position: "top-center",
+                        closeOnClick: true
+                    });
                     throw new Error('Failed to register, try again later.\n' + response.statusText);
                 }
                 
@@ -87,6 +108,35 @@ const FormSignup = () => {
             })
             .then(response => alert(response))
             .catch( err => console.log(err));
+
+            // axios
+            //     .post(
+            //         url + "/FormSignup",
+            //         JSON.stringify(item),
+            //         {
+            //             headers: {
+            //                 'Content-Type' : 'application/json'} 
+            //         }
+            //     ).then(response => {
+            //         if(response.status === 200){
+            //             setMessage('sign up successfully!');
+            //             toast.success("jj");
+            //             reset();
+            //             return response.json();
+            //         }
+            //         else if(response.status === 400){
+            //             setMessage('Username already exists!');
+            //             throw new Error('Username already exists!\n' + response.statusText);
+            //         }else {
+            //             reset();                        
+            //             setMessage('Failed to register, try again later.');
+            //             throw new Error('Failed to register, try again later.\n' + response.statusText);
+            //         }
+
+            //     }
+            //     )
+            //     .then(response => alert(response))
+            //     .catch( err => console.log(err));
         }        
 
     }
@@ -94,8 +144,7 @@ const FormSignup = () => {
     return (
     <>
         <div className="main_body">
-        <div className="container">
-        <div>{message}</div>            
+        <div className="container">           
         <div className="title">Sign up</div>
         <form className="form" onSubmit={(e)=>handleSubmit(e)} >
             <div className="user-details">
@@ -193,5 +242,4 @@ const FormSignup = () => {
     </>
     )
 }
-
 export default FormSignup

@@ -5,12 +5,13 @@ import validate from './validateInfo';
 import valid1 from './valid';
 import url from '../../variables';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-
+import { toast } from 'react-toastify';
+import { withRouter } from "react-router-dom";
 
 const FormSignupCompany = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
 
-  //setErrors(validate(values));
+
         
   
     
@@ -22,7 +23,18 @@ const FormSignupCompany = () => {
     const [password2,setlpass2]=useState("");
 
     const [errors, setErrors] = useState({});
-    const check=valid1({namecompany,nameowner,username,email,password,password2})
+    const check=valid1({namecompany,nameowner,username,email,password,password2});
+
+    const reset =() =>{
+        setNamecom("");
+        setnameowner("");
+        setusername("");
+        setemail("");
+        setlpass("");
+        setlpass2("");
+    }
+
+
     const dispach = useDispatch();
 
     const handleSubmit = (e) => {
@@ -52,40 +64,77 @@ const FormSignupCompany = () => {
         if(check)
         {
             let item = {
-                name: namecompany,
-                ownerName: nameowner,
                 username,
-                email,
-                password
-            }
-            console.warn(item)
+                password,
+                namecompany:namecompany ,
+                nameowner:nameowner,              
+                email
+            };
+            console.warn(item);
+            
 
-            fetch(url + "/signup/company",{
+            fetch(url + "/FormSignup",{
                 method:'POST',
                 headers: {'Content-Type' : 'application/json'},
                 body:JSON.stringify(item)
             })
-            .then(res=>res.json())
-            .then((item) => {            
-                console.log(item);
-                this.setState(
-                    {
-                        resData:item.token,
-                        isAuthenticated:true
-                });
-                        
-                },
-                (error) =>{
-                    console.log(error)
-                    this.setState({
-                        isAuthenticated:false,
-                        resData:'No Data From Server'
-                    })
+            .then( response => {
+                if(response.status === 200){
+                    toast.success("sign up successfully!", {
+                        position: "top-center",
+                        closeOnClick: true
+                    });
+                    localStorage.setItem("token",response.data.token);
+                    reset();
+                    return response.json();
+                }else if(response.status === 400){
+                    toast.error("Username already exists!", {
+                        position: "top-center",
+                        closeOnClick: true
+                    });
+                    throw new Error('Username already exists!\n' + response.statusText);
+                }else {
+                    toast.error("Failed to register, try again later", {
+                        position: "top-center",
+                        closeOnClick: true
+                    });
+                    throw new Error('Failed to register, try again later.\n' + response.statusText);
                 }
-            )
-            .catch(err => console.log(err));
-        }
-        
+                
+
+            })
+            .then(response => alert(response))
+            .catch( err => console.log(err));
+
+            // axios
+            //     .post(
+            //         url + "/FormSignup",
+            //         JSON.stringify(item),
+            //         {
+            //             headers: {
+            //                 'Content-Type' : 'application/json'} 
+            //         }
+            //     ).then(response => {
+            //         if(response.status === 200){
+            //             setMessage('sign up successfully!');
+            //             toast.success("jj");
+            //             reset();
+            //             return response.json();
+            //         }
+            //         else if(response.status === 400){
+            //             setMessage('Username already exists!');
+            //             throw new Error('Username already exists!\n' + response.statusText);
+            //         }else {
+            //             reset();                        
+            //             setMessage('Failed to register, try again later.');
+            //             throw new Error('Failed to register, try again later.\n' + response.statusText);
+            //         }
+
+            //     }
+            //     )
+            //     .then(response => alert(response))
+            //     .catch( err => console.log(err));
+        }        
 
     }
 
