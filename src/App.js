@@ -23,8 +23,8 @@ const App =()=> {
     <ToastContainer/>
       <switch>
         <Route exact path="/" component={Login} />
-        <Route path="/FormSignup" component={FormSignup} />
-        <Route path="/signupcompany" component={FormSignupCompany} />
+        <Route path="/person" component={FormSignup} />
+        <Route path="/company" component={FormSignupCompany} />
         <Route path="/forgetpassword" component={ForgetPass} />
         <Route path="/profileuser" component={profileuser} />
       </switch>

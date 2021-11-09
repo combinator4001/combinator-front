@@ -31,21 +31,18 @@ const Login =({history}) => {
 		{
 			let item = {
 				username,
-				pass
+				password : pass
             };
             console.warn(item);
             
 
-            fetch(url + "/",{
+            fetch(url + "/user/auth/login",{
                 method:'POST',
                 headers: {'Content-Type' : 'application/json'},
                 body:JSON.stringify(item)
             })
             .then( response => {
-                if(response.status === 200){
-                    localStorage.setItem("token",response.data.token);
-                    reset();
-					history.replace("/profileuser");
+                if(response.status === 201){
                     return response.json();
                 }
                 else{
@@ -55,9 +52,13 @@ const Login =({history}) => {
                     });					
                     throw new Error('Failed to login, try again later.\n' + response.statusText);
                 }                
-
             })
-            .then(response => alert(response))
+            .then(response => {
+                console.log(response);
+                localStorage.setItem("token",response.access_token);
+                reset();
+                history.replace("/profileuser");
+            })
             .catch( err => console.log(err));
 			
 		}
@@ -95,7 +96,7 @@ const Login =({history}) => {
                     
                 </div>
             </div>
-            <p className="signup1">Don't have an Account? <Link to="/FormSignup">Sign UP</Link></p>
+            <p className="signup1">Don't have an Account? <Link to="/person">Sign UP</Link></p>
            
             <div className="button1">
                 <input type="submit" onClick={loginButton}  value="Log in"/>

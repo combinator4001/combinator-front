@@ -46,20 +46,20 @@ const FormSignupCompany = () => {
             let item = {
                 username,
                 password,
-                namecompany:namecompany ,
+                name:namecompany ,
                 nameowner:nameowner,              
                 email
             };
             console.warn(item);
             
 
-            fetch(url + "/FormSignup",{
+            fetch(url + "/company",{
                 method:'POST',
                 headers: {'Content-Type' : 'application/json'},
                 body:JSON.stringify(item)
             })
             .then( response => {
-                if(response.status === 200){
+                if(response.status === 201){
                     toast.success("sign up successfully!", {
                         position: "top-center",
                         closeOnClick: true
@@ -209,7 +209,7 @@ const FormSignupCompany = () => {
             <div className="choose-detail">
 
             <p className="check">Do yiu have an Account? <Link to="/">log in</Link></p>
-            <p className="check"><Link to="/FormSignup">Are you User? </Link></p>
+            <p className="check"><Link to="/person">Are you User? </Link></p>
 
             </div>            
             <div className="button">
