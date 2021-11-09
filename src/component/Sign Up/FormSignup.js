@@ -6,7 +6,6 @@ import validate from './validateInfo'
 import valid1 from './valid'
 import url from '../../variables';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import { resetRowIndex } from '@syncfusion/ej2-grids';
 import { toast } from 'react-toastify';
 
 
