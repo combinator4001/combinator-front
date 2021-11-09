@@ -1,5 +1,6 @@
 import './profile.css'
 import React, { useEffect, useState } from 'react';
+import Navbar from  '../navbar/navbar';
 import PropTypes from 'prop-types';
 import { useHistory } from "react-router-dom";
 
@@ -50,12 +51,13 @@ class profileuser extends React.Component {
         let lastname=this.state.lastname;
         let username=this.state.username;
         let bio=this.state.bio;
-        
+
 
         if(this.state.showinfo)
         {
             info=(
                 <>
+
                     <div className="info name5">{name+" "+lastname}</div>
                     <div className="info usernam5">{username}</div>
                     <div className="info bio5">{bio}</div>
@@ -91,8 +93,10 @@ class profileuser extends React.Component {
         return (
         <div className="main_body5">
 
-            
-            <div className="img5"></div>
+            <div>
+                <Navbar></Navbar>
+            </div>
+            <div className="img5" ></div>
             {info}
             {update}
         </div>
