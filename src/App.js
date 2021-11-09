@@ -5,7 +5,6 @@ import {useSelector } from 'react-redux';
 import {login, selectuser, signUp} from './features/userSlice';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import FormSignup from "./component/Sign Up/FormSignup";
-import Logout from './component/Logout/Logout';
 import ForgetPass from './component/ForgetPass/ForgetPass'
 import FormSignupCompany from './component/SignUpCompany/FormSignupCompany';
 import profileuser from './component/profile-user/Profileuser';

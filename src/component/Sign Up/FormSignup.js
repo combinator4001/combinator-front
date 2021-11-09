@@ -37,29 +37,11 @@ const FormSignup = () => {
         setlpass2("");
     }
 
-    const dispach = useDispatch();
 
     const handleSubmit = (event) => {
         setIsSubmitting(true);
         setErrors(validate({firstname,lastname,username,email,password,password2}));
-        event.preventDefault();        
-        
-        if(check){
-            dispach(signUp({
-                firstname:firstname ,
-                lastname:lastname,
-                username:username,
-                email:email,
-                password:password,
-                isLoggedIn:true
-        
-            })
-          );
-        }
-
-
-          
-        
+        event.preventDefault();                               
     };
 
     const signup = () =>

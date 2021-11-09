@@ -5,48 +5,67 @@ import {useSelector , useDispatch} from 'react-redux';
 import {login} from '../../features/userSlice'
 import url from '../../variables';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { toast } from 'react-toastify';
+import { withRouter } from "react-router-dom";
 
-//import {login} from '../../actions/index';
-//import {signUp} from '../../actions/index';
 
+const Login =({history}) => {
 
-const Login =() => {
+	const [isSubmitting, setIsSubmitting] = useState(false);
 	const [username,setName]=useState("");
 	const [pass,setpass]=useState("");
 
-	const dispach = useDispatch();
+	const handleSubmit = (event) => {
+        setIsSubmitting(true);        
+        event.preventDefault();                            
+    };
+
+	const reset =() =>{
+		setName("");
+		setpass("");
+    }
   	
 	const loginButton = (event) =>
 	{
 		if(username && pass)
 		{
-			fetch(url + "/login",{
-				method:'POST',
-				headers: {'Content-Type' : 'application/json'},
-				body:JSON.stringify({
-					username: username,
-					password : pass
-				})
-			})
-			.then(res=>{
-				if(res.status === 200){
-					return res.json();
-				}else{
-					throw new Error ("failed to login");
-				}
-			})
-			.then((res)=>{
-				alert(`welcome ${res.username} with ${res.role} role`);
-				event.preventDefault();
-				dispach(login({
-					name: username,
-					isLoggedIn : true
-				}))            
-			})
-			.catch( err => console.log(err));
+			let item = {
+				username,
+				pass
+            };
+            console.warn(item);
+            
+
+            fetch(url + "/",{
+                method:'POST',
+                headers: {'Content-Type' : 'application/json'},
+                body:JSON.stringify(item)
+            })
+            .then( response => {
+                if(response.status === 200){
+                    localStorage.setItem("token",response.data.token);
+                    reset();
+					history.replace("/profileuser");
+                    return response.json();
+                }
+                else{
+                    toast.error("Failed to login, try again later", {
+                        position: "top-center",
+                        closeOnClick: true
+                    });					
+                    throw new Error('Failed to login, try again later.\n' + response.statusText);
+                }                
+
+            })
+            .then(response => alert(response))
+            .catch( err => console.log(err));
+			
 		}
 		else{
-			alert('fill');
+			toast.error("please fill!", {
+				position: "top-center",
+				closeOnClick: true
+			});
 		}     
 	}	     
 
@@ -55,14 +74,13 @@ const Login =() => {
     <div className="main_body1">
     <div className="container1">
         <div className="title1">Log in</div>		
-        <form>
+        <form  onSubmit={(e)=>handleSubmit(e)}>
             <div className="user-details1">
                 <div className="input-box1">
                     <span className="details1">Username</span>
                     <input 
                     type="text" 
                     placeholder="Enter your username" 
-                    required 
                     value={username}
                     onChange={(e)=> setName(e.target.value)}/>
                 </div>
@@ -72,14 +90,12 @@ const Login =() => {
                     <input 
                     type="password" 
                     placeholder="Enter your Password" 
-                    required
                     value={pass}
                     onChange={(e)=> setpass(e.target.value)}/>
                     
                 </div>
             </div>
             <p className="signup1">Don't have an Account? <Link to="/FormSignup">Sign UP</Link></p>
-			<p className="signup1"><Link to="/profileuser">profile</Link></p>
            
             <div className="button1">
                 <input type="submit" onClick={loginButton}  value="Log in"/>
@@ -93,5 +109,4 @@ const Login =() => {
   );
 }
 
-
-export default Login;
+export default withRouter(Login);

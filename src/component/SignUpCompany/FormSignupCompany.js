@@ -10,10 +10,7 @@ import { withRouter } from "react-router-dom";
 
 const FormSignupCompany = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
-
-
-        
-  
+          
     
     const [namecompany,setNamecom]=useState("");
     const [nameowner,setnameowner]=useState("");
@@ -35,28 +32,11 @@ const FormSignupCompany = () => {
     }
 
 
-    const dispach = useDispatch();
 
     const handleSubmit = (e) => {
         setIsSubmitting(true);
         setErrors(validate({namecompany,nameowner,username,email,password,password2}));
-        e.preventDefault();
-        
-        if(check){
-            dispach(signUp({
-                namecompany:namecompany ,
-                nameowner:nameowner,
-                username:username,
-                email:email,
-                password:password,
-                isLoggedIn:true
-        
-            })
-          );
-        }
-            
-
-        
+        e.preventDefault();                            
     };
 
     const signup = () =>
