@@ -7,13 +7,13 @@ import valid1 from './valid'
 import url from '../../variables';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { toast } from 'react-toastify';
+import SimpleReactValidator from "simple-react-validator";
 
 
 const FormSignup = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
-   
-        
-  
+
+             
     
     const [firstname,setfName]=useState("");
     const [lastname,setlname]=useState("");
@@ -24,8 +24,13 @@ const FormSignup = () => {
 
     
 
-    const [errors, setErrors] = useState({});
+    let errors = "";
+    if(isSubmitting===true)
+    {
+        errors=validate({firstname,lastname,username,email,password,password2});
+    }
     const check= valid1 ({firstname,lastname,username,email,password,password2})
+
 
     const reset =() =>{
         setfName("");
@@ -37,10 +42,9 @@ const FormSignup = () => {
     }
 
 
-    const handleSubmit = (event) => {
-        setIsSubmitting(true);
-        setErrors(validate({firstname,lastname,username,email,password,password2}));
-        event.preventDefault();                               
+    const handleSubmit = async event=> {
+        setIsSubmitting(true);        
+        event.preventDefault();       
     };
 
     const signup = () =>
@@ -83,8 +87,7 @@ const FormSignup = () => {
                         closeOnClick: true
                     });
                     throw new Error('Failed to register, try again later.\n' + response.statusText);
-                }
-                
+                }                
 
             })
             .then(response => alert(response))
@@ -118,8 +121,7 @@ const FormSignup = () => {
             //     )
             //     .then(response => alert(response))
             //     .catch( err => console.log(err));
-        }        
-
+        }       
     }
 
     return (
@@ -127,7 +129,7 @@ const FormSignup = () => {
         <div className="main_body">
         <div className="container">           
         <div className="title">Sign up</div>
-        <form className="form" onSubmit={(e)=>handleSubmit(e)} >
+        <form className="form" onSubmit={handleSubmit}>
             <div className="user-details">
 
                 <div className="input-box">

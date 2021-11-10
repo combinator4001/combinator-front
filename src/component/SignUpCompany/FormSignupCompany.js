@@ -19,7 +19,11 @@ const FormSignupCompany = () => {
     const [password,setlpass]=useState("");
     const [password2,setlpass2]=useState("");
 
-    const [errors, setErrors] = useState({});
+    let errors = "";
+    if(isSubmitting===true)
+    {
+        errors=validate({namecompany,nameowner,username,email,password,password2});
+    }
     const check=valid1({namecompany,nameowner,username,email,password,password2});
 
     const reset =() =>{
@@ -35,7 +39,6 @@ const FormSignupCompany = () => {
 
     const handleSubmit = (e) => {
         setIsSubmitting(true);
-        setErrors(validate({namecompany,nameowner,username,email,password,password2}));
         e.preventDefault();                            
     };
 
