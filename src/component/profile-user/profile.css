@@ -1,3 +1,14 @@
+.main_part{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+.profile{
+    width: 40%;
+}
+.comppnent_aprt{
+    width: 60%;
+}
 .img5{
     height: 304px;
     width: 304px;

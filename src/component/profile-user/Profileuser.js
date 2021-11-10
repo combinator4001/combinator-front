@@ -1,10 +1,22 @@
 import './profile.css'
 import React, { useEffect, useState } from 'react';
+import navbar3 from '../navbar3/Navbar3'
 import Navbar from  '../navbar/navbar';
-import PropTypes from 'prop-types';
-import { useHistory } from "react-router-dom";
+import Navbar2 from "../navbar2/Navbar2";
+import CV from "../CV/CV"
+import Blog from "../Blog/Blog";
+import Navbar3 from "../navbar3/Navbar3";
+import {Route} from "react-router-dom";
 
 
+const App = () => (
+    <div>
+        <div>
+            <Route exact={true} path="/" component={Blog} />
+            <Route exaxt path="/CV" component={CV} />
+        </div>
+    </div>
+);
 class profileuser extends React.Component {
     state={
         showupdate:false,
@@ -12,7 +24,8 @@ class profileuser extends React.Component {
         name:"Fatemeh",
         lastname:"Askari",
         username:"@fati",
-        bio:null                        
+        bio:null ,
+        condition:1
     };
 
     handleShowupdate = () => {
@@ -90,16 +103,41 @@ class profileuser extends React.Component {
         }
 
 
-        return (
-        <div className="main_body5">
-
+        /*return (
             <div>
-                <Navbar></Navbar>
+                <Navbar2 />
+                <div>
+                    <div className="main_body5">
+
+                        <div className="img5" ></div>
+                        {info}
+                        {update}
+                    </div>
+                    <div>
+                        <App></App>
+                    </div>
+                </div>
+
             </div>
-            <div className="img5" ></div>
-            {info}
-            {update}
-        </div>
+
+        );*/
+        return(
+            <div>
+                <Navbar3/>
+                <div className="main_part">
+                    <div className="profile">
+
+                        <div className="img5" ></div>
+                        {info}
+                        {update}
+                    </div>
+                    <div className="comppnent_aprt">
+                        <Blog/>
+                    </div>
+                </div>
+
+            </div>
+
         );
     }
 } 
