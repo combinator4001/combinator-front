@@ -127,9 +127,9 @@ const FormSignup = () => {
     return (
     <>
         <div className="main_body">
-        <div className="container">           
+        <div className="container">
         <div className="title">Sign up</div>
-        <form className="form" onSubmit={handleSubmit}>
+        <form  onSubmit={handleSubmit}>
             <div className="user-details">
 
                 <div className="input-box">
@@ -212,11 +212,14 @@ const FormSignup = () => {
                     {errors.password2 && <p>{errors.password2}!</p>} 
                 </div>               
             </div>
-            <p className="check">Do yiu have an Account? <Link to="/">log in</Link></p>
-            <p className="check"><Link to="/company">Are you Company? </Link></p>                   
-            <div className="button">
-                <input type="submit" onClick={signup} value="Sign up"/>                             
+
+
+            <div className="button_containar">
+                <button className="yellow_buttons" type="submit" onClick={signup} value="Sign up" >Sign up</button>
             </div>
+
+            <p className="check"><p>Do you have an Account?</p> <Link to="/">log in</Link></p>
+            <p className="check"><p>Do you want company account ?</p><Link to="/company">Sign up as company </Link></p>
         </form>
 
     </div>

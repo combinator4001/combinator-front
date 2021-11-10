@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './navbar.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import PropTypes from 'prop-types';
-
+/*
 var x = window.matchMedia("(min-width: 800px)")
 myFunction(x) // Call listener function at run time
 x.addListener(myFunction) // Attach listener function on state changes
@@ -32,7 +32,7 @@ function myFunction (x) {
         }
     }
 }
-
+*/
 
 function open_navbar_mobile() {
     let each_option=document.getElementsByClassName("navbar_js");
