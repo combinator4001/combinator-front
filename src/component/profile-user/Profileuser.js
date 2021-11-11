@@ -4,6 +4,8 @@ import Navbar3 from '../navbar3/Navbar3'
 import CV from "../CV/CV"
 import Blog from "../Blog/Blog";
 import {Route} from "react-router-dom";
+import validProfile from "./validProfile";
+import validbool from "./validbool";
 
 
 const App = () => (
@@ -20,17 +22,29 @@ class profileuser extends React.Component {
         showinfo:true,
         name:"Fatemeh",
         lastname:"Askari",
-        username:"@fati",
+        username:"@fati1234",
         bio:null ,
         email:"Fatemeh@yahoo.com",
-        condition:1
+        condition:1,
     };
+   
+    
 
     handleShowupdate = () => {
+        let check=validbool(this.state.name,this.state.lastname,
+            this.state.username,this.state.email);
+        if(check)
+        {    
         this.setState({ showupdate: !this.state.showupdate});
+        }
     };
     handleShowinfo = () => {
+        let check=validbool(this.state.name,this.state.lastname,
+            this.state.username,this.state.email);
+        if(check)
+        {   
         this.setState({ showinfo: !this.state.showinfo});
+        }
     };
     handleChangename =(event) =>{
         const name=event.target.value;
@@ -56,10 +70,6 @@ class profileuser extends React.Component {
         const email=event.target.value;
         this.setState({email});
     }
-
-
-
-
     render() {
         let update = null;
         let info= null;
@@ -68,6 +78,16 @@ class profileuser extends React.Component {
         let username=this.state.username;
         let bio=this.state.bio;
         let email=this.state.email;
+        let submit=this.state.submit;
+
+        let errors = {};
+        errors=validProfile(name,lastname,username,email);
+
+        
+        
+        const handleSubmit = async event=> {       
+            event.preventDefault();       
+        };
 
 
         if(this.state.showinfo)
@@ -94,12 +114,17 @@ class profileuser extends React.Component {
             update=(
             <>
             <div className="main_body6">
-                <form className="form6">
+                <form className="form6"  onSubmit={handleSubmit}>
                     <input type="text" placeholder="Firstname" value={name} onChange={this.handleChangename} className="namepro6"/>
+                    {errors.name && <p>{errors.name}!</p>}
                     <input type="text" placeholder="Lastname" value={lastname} onChange={this.handleChangelastname} className="lastpro6"/>
+                    {errors.lastname && <p>{errors.lastname}!</p>}
                     <input type="text" placeholder="Username" value={username} onChange={this.handleChangeusername} className="userpro6"/>
+                    {errors.username && <p>{errors.username}!</p>}
                     <input type="text" placeholder="Email" value={email} onChange={this.handleChangeEmail} className="email6"/>
+                    {errors.email && <p>{errors.email}!</p>}
                     <textarea type="text" placeholder="Bio" value={bio} onChange={this.handleChangebio} className="biopro6"/>
+                    
                 </form>
                 <div>
                     <button className="btn6" onClick={()=>{this.handleShowupdate(); this.handleShowinfo();}}>save</button>
