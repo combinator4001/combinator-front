@@ -116,13 +116,21 @@ class profileuser extends React.Component {
             <div className="main_body6">
                 <form className="form6"  onSubmit={handleSubmit}>
                     <input type="text" placeholder="Firstname" value={name} onChange={this.handleChangename} className="namepro6"/>
+                    <div className="check6">
                     {errors.name && <p>{errors.name}!</p>}
+                    </div>
                     <input type="text" placeholder="Lastname" value={lastname} onChange={this.handleChangelastname} className="lastpro6"/>
+                    <div className="check6">
                     {errors.lastname && <p>{errors.lastname}!</p>}
+                    </div>
                     <input type="text" placeholder="Username" value={username} onChange={this.handleChangeusername} className="userpro6"/>
+                    <div className="check6">
                     {errors.username && <p>{errors.username}!</p>}
+                    </div>
                     <input type="text" placeholder="Email" value={email} onChange={this.handleChangeEmail} className="email6"/>
+                    <div className="check6">
                     {errors.email && <p>{errors.email}!</p>}
+                    </div>
                     <textarea type="text" placeholder="Bio" value={bio} onChange={this.handleChangebio} className="biopro6"/>
                     
                 </form>
@@ -141,7 +149,6 @@ class profileuser extends React.Component {
                 <Navbar2 />
                 <div>
                     <div className="main_body5">
-
                         <div className="img5" ></div>
                         {info}
                         {update}
@@ -150,9 +157,7 @@ class profileuser extends React.Component {
                         <App></App>
                     </div>
                 </div>
-
             </div>
-
         );*/
         return(
             <div>

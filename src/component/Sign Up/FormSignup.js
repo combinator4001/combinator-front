@@ -1,5 +1,4 @@
-import React , {useState} from 'react';
-import {useSelector , useDispatch} from 'react-redux';
+ import React , {useState} from 'react';
 import {signUp} from '../../features/userSlice'
 import './Form.css'
 import validate from './validateInfo'
@@ -12,6 +11,9 @@ import SimpleReactValidator from "simple-react-validator";
 
 const FormSignup = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
+
+
+
 
 
              
@@ -125,7 +127,7 @@ const FormSignup = () => {
     }
 
     return (
-    <>
+    <>   
         <div className="main_body">
         <div className="container">
         <div className="title">Sign up</div>
