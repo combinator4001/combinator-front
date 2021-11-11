@@ -19,9 +19,10 @@
 .comppnent_aprt{
     width: 60%;
 }
-.img5{
+.img5,button{
     height: 250px;
     width: 250px;
+    object-fit: cover;
     background-color: rgb(201, 207, 198);
     border-radius: 50%;
     margin-top: 0px;
@@ -117,7 +118,7 @@
     border-radius: 5px; 
 
 }
-.check6 p{
+p{
     color:red;
     font-size: 11.5px;
     font-weight: bold;

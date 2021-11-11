@@ -1,4 +1,5 @@
 import './profile.css'
+import Img from './ProfileImg'
 import React, { useEffect, useState } from 'react';
 import Navbar3 from '../navbar3/Navbar3'
 import CV from "../CV/CV"
@@ -6,7 +7,7 @@ import Blog from "../Blog/Blog";
 import {Route} from "react-router-dom";
 import validProfile from "./validProfile";
 import validbool from "./validbool";
-
+import axios from 'axios';
 
 const App = () => (
     <div>
@@ -27,8 +28,7 @@ class profileuser extends React.Component {
         email:"Fatemeh@yahoo.com",
         condition:1,
     };
-   
-    
+
 
     handleShowupdate = () => {
         let check=validbool(this.state.name,this.state.lastname,
@@ -70,6 +70,8 @@ class profileuser extends React.Component {
         const email=event.target.value;
         this.setState({email});
     }
+
+    
     render() {
         let update = null;
         let info= null;
@@ -116,21 +118,13 @@ class profileuser extends React.Component {
             <div className="main_body6">
                 <form className="form6"  onSubmit={handleSubmit}>
                     <input type="text" placeholder="Firstname" value={name} onChange={this.handleChangename} className="namepro6"/>
-                    <div className="check6">
                     {errors.name && <p>{errors.name}!</p>}
-                    </div>
                     <input type="text" placeholder="Lastname" value={lastname} onChange={this.handleChangelastname} className="lastpro6"/>
-                    <div className="check6">
                     {errors.lastname && <p>{errors.lastname}!</p>}
-                    </div>
                     <input type="text" placeholder="Username" value={username} onChange={this.handleChangeusername} className="userpro6"/>
-                    <div className="check6">
                     {errors.username && <p>{errors.username}!</p>}
-                    </div>
                     <input type="text" placeholder="Email" value={email} onChange={this.handleChangeEmail} className="email6"/>
-                    <div className="check6">
                     {errors.email && <p>{errors.email}!</p>}
-                    </div>
                     <textarea type="text" placeholder="Bio" value={bio} onChange={this.handleChangebio} className="biopro6"/>
                     
                 </form>
@@ -149,6 +143,7 @@ class profileuser extends React.Component {
                 <Navbar2 />
                 <div>
                     <div className="main_body5">
+
                         <div className="img5" ></div>
                         {info}
                         {update}
@@ -157,15 +152,20 @@ class profileuser extends React.Component {
                         <App></App>
                     </div>
                 </div>
+
             </div>
+
         );*/
+
         return(
             <div>
                 <Navbar3/>
                 <div className="main_part">
                     <div className="profile">
 
-                        <div className="img5" ></div>
+                        <div className="img5" >
+                            <Img/>
+                        </div>
                         {info}
                         {update}
                     </div>
@@ -180,3 +180,5 @@ class profileuser extends React.Component {
     }
 } 
 export default profileuser ;
+
+
