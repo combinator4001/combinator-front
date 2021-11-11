@@ -47,7 +47,7 @@ const Login =({history}) => {
                 }
                 else{
                     toast.error("Failed to login, try again later", {
-                        position: "top-center",
+                        position: "top-right",
                         closeOnClick: true
                     });					
                     throw new Error('Failed to login, try again later.\n' + response.statusText);
@@ -65,7 +65,7 @@ const Login =({history}) => {
 		else{
             history.replace("/profileuser");
 			toast.error("please fill!", {
-				position: "top-center",
+				position: "top-right",
 				closeOnClick: true
 			});
 		}     
@@ -97,11 +97,14 @@ const Login =({history}) => {
                     
                 </div>
             </div>
-            <p className="signup1">Don't have an Account? <Link to="/person">Sign UP</Link></p>
-           
-            <div className="button1">
-                <input type="submit" onClick={loginButton}  value="Log in"/>
+
+            <div className="button_containar1">
+                <button className="yellow_buttons1" type="submit" onClick={loginButton} value="log in" >Log in</button>
             </div>
+
+            <p className="check1"><p></p> <Link to="/forgetpassword">Forget Pass?</Link></p>
+            <p className="check1"><p>Don't have account?</p> <Link to="/person">Sign Up</Link></p>
+
         </form>
 
     </div>

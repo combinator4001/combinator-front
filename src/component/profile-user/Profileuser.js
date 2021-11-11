@@ -1,11 +1,8 @@
 import './profile.css'
 import React, { useEffect, useState } from 'react';
-import navbar3 from '../navbar3/Navbar3'
-import Navbar from  '../navbar/navbar';
-import Navbar2 from "../navbar2/Navbar2";
+import Navbar3 from '../navbar3/Navbar3'
 import CV from "../CV/CV"
 import Blog from "../Blog/Blog";
-import Navbar3 from "../navbar3/Navbar3";
 import {Route} from "react-router-dom";
 
 
@@ -132,7 +129,7 @@ class profileuser extends React.Component {
                         {update}
                     </div>
                     <div className="comppnent_aprt">
-                        <Blog/>
+                        <CV/>
                     </div>
                 </div>
 

@@ -10,6 +10,7 @@ import { withRouter } from "react-router-dom";
 
 const FormSignupCompany = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
+    
           
     
     const [namecompany,setNamecom]=useState("");
@@ -64,21 +65,20 @@ const FormSignupCompany = () => {
             .then( response => {
                 if(response.status === 201){
                     toast.success("sign up successfully!", {
-                        position: "top-center",
+                        position: "top-right",
                         closeOnClick: true
                     });
-                    localStorage.setItem("token",response.data.token);
                     reset();
                     return response.json();
                 }else if(response.status === 400){
                     toast.error("Username already exists!", {
-                        position: "top-center",
+                        position: "top-right",
                         closeOnClick: true
                     });
                     throw new Error('Username already exists!\n' + response.statusText);
                 }else {
                     toast.error("Failed to register, try again later", {
-                        position: "top-center",
+                        position: "top-right",
                         closeOnClick: true
                     });
                     throw new Error('Failed to register, try again later.\n' + response.statusText);
@@ -209,19 +209,18 @@ const FormSignupCompany = () => {
                     {errors.password2 && <p>{errors.password2}!</p>} 
                 </div>               
             </div>
-            <div className="choose-detail">
 
-            <p className="check">Do yiu have an Account? <Link to="/">log in</Link></p>
-            <p className="check"><Link to="/person">Are you User? </Link></p>
-
-            </div>            
-            <div className="button">
-                <input type="submit" onClick={signup} value="Sign up"/>                             
+            <div className="button_containar">
+                <button className="yellow_buttons" type="submit" onClick={signup} value="Sign up" >Sign up</button>
             </div>
+
+            <p className="check"><p>Do you have an Account?</p> <Link to="/">log in</Link></p>
+            <p className="check"><p>Do you want user account ?</p><Link to="/person">Sign up as company </Link></p>        
+
         </form>
 
     </div>
-        </div>
+    </div>
         
     </>
     )

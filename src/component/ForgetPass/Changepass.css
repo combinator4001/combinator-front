@@ -5,125 +5,152 @@
     justify-content: center;
     align-items: center;
     padding: 10px;
-    background: linear-gradient(135deg,#70b7e6,rgb(255, 0, 119));
-}
-.container2
-{
-    max-width: 400Px;
+    background-image:url("signupBackGround1.jpg");
+    background-size: cover;
+  }
+  .container2
+  {
+    max-width: 350Px;
+    position: relative;
     width: 100%;
     background: #fff;
     padding: 25px 30px;
     border-radius: 5px;
-}
-.container2 .title2
-{
+    box-shadow: #00a6ca 0rem 0rem 15px 5px;
+  }
+   .title2
+  {
     font-size:25px;
     font-weight: bold;
-    
+    margin-bottom: 4%;
     text-align: center;
     position: relative;
-}
-.container2 form .user-details2
-{
+  }
+  
+  .details2
+  {
+      font-size: 16px;
+      display: block;
+      font-weight:bold;
+      margin-bottom: 5px;    
+  }
+   .user-details2
+  {
     display:flex;
     flex-direction: column;
     align-items: center;
-
     margin: 13px 0 0 0;
-}
-.container2 form .user-details2 .input-box2
-{
+  }
+  .input-box2
+  {
      width: 100%; 
      margin-bottom: 15px; 
-}
-.container2 form .user-details2 .input-box2 .details
-{
+     font-size: 16px;
+  }
+   .details2
+  {
     display: block;
     font-weight:bold;
     margin-top: 20px;
     margin-bottom: 5px;
-    
-}
-.container2 form .user-details2 .input-box2 input{
+    font-size: 16px;  
+  }
+   .input-box2 input{
     font-size: 16px;
-    height: 35px;
+    height: 45px;
     width: 100%;
-    margin-bottom: 7px;
+    margin-bottom: 2.5%;
     outline: none;
     border-radius: 5px;
     border:1px solid #ccc;
     border-bottom-width: 2px;
     transition: all 0.3s ease;
     padding-left:15px        
-}
-.container2 form .user-details2 .input-box2 input:focus,
-.container2 form .user-details2 .input-box2 input:valid
-{
-    border-color:#9b59b6
+  }
+  .input-box2 input:focus,
+  .input-box2 input:valid
+  {
+    border-color:#2177da
+  
+  }
+  
 
-}
-
-.Verify2
-{
-    margin-top: 10px ;
-}
-.Verify2 a
-{
-    text-decoration: none;
-    color: rgb(104, 199, 8);
-    font-weight: bold;
-}
-
-
-form .button2 
-{
-    height: 45px;
-    margin:40px 0 ;
-}
-form .button2 input
-{
-    height: 80%;
-    width: 100%;
-    outline:none;
-    color: #fff;
-    border: none;
-    font-size: 18px;
-    font-weight: bold;
-    letter-spacing: 1px;
-    border-radius: 5px;
-    background: rgb(8, 117, 219);
-}
-input:read-only
-{
+  input:read-only
+  {
     background-color: rgb(190, 190, 190);
-
-}
-form .button2 input:hover{
-    background: rgb(6, 6, 158);
-    transition: all 0.3s ease;
-}
-
-
-@media (max-width: 650px)
-{
-    .container2
-    {
-        max-width: 100%;
-    }
-    .container2 form .user-details2 .input-box2
-    {     
-     margin-bottom: 15px; 
-     width: 100%;
-    }
-
-    .container2 form .user-details2
-    {
-        max-height: 300px;
-        overflow-y: scroll;
-    }
-
-    .user-details::-webkit-scrollbar
-    {
-        width: 0;
-    }
-}
+  
+  }
+  
+  .regis
+  {
+      font-size: large;
+  }
+  .yellow_buttons2{
+      height: 100%;
+      border-radius: 50px;
+      border-top-right-radius: 0px;
+      font-size: 15px;
+      margin-bottom: 2%;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      padding-left: 5%;
+      padding-right: 5%;
+      background-color: #2177da;
+      border: none;
+      float: left;
+      width: 55%;
+      color: white;
+      margin-left: 0px;
+  }
+  .yellow_buttons2:hover{
+      cursor: pointer;
+      background-color: #3a0480;
+      transition: background-color 1s ;
+  }
+  .button_containar2{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  @media (max-width: 650px)
+  {
+      .container2
+      {
+          max-width: 70%;
+      }
+       .input-box2
+      {
+       margin-bottom: 15px;
+       width: 100%;
+      }
+      .main_body2{
+          flex-direction: column;
+      }
+  
+      .user-details2::-webkit-scrollbar
+      {
+          width: 0;
+      }
+      .yellow_buttons2{
+          width: auto;
+      }
+      .check2{
+          display: flex;
+          flex-direction: column;
+  
+      }
+      .input-box2 input{
+          font-size: 12px;
+      }
+      .details2
+      {
+          font-size: 12px;
+      }
+      .check2 a{
+          font-size: 14px;
+      }
+      .title2{
+          font-size: 15px;
+      }
+  
+  }

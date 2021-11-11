@@ -11,28 +11,22 @@ const Changepass = () => {
             <div className="user-details2">
                 <div className="input-box2">
                     <span className="details2">Received Code</span>
-                    <input type="number" placeholder="Enter your Code" required/>
+                    <input type="number" placeholder="Enter your Code" />
                 </div>
 
                 <div className="input-box2">
-                    <span className="details">new Password</span>
-                    <input type="password" placeholder="Enter your new Password" required/>
+                    <span className="details2">new Password</span>
+                    <input type="password" placeholder="Enter your new Password" />
                 </div>
 
                 <div className="input-box2">
                     <span className="details2">Submit Password</span>
-                    <input type="password" placeholder="Re-enter your new Password" required/>
+                    <input type="password" placeholder="Re-enter your new Password" />
                 </div>
-
-            </div>
-            <div class="Verify2">
-                <div class="Code2">                    
-                    <a href="#">Resend Verification Code</a>
-                </div>
-            </div>            
-            <div class="button2">
-                <input type="submit" value="Submit Changes"/>
-            </div>
+            </div>             
+            <div className="button_containar2">
+                <button className="yellow_buttons2" type="submit"   value="Change" >Sumbit Change</button>
+            </div>       
         </form>
 
     </div>

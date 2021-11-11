@@ -10,6 +10,7 @@ import FormSignupCompany from './component/SignUpCompany/FormSignupCompany';
 import profileuser from './component/profile-user/Profileuser';
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
+import Changepass from './component/ForgetPass/Changepass';
 
 
 const App =()=> {
@@ -27,6 +28,7 @@ const App =()=> {
         <Route path="/company" component={FormSignupCompany} />
         <Route path="/forgetpassword" component={ForgetPass} />
         <Route path="/profileuser" component={profileuser} />
+        <Route path="/changepassword" component={Changepass} />
       </switch>
     </div>
   </Router>

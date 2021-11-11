@@ -13,6 +13,7 @@ import SimpleReactValidator from "simple-react-validator";
 const FormSignup = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
 
+
              
     
     const [firstname,setfName]=useState("");
@@ -69,21 +70,20 @@ const FormSignup = () => {
             .then( response => {
                 if(response.status === 201){
                     toast.success("sign up successfully!", {
-                        position: "top-center",
+                        position: "top-right",
                         closeOnClick: true
                     });
-                    localStorage.setItem("token",response.data.token);
                     reset();
                     return response.json();
                 }else if(response.status === 400){
                     toast.error("Username already exists!", {
-                        position: "top-center",
+                        position: "top-right",
                         closeOnClick: true
                     });
                     throw new Error('Username already exists!\n' + response.statusText);
                 }else {
                     toast.error("Failed to register, try again later", {
-                        position: "top-center",
+                        position: "top-right",
                         closeOnClick: true
                     });
                     throw new Error('Failed to register, try again later.\n' + response.statusText);

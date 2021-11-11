@@ -18,7 +18,7 @@
     border-radius: 5px;
     box-shadow: #00a6ca 0rem 0rem 15px 5px;
 }
-.container .title
+ .title
 {
     font-size:25px;
     font-weight: bold;
@@ -68,10 +68,7 @@
     margin-top: 15px;
 }
 
-form .login
-{   
-    margin-top: 25px;
-}
+
 .check a{
     font-weight: 600;
     text-decoration: none;
@@ -88,23 +85,7 @@ form .button
     height: 45px;
     margin:45px 0 ;
 }
-form .button input
-{
-    height: 80%;
-    width: 100%;
-    outline:none;
-    color: #fff;
-    border: none;
-    font-size: 18px;
-    font-weight: bold;
-    letter-spacing: 1px;
-    border-radius: 5px;
-    background: rgb(8, 117, 219);
-}
-form .button input:hover{
-    background: rgb(6, 6, 158);
-    transition: all 0.3s ease;
-}
+
 .input-box p
 {
     color:red;
@@ -186,6 +167,10 @@ form .button input:hover{
     }
     .title{
         font-size: 15px;
+    }
+    .input-box p
+    {
+    font-size: 11px;
     }
 
 }

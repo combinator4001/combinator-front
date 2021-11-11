@@ -13,6 +13,9 @@ export default function validateInfo(values) {
     if(!values.username.trim()) {
         return false
         
+    }else if(values.username.length<6){
+        
+        return false
     }
 
     //Email
@@ -25,7 +28,7 @@ export default function validateInfo(values) {
         return false
     }
 
-    if(!values.password)
+    if(!values.password.trim())
     {
        return false
         
