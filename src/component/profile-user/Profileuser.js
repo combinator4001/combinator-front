@@ -22,6 +22,7 @@ class profileuser extends React.Component {
         lastname:"Askari",
         username:"@fati",
         bio:null ,
+        email:"Fatemeh@yahoo.com",
         condition:1
     };
 
@@ -51,6 +52,11 @@ class profileuser extends React.Component {
         this.setState({bio});
     }
 
+    handleChangeEmail =(event) =>{
+        const email=event.target.value;
+        this.setState({email});
+    }
+
 
 
 
@@ -61,6 +67,7 @@ class profileuser extends React.Component {
         let lastname=this.state.lastname;
         let username=this.state.username;
         let bio=this.state.bio;
+        let email=this.state.email;
 
 
         if(this.state.showinfo)
@@ -91,6 +98,7 @@ class profileuser extends React.Component {
                     <input type="text" placeholder="Firstname" value={name} onChange={this.handleChangename} className="namepro6"/>
                     <input type="text" placeholder="Lastname" value={lastname} onChange={this.handleChangelastname} className="lastpro6"/>
                     <input type="text" placeholder="Username" value={username} onChange={this.handleChangeusername} className="userpro6"/>
+                    <input type="text" placeholder="Email" value={email} onChange={this.handleChangeEmail} className="email6"/>
                     <textarea type="text" placeholder="Bio" value={bio} onChange={this.handleChangebio} className="biopro6"/>
                 </form>
                 <div>

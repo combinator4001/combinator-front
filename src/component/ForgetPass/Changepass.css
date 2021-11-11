@@ -80,6 +80,11 @@
     background-color: rgb(190, 190, 190);
   
   }
+  .input-box2 p{
+    color:red;
+    font-size: 13px;
+    font-weight: bold;
+}
   
   .regis
   {
@@ -151,6 +156,10 @@
       }
       .title2{
           font-size: 15px;
+      }
+      .input-box2 p
+      {
+      font-size: 11px;
       }
   
   }

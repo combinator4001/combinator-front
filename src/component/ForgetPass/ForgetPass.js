@@ -6,22 +6,25 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 const ForgetPass = () => {
 
-    const[email,setemail]=useState("")
+    const[username,setemail]=useState("")
     const [isSubmitting, setIsSubmitting] = useState(false);
     
 
     let error = "";
-    let check=true;
+    let check=false;
     if(isSubmitting===true)
     {
-        if(!email){
-            error="Email required" 
+        if(!username){
+            error="Username required" 
             check=false;      
         }  
-       else if(!/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i.test(email))
+       else if(username.length<6)
         {
-            error="Email address is invalid"
+            error="Username needs to be 6 characters or more"
             check=false;        
+        }
+        else{
+            check=true;
         }
     }
 
@@ -37,22 +40,22 @@ const ForgetPass = () => {
     const ForgetPass = () =>
     {
         if(check)
-        {            
-
+        {
+                                    
             fetch(url + "/forgetpassword",{
                 method:'POST',
                 headers: {'Content-Type' : 'application/json'},
-                body:JSON.stringify(email)
+                body:JSON.stringify(username)
             })
             .then( response => {
                 if(response.status === 201){
                     return response.json();
                 }else{
-                    toast.error("Email is not exists!", {
+                    toast.error("Username is not exists!", {
                         position: "top-right",
                         closeOnClick: true
                     });
-                    throw new Error('Email is not exist!\n' + response.statusText);
+                    throw new Error('Username is not exist!\n' + response.statusText);
                 }               
             })
             .then(response => alert(response))
@@ -70,12 +73,12 @@ const ForgetPass = () => {
         <form onSubmit={handleSubmit}>
             <div className="user-details3">
                 <div className="input-box3">
-                    <span className="details3">Email</span>
+                    <span className="details3">Username</span>
                     <input 
                     type="text"
-                    name="email" 
+                    name="username" 
                     placeholder="Enter your email" 
-                    value={email} 
+                    value={username} 
                     onChange={(e)=>setemail(e.target.value)}/>
                     {error && <p>{error}!</p>}                   
                 </div>                            
