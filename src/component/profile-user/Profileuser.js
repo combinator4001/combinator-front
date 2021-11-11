@@ -71,8 +71,11 @@ class profileuser extends React.Component {
                     <div className="info name5">{name+" "+lastname}</div>
                     <div className="info usernam5">{username}</div>
                     <div className="info bio5">{bio}</div>
-                    <button type="submit" className="btn5" onClick={()=>{this.handleShowupdate(); this.handleShowinfo();}} >Edit profile</button>
-                    {update}
+                    <div className="btn5_container">
+                        <button type="submit" className="btn5" onClick={()=>{this.handleShowupdate(); this.handleShowinfo();}} >Edit profile</button>
+                        {update}
+                    </div>
+
                         
                 </>
 
@@ -88,7 +91,7 @@ class profileuser extends React.Component {
                     <input type="text" placeholder="Firstname" value={name} onChange={this.handleChangename} className="namepro6"/>
                     <input type="text" placeholder="Lastname" value={lastname} onChange={this.handleChangelastname} className="lastpro6"/>
                     <input type="text" placeholder="Username" value={username} onChange={this.handleChangeusername} className="userpro6"/>
-                    <input type="text" placeholder="Bio" value={bio} onChange={this.handleChangebio} className="biopro6"/>
+                    <textarea type="text" placeholder="Bio" value={bio} onChange={this.handleChangebio} className="biopro6"/>
                 </form>
                 <div>
                     <button className="btn6" onClick={()=>{this.handleShowupdate(); this.handleShowinfo();}}>save</button>
