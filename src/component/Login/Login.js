@@ -102,7 +102,7 @@ const Login =({history}) => {
                 <button className="yellow_buttons1" type="submit" onClick={loginButton} value="log in" >Log in</button>
             </div>
 
-            <p className="check1"><p></p> <Link to="/forgetpassword">Forget Pass?</Link></p>
+            <p className="check1"> <Link to="/forgetpassword">Forget Pass?</Link></p>
             <p className="check1"><p>Don't have account?</p> <Link to="/person">Sign Up</Link></p>
 
         </form>

@@ -1,7 +1,7 @@
 .main_part{
     display: flex;
     justify-content: left;
-    align-items: center;
+    align-items: flex-start;
     /* background-image :linear-gradient(90deg,#3a0480 ,#00a6ca ) ; */
 }
 .profile{
@@ -17,7 +17,10 @@
 
 }
 .comppnent_aprt{
-    width: 60%;
+    width: 65%;
+    margin: 2% 1% 2% 2%;
+    border: 2px #00a6ca solid;
+    box-shadow: #00a6ca 0rem 0rem 15px 5px;
 }
 .img5,button{
     height: 250px;

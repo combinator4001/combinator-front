@@ -1,6 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import './navbar3.css'
 
@@ -20,8 +20,8 @@ function Navbar3()  {
             <div className="topnav" id="myTopnav">
                 <div className="options">
                     <a href="#top" className="active">top</a>
-                    <a href="#CV">CV builder</a>
-                    <a href="#Blog">Blog</a>
+                    <a ><Link to="/CV">CV Builder</Link></a>
+                    <a ><Link to="/Blog">Blog</Link></a>
                 </div>
             </div>
         </>

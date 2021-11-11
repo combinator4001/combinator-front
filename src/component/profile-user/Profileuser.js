@@ -1,13 +1,18 @@
 import './profile.css'
 import Img from './ProfileImg'
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState,Fragment } from 'react';
 import Navbar3 from '../navbar3/Navbar3'
 import CV from "../CV/CV"
 import Blog from "../Blog/Blog";
-import {Route} from "react-router-dom";
+import {BrowserRouter as Router, Route} from "react-router-dom";
 import validProfile from "./validProfile";
 import validbool from "./validbool";
-import axios from 'axios';
+import {ToastContainer} from "react-toastify";
+import Login from "../Login/Login";
+import FormSignup from "../Sign Up/FormSignup";
+import FormSignupCompany from "../SignUpCompany/FormSignupCompany";
+import ForgetPass from "../ForgetPass/ForgetPass";
+import Changepass from "../ForgetPass/Changepass";
 
 const App = () => (
     <div>
@@ -17,6 +22,15 @@ const App = () => (
         </div>
     </div>
 );
+
+function change() {
+    if(this.state.condition ===0){
+        this.state.condition=1;
+    }else {
+        this.state.condition=0;
+    }
+    console.log(this.state.condition );
+}
 class profileuser extends React.Component {
     state={
         showupdate:false,
@@ -26,7 +40,7 @@ class profileuser extends React.Component {
         username:"@fati1234",
         bio:null ,
         email:"Fatemeh@yahoo.com",
-        condition:1,
+        condition:null,
     };
 
 
@@ -170,7 +184,8 @@ class profileuser extends React.Component {
                         {update}
                     </div>
                     <div className="comppnent_aprt">
-                        <CV/>
+                        <button className="btn5" onClick="change()">change</button>
+                        {this.state.condition? <Fragment><Blog/></Fragment> : <CV /> }
                     </div>
                 </div>
 
