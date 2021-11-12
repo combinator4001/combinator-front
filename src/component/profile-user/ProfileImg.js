@@ -31,7 +31,7 @@ export default function Img() {
                 fileInputRef.current.click();
                 }}>Add Image</button>}
         <input type="file" 
-               style={{display: "none"}} 
+               style={{display: "none" }}
                accept="image/*"
                ref={fileInputRef }
                onChange={(event) =>{

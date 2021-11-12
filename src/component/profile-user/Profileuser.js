@@ -179,16 +179,16 @@ class profileuser extends React.Component {
         {
             info=(
                 <>
+                    <div className="info_content">
+                        <div className="info name5">{name+" "+lastname}</div>
+                        <div className="info usernam5">{username}</div>
+                        <div className="info bio5">{bio}</div>
+                    </div>
 
-                    <div className="info name5">{name+" "+lastname}</div>
-                    <div className="info usernam5">{username}</div>
-                    <div className="info bio5">{bio}</div>
                     <div className="btn5_container">
                         <button type="submit" className="btn5" onClick={()=>{this.handleShowupdate(); this.handleShowinfo();}} >Edit profile</button>
                         {update}
                     </div>
-
-                        
                 </>
 
             );
@@ -233,24 +233,6 @@ class profileuser extends React.Component {
         }
 
 
-        /*return (
-            <div>
-                <Navbar2 />
-                <div>
-                    <div className="main_body5">
-
-                        <div className="img5" ></div>
-                        {info}
-                        {update}
-                    </div>
-                    <div>
-                        <App></App>
-                    </div>
-                </div>
-
-            </div>
-
-        );*/
 
         return(
             <div>
@@ -265,10 +247,15 @@ class profileuser extends React.Component {
                         {update}
                     </div>
                     <div className="comppnent_aprt">
-                    <button onClick={()=>this.handleShowCV()}>show cv</button>
-                        <button onClick={()=>this.handleShowBlog()}>show blog</button>
-                        {cvvomponent}
-                        {blogComponent}
+                        <div className="comppnent_aprt_btn_div">
+                            <button className="btn5" onClick={()=>this.handleShowCV()}>show cv</button>
+                            <button className="btn5" onClick={()=>this.handleShowBlog()}>show blog</button>
+                        </div>
+                        <div className="comppnent_aprt_mainPart">
+                            {cvvomponent}
+                            {blogComponent}
+                        </div>
+
                     </div>
                 </div>
 
