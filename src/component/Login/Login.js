@@ -1,5 +1,6 @@
 import React , {useState} from 'react';
 import './Login.css';
+import doToggle from '../ToggleFunc.js';
 import SimpleReactValidator from 'simple-react-validator';
 import {useSelector , useDispatch} from 'react-redux';
 import {login} from '../../features/userSlice'
@@ -73,43 +74,47 @@ const Login =({history}) => {
 
   return (
     <>
-    <div className="main_body1">
-    <div className="container1">
-        <div className="title1">Log in</div>		
-        <form  onSubmit={(e)=>handleSubmit(e)}>
-            <div className="user-details1">
-                <div className="input-box1">
-                    <span className="details1">Username</span>
-                    <input 
-                    type="text" 
-                    placeholder="Enter your username" 
-                    value={username}
-                    onChange={(e)=> setName(e.target.value)}/>
-                </div>
-
-                <div className="input-box1">
-                    <span className="details1">Password</span>
-                    <input 
-                    type="password" 
-                    placeholder="Enter your Password" 
-                    value={pass}
-                    onChange={(e)=> setpass(e.target.value)}/>
-                    
+    <section>
+        <div className="container">
+            <div className="user signinBox">
+                <div className="imgBox">
+                    <h1>Hello, Friend!</h1>
+                    <p> <br/>Enter your personal details and start</p>
+                    <p> journey with us<br/><br/></p>
+                    <p><Link to="/person" onClick= {doToggle}>SIGN UP</Link></p>
+                </div>	
+                <div className="formBox">
+                    <form  onSubmit={(e)=>handleSubmit(e)}>
+                        <h1>Sign in</h1>
+                        <div className="user-details1">
+                            <div className="input-box1">
+                                <div className="floating-label-group">
+                                    <input type="text" 
+                                           value={username}
+                                           onChange={(e)=> setName(e.target.value)}
+                                           autoComplete="off" autoFocus required />
+                                    <label class="floating-label">Username</label>   
+                                </div>
+                            </div>
+                            <div className="input-box1">
+                                <div className="floating-label-group">
+                                    <input type="password" 
+                                           value={pass}
+                                           onChange={(e)=> setpass(e.target.value)}
+                                           autoComplete="off" autoFocus required />
+                                    <label class="floating-label">Password</label>  
+                                </div>
+                           </div>
+                        </div>
+                        <p className="check1"><p></p> <Link to="/forgetpassword">Forgot password</Link></p>
+                        <div className="button_containar1">
+                            <button className="yellow_buttons1" type="submit" onClick={loginButton} value="log in" >Sign in</button>
+                        </div>
+                    </form>
                 </div>
             </div>
-
-            <div className="button_containar1">
-                <button className="yellow_buttons1" type="submit" onClick={loginButton} value="log in" >Log in</button>
-            </div>
-
-            <p className="check1"> <Link to="/forgetpassword">Forget Pass?</Link></p>
-            <p className="check1"><p>Don't have account?</p> <Link to="/person">Sign Up</Link></p>
-
-        </form>
-
-    </div>
-    </div>
-      
+        </div>
+    </section>
     </>
   );
 }

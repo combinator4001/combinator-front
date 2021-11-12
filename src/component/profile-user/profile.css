@@ -22,7 +22,7 @@
     border: 2px #00a6ca solid;
     box-shadow: #00a6ca 0rem 0rem 15px 5px;
 }
-.img5,button{
+.img5{
     height: 250px;
     width: 250px;
     object-fit: cover;
@@ -121,7 +121,7 @@
     border-radius: 5px; 
 
 }
-p{
+.check6 p{
     color:red;
     font-size: 11.5px;
     font-weight: bold;

@@ -1,14 +1,22 @@
-.main_body1{
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
+section{
+  position: relative;
+  min-height: 100vh;
+  background-color: #d9d9d9;
+  display:flex;
   justify-content: center;
   align-items: center;
-  padding: 10px;
-  background-image:url("signupBackGround.jpg");
-  background-size: cover;
 }
-.container1
+section .container{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width:800px;
+  height:500px;
+  background:#5175bd;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, .5);
+  overflow: hidden;
+}
+/* .container1
 {
   max-width: 350Px;
   position: relative;
@@ -17,14 +25,62 @@
   padding: 25px 30px;
   border-radius: 5px;
   box-shadow: #00a6ca 0rem 0rem 15px 5px;
+} */
+section .container .user{
+  position:absolute;
+  top:0;
+  left:0;
+  width: 100%;
+  height: 100%;
+  display:flex;
 }
- .title1
-{
-  font-size:25px;
-  font-weight: bold;
-  margin-bottom: 4%;
+section .container .user .imgBox{
+  position:relative;
+  width:50%;
+  height:100%;
+  background-color: #5175bd;
+  transition: 0.5s;
+  color: white;
+  margin-top: 24%;
   text-align: center;
+}
+section .container .user .imgBox img{
+  position: absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  object-fit: cover;
+}
+section .container .user .formBox{
   position: relative;
+  width:50%;
+  height:100;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding:40px;
+  transition: 0.5s;
+}
+section .container .user .formBox h1{
+  font-size: 40px;
+  font-weight: 500;
+  font: bold;
+  text-align: center;
+  width:100%;
+  margin-bottom: 50px;
+  color:#5071b4;
+}
+section .container .user .formBox input{
+  width:100%;
+  font-weight: 600;
+  border:none;
+  outline:none;
+  font-size: 14px;
+  letter-spacing: 0px;
+  margin-top: 8px;
+  border-bottom: 2px solid #5175bd;
 }
 
 .details1
@@ -33,7 +89,7 @@
     display: block;
     font-weight:bold;
     margin-bottom: 5px;    
-}
+} 
  .user-details1
 {
   display:flex;
@@ -41,31 +97,19 @@
   align-items: center;
   margin: 13px 0 0 0;
 }
-.input-box1
+ .input-box1
 {
    width: 100%; 
    margin-bottom: 15px; 
    font-size: 16px;
 }
- .details1
+.details1
 {
   display: block;
   font-weight:bold;
   margin-top: 20px;
   margin-bottom: 5px;
   font-size: 16px;  
-}
- .input-box1 input{
-  font-size: 16px;
-  height: 45px;
-  width: 100%;
-  margin-bottom: 2.5%;
-  outline: none;
-  border-radius: 5px;
-  border:1px solid #ccc;
-  border-bottom-width: 2px;
-  transition: all 0.3s ease;
-  padding-left:15px        
 }
 .container1 form .user-details1 .input-box1 input:focus,
 .container1 form .user-details1 .input-box1 input:valid
@@ -82,14 +126,16 @@
 }
 
 .check1 a{
-  font-weight: 600;
+  font-weight: 500;
+  font: bold;
   text-decoration: none;
-  color:#677eff;
-  font-size: 15px;
+  color:#5175bd;
+  font-size: 13.5px;
 }
 .check1{
-  margin-bottom: 1%;
+  margin-bottom: 5%;
   margin-top: 1%;
+  margin-left: 24.5%;
   font-size: 11px;
 }
 input:read-only
@@ -116,16 +162,16 @@ form .button1 input:hover{
     padding-bottom: 5px;
     padding-left: 5%;
     padding-right: 5%;
-    background-color: #2177da;
+    background-color: #5175bd;
     border: none;
     float: left;
     width: 35%;
     color: white;
-    margin-left: 0px;
+    margin-left: 7.3%;
 }
 .yellow_buttons1:hover{
     cursor: pointer;
-    background-color: #3a0480;
+    background-color: #5175bd;
     transition: background-color 1s ;
 }
 .button_containar1{
@@ -166,7 +212,6 @@ form .button1 input:hover{
     .check1{
         display: flex;
         flex-direction: column;
-
     }
     .input-box1 input{
         font-size: 12px;
@@ -181,5 +226,37 @@ form .button1 input:hover{
     .title1{
         font-size: 15px;
     }
-
 }
+@media(max-width:991px){
+  section .container{
+      max-width: 400px;
+  }
+  section .container .imgBox{
+      display: none;
+  }
+  section .container .user .formBox{
+      width:100%;
+  }
+}
+.floating-label-group {
+	position: relative;
+	margin-top: 20px;
+}
+	.floating-label {
+		font-size: 13px;
+		color: #5175bd;
+		position: absolute;
+		pointer-events: none;
+		top: 2px;
+		left: 0px;
+		transition: all 0.1s ease;
+	}
+    input:focus ~ .floating-label,
+	input:not(:focus):valid ~ .floating-label {
+		top: -15px;
+		bottom: 0px;
+		left: 0px;
+		font-size: 12px;
+		opacity: 1;
+		color: #5175bd;
+	}
