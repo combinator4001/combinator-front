@@ -41,7 +41,7 @@ class profileuser extends React.Component {
              let username=this.state.username;             
             let bio=this.state.bio;
             let email=this.state.email;
-             let item={
+            let item={
                 name,
                 lastname,
                 username,

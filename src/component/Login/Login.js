@@ -37,7 +37,7 @@ const Login =({history}) => {
             console.warn(item);
             
 
-            fetch(url + "/user/auth/login",{
+            fetch(url + "/auth/login",{
                 method:'POST',
                 headers: {'Content-Type' : 'application/json'},
                 body:JSON.stringify(item)

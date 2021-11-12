@@ -48,7 +48,7 @@ const FormSignup = () => {
         event.preventDefault();       
     };
 
-    const signup = () =>
+    const signup = async () =>
     {
         if(check)
         {
@@ -67,16 +67,16 @@ const FormSignup = () => {
                 headers: {'Content-Type' : 'application/json'},
                 body:JSON.stringify(item)
             })
-            .then( response => {
+            .then( async (response) => {
                 if(response.status === 201){
+                    response = await response.json();
                     toast.success("sign up successfully!", {
                         position: "top-right",
                         closeOnClick: true
                     });
-                    reset();
-                    return response.json();
                 }else if(response.status === 401){
-                    toast.error("Username already exists!", {
+                    response = await response.json();
+                    toast.error(response.message, {
                         position: "top-right",
                         closeOnClick: true
                     });                    
@@ -90,7 +90,6 @@ const FormSignup = () => {
                 }                
 
             })
-            .then(response => alert(response))
             .catch( err => console.log(err));
 
             // axios
