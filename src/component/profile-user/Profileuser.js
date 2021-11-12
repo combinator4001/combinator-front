@@ -13,6 +13,8 @@ import FormSignup from "../Sign Up/FormSignup";
 import FormSignupCompany from "../SignUpCompany/FormSignupCompany";
 import ForgetPass from "../ForgetPass/ForgetPass";
 import Changepass from "../ForgetPass/Changepass";
+import { toast } from 'react-toastify';
+import url from '../../variables';
 
 const App = () => (
     <div>
@@ -41,14 +43,73 @@ class profileuser extends React.Component {
         bio:null ,
         email:"Fatemeh@yahoo.com",
         condition:null,
+        consave:true
     };
+
+    profilerequest =() =>{
+        let check=validbool(this.state.name,this.state.lastname,
+            this.state.username,this.state.email);
+        if(check){
+             let name =this.state.name;
+             let lastname=this.state.lastname;
+             let username=this.state.username;             
+            let bio=this.state.bio;
+            let email=this.state.email;
+             let item={
+                name,
+                lastname,
+                username,
+                bio,
+                email
+             }
+            console.warn(item);
+
+            fetch(url + "/person",{
+                method:'POST',
+                headers: {'Content-Type' : 'application/json'},
+                body:JSON.stringify(item)
+            })
+            .then( response => {
+                if(response.status === 201){
+                    toast.success("successfully update!", {
+                        position: "top-left",
+                        closeOnClick: true
+                    });
+                    this.setState({consave:true});
+                    return response.json();
+                }else if(response.status === 401){
+                    toast.error("Username already exists!", {
+                        position: "top-left",
+                        closeOnClick: true
+                    });
+                    this.setState({consave:false});                    
+                    throw new Error('Username already exists!\n' + response.statusText);
+                }
+                else {
+                    toast.error("Failed ", {
+                        position: "top-left",
+                        closeOnClick: true                        
+                    });
+                    this.setState({consave:false});
+                    console.log(this.state.consave);
+                    throw new Error('Failed .\n' + response.statusText);
+                }                
+
+            })
+            .then(response => alert(response))
+            .catch( err => console.log(err));
+                         
+
+        }    
+
+    }
 
 
     handleShowupdate = () => {
         let check=validbool(this.state.name,this.state.lastname,
             this.state.username,this.state.email);
         if(check)
-        {    
+        {            
         this.setState({ showupdate: !this.state.showupdate});
         }
     };
@@ -56,7 +117,7 @@ class profileuser extends React.Component {
         let check=validbool(this.state.name,this.state.lastname,
             this.state.username,this.state.email);
         if(check)
-        {   
+        {            
         this.setState({ showinfo: !this.state.showinfo});
         }
     };
@@ -94,19 +155,19 @@ class profileuser extends React.Component {
         let username=this.state.username;
         let bio=this.state.bio;
         let email=this.state.email;
-        let submit=this.state.submit;
+        let consave=this.state.consave;
+        let t=true;
 
         let errors = {};
-        errors=validProfile(name,lastname,username,email);
-
-        
+        errors=validProfile(name,lastname,username,email);        
         
         const handleSubmit = async event=> {       
             event.preventDefault();       
         };
 
 
-        if(this.state.showinfo)
+
+        if(this.state.showinfo && consave)
         {
             info=(
                 <>
@@ -124,9 +185,13 @@ class profileuser extends React.Component {
 
             );
         }
+        else{
+            t=false
+       }
 
 
-        if(this.state.showupdate){
+
+        if(this.state.showupdate || t===false){
             update=(
             <>
             <div className="main_body6">
@@ -151,7 +216,7 @@ class profileuser extends React.Component {
                     
                 </form>
                 <div>
-                    <button className="btn6" onClick={()=>{this.handleShowupdate(); this.handleShowinfo();}}>save</button>
+                    <button className="btn6" onClick={()=>{this.handleShowupdate(); this.handleShowinfo(); this.profilerequest() }}>save</button>
                 </div>
                   
             </div>

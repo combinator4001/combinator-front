@@ -70,14 +70,14 @@ const FormSignupCompany = () => {
                     });
                     reset();
                     return response.json();
-                }else if(response.status === 400){
+                }else if(response.status === 401){
                     toast.error("Username already exists!", {
                         position: "top-right",
                         closeOnClick: true
                     });
                     throw new Error('Username already exists!\n' + response.statusText);
                 }else {
-                    toast.error("Failed to register, try again later", {
+                    toast.error("Failed to register, try again ", {
                         position: "top-right",
                         closeOnClick: true
                     });
