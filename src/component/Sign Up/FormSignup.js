@@ -8,9 +8,9 @@ import url from '../../variables';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { toast } from 'react-toastify';
 import SimpleReactValidator from "simple-react-validator";
+import { withRouter } from "react-router-dom";
 
-
-const FormSignup = () => {
+const FormSignup = ({history}) => {
     const [isSubmitting, setIsSubmitting] = useState(false);
 
 
@@ -74,6 +74,7 @@ const FormSignup = () => {
                         position: "top-right",
                         closeOnClick: true
                     });
+                    history.replace("/");
                 }else if(response.status === 401){
                     response = await response.json();
                     toast.error(response.message, {
@@ -227,4 +228,4 @@ const FormSignup = () => {
     </>
     )
 }
-export default FormSignup
+export default withRouter(FormSignup);

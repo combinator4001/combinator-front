@@ -8,7 +8,8 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { toast } from 'react-toastify';
 import { withRouter } from "react-router-dom";
 
-const FormSignupCompany = () => {
+
+const FormSignupCompany = ({history}) => {
     const [isSubmitting, setIsSubmitting] = useState(false);
     
           
@@ -62,19 +63,20 @@ const FormSignupCompany = () => {
                 headers: {'Content-Type' : 'application/json'},
                 body:JSON.stringify(item)
             })
-            .then( response => {
+            .then( async (response) => {
                 if(response.status === 201){
+                    response = await response.json();
                     toast.success("sign up successfully!", {
                         position: "top-right",
                         closeOnClick: true
                     });
-                    reset();
-                    return response.json();
+                    history.replace("/");
                 }else if(response.status === 401){
-                    toast.error("Username already exists!", {
+                    response = await response.json();
+                    toast.error(response.message, {
                         position: "top-right",
                         closeOnClick: true
-                    });
+                    });                                     
                     throw new Error('Username already exists!\n' + response.statusText);
                 }else {
                     toast.error("Failed to register, try again ", {
@@ -82,12 +84,11 @@ const FormSignupCompany = () => {
                         closeOnClick: true
                     });
                     throw new Error('Failed to register, try again later.\n' + response.statusText);
-                }
-                
+                }                
 
             })
-            .then(response => alert(response))
             .catch( err => console.log(err));
+
 
             // axios
             //     .post(
@@ -226,4 +227,4 @@ const FormSignupCompany = () => {
     )
 }
 
-export default FormSignupCompany
+export default withRouter(FormSignupCompany);
