@@ -16,23 +16,7 @@ import Changepass from "../ForgetPass/Changepass";
 import { toast } from 'react-toastify';
 import url from '../../variables';
 
-const App = () => (
-    <div>
-        <div>
-            <Route exact={true} path="/" component={Blog} />
-            <Route exaxt path="/CV" component={CV} />
-        </div>
-    </div>
-);
 
-function change() {
-    if(this.state.condition ===0){
-        this.state.condition=1;
-    }else {
-        this.state.condition=0;
-    }
-    console.log(this.state.condition );
-}
 class profileuser extends React.Component {
     state={
         showupdate:false,
@@ -43,7 +27,9 @@ class profileuser extends React.Component {
         bio:null ,
         email:"Fatemeh@yahoo.com",
         condition:null,
-        consave:true
+        consave:true,
+        showcv:false,
+        showbloge:true
     };
 
     profilerequest =() =>{
@@ -146,6 +132,15 @@ class profileuser extends React.Component {
         this.setState({email});
     }
 
+    handleShowCV = ()=>{
+        this.setState({showcv : true})
+        this.setState({showbloge : false})
+    }
+    handleShowBlog = ()=>{
+        this.setState({showcv : false})
+        this.setState({showbloge : true})
+    }
+
     
     render() {
         let update = null;
@@ -157,6 +152,8 @@ class profileuser extends React.Component {
         let email=this.state.email;
         let consave=this.state.consave;
         let t=true;
+        let blogComponent = null;
+        let cvvomponent=null;
 
         let errors = {};
         errors=validProfile(name,lastname,username,email);        
@@ -164,6 +161,17 @@ class profileuser extends React.Component {
         const handleSubmit = async event=> {       
             event.preventDefault();       
         };
+
+        if(this.state.showbloge){
+            blogComponent=(
+                <><Blog/></>
+            );
+        }
+        if(this.state.showcv){
+            cvvomponent=(
+                <><CV/></>
+            );
+        }
 
 
 
@@ -257,8 +265,10 @@ class profileuser extends React.Component {
                         {update}
                     </div>
                     <div className="comppnent_aprt">
-                        <button className="btn5" onClick="change()">change</button>
-                        {this.state.condition? <Fragment><Blog/></Fragment> : <CV /> }
+                    <button onClick={()=>this.handleShowCV()}>show cv</button>
+                        <button onClick={()=>this.handleShowBlog()}>show blog</button>
+                        {cvvomponent}
+                        {blogComponent}
                     </div>
                 </div>
 
