@@ -72,6 +72,20 @@ section .container .user .formBox h1{
   margin-bottom: 50px;
   color:#5071b4;
 }
+.error{
+    color:red;
+    font-size: 9.5px;
+    font-weight: bold;
+}
+section .container .user .formBox h2{
+  font-size: 30px;
+  font-weight: 700;
+  font: bold;
+  text-align: center;
+  width:100%;
+  margin-bottom: 50px;
+  color:#5071b4;
+}
 section .container .user .formBox input{
   width:100%;
   font-weight: 600;
@@ -82,7 +96,39 @@ section .container .user .formBox input{
   margin-top: 8px;
   border-bottom: 2px solid #5175bd;
 }
-
+section .container .user .formBox form input[type="firstname"]{
+  font-size: 14px;
+  width: 150px;
+  color: black;
+}
+section .container .user .formBox form input[type="lastname"]{
+  margin-left: 15px;
+  font-size: 14px;
+  width: 150px;
+  color: black;
+}
+section .container .user .formBox form input[type="pass"]{
+  font-size: 14px;
+  width: 150px;
+  color: black;
+}
+section .container .user .formBox form input[type="confirm"]{
+  margin-left: 15px;
+  font-size: 14px;
+  width: 150px;
+  color: black;
+}
+section .container .user .formBox form input[type="namecompany"]{
+  font-size: 14px;
+  width: 150px;
+  color: black;
+}
+section .container .user .formBox form input[type="nameowner"]{
+  margin-left: 15px;
+  font-size: 14px;
+  width: 150px;
+  color: black;
+}
 .details1
 {
     font-size: 16px;
@@ -240,7 +286,7 @@ form .button1 input:hover{
 }
 .floating-label-group {
 	position: relative;
-	margin-top: 20px;
+	margin-top: 20.5px;
 }
 	.floating-label {
 		font-size: 13px;
@@ -251,9 +297,10 @@ form .button1 input:hover{
 		left: 0px;
 		transition: all 0.1s ease;
 	}
-    input:focus ~ .floating-label,
-	input:not(:focus):valid ~ .floating-label {
-		top: -15px;
+  input:focus ~ .floating-label,
+	input:not(:focus):valid ~ .floating-label
+  {
+		top: -6px;
 		bottom: 0px;
 		left: 0px;
 		font-size: 12px;

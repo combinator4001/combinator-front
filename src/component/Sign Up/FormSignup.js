@@ -1,7 +1,7 @@
 import React , {useState} from 'react';
 import {useSelector , useDispatch} from 'react-redux';
 import {signUp} from '../../features/userSlice'
-import './Form.css'
+import '../Login/Login.css'
 import validate from './validateInfo'
 import valid1 from './valid'
 import url from '../../variables';
@@ -125,107 +125,117 @@ const FormSignup = ({history}) => {
     }
 
     return (
-    <>
-        <div className="main_body">
-        <div className="container">
-        <div className="title">Sign up</div>
-        <form  onSubmit={handleSubmit}>
-            <div className="user-details">
-
-                <div className="input-box">
-                    <span className="details">First Name</span>
-                    <input
-                    id="firstname"
-                    type="text" 
-                    placeholder="Enter your first name"
-                    name="firstname"
-                   value={firstname}
-                   onChange={ (e)=> setfName(e.target.value)}
-                    />                   
-                    {errors.firstname && <p>{errors.firstname}!</p>}                
+        <> 
+        <section>
+            <div className="container">
+                <div className="user signupBox">
+                    <div className="formBox">
+                        <form onSubmit={handleSubmit} >
+                            <div className="user-details">
+                                <h2 >Create Account</h2>
+    
+                                <div className="floating-label-group">
+                                    <div className="input-box" style={{display:'inline-block'}}>
+                                        <input id="firstname"
+                                               type="firstname" 
+                                               name="firstname"
+                                               value={firstname}
+                                               onChange={ (e)=> setfName(e.target.value)}
+                                               autoComplete="off" autoFocus required/>   
+                                        <label class="floating-label">Firstname</label> 
+                                        {errors.firstname ?
+                                         errors.firstname && <div className='error'><p>{errors.firstname}!</p></div> :
+                                        <div className='error' style={{color:'white'}}><p>.</p></div>}
+                                    </div>
+    
+                                    <div className="input-box" style={{display:'inline-block'}}>
+                                        <input id="lastname"
+                                               type="lastname" 
+                                               name="lastname"
+                                               value={lastname}
+                                               onChange={ (e)=> setlname(e.target.value)}
+                                               autoComplete="off" autoFocus required/>  
+                                        <label style={{marginLeft:165}} className="floating-label">Lastname</label>  
+                                        {errors.lastname ?
+                                        errors.lastname && <div className='error'><p style={{marginLeft:14}} >{errors.lastname}!</p></div> : 
+                                        <div className='error' style={{color:'white'}}><p>.</p></div>}
+                                    </div>
+                                </div>
+    
+                                <div className="floating-label-group">
+                                    <div className="input-box">
+                                        <input id="username"
+                                               type="text"  
+                                               name="username"
+                                               value={username}
+                                               onChange={ (e)=> setusername(e.target.value)}
+                                               autoComplete="off" autoFocus required/>  
+                                        <label className="floating-label">Username</label>  
+                                        {errors.username && <div className='error'><p name="d">{errors.username}!</p></div>} 
+                                    </div>
+                                </div>
+    
+                                <div className="floating-label-group">
+                                    <div className="input-box">
+                                        <input id="email"
+                                               type="text" 
+                                               name="email"
+                                               value={email}
+                                               onChange={ (e)=> setemail(e.target.value)}
+                                               autoComplete="off" autoFocus required />  
+                                        <label className="floating-label">Email</label> 
+                                        {errors.email && <div className='error'><p>{errors.email}!</p></div>}                   
+                                    </div>
+                                </div>
+    
+                                <div className="floating-label-group">
+                                    <div className="input-box" style={{display:'inline-block'}}>
+                                        <input id="password"
+                                               type="pass" 
+                                               name="password"
+                                               value={password}
+                                               onChange={ (e)=> setlpass(e.target.value)}
+                                               autoComplete="off" autoFocus required />  
+                                        <label className="floating-label">Password</label> 
+                                        {errors.password ?
+                                        errors.password &&  <div className='error'><p>{errors.password}!</p></div> :
+                                        <div className='error' style={{color:'white'}}><p>.</p></div>}
+                                    </div>
+    
+                                    <div className="input-box" style={{display:'inline-block'}}>
+                                        <input id="password2"
+                                               type="confirm" 
+                                               name="password2"
+                                               value={password2}
+                                               onChange={(e)=>setlpass2(e.target.value) }         
+                                               autoComplete="off" autoFocus required />  
+                                        <label  style={{marginLeft:165}}  className="floating-label">Confirm</label> 
+                                        {errors.password2 ?
+                                        errors.password2 && <div className='error'><p style={{marginLeft:14}} >{errors.password2}!</p></div> :
+                                        <div className='error' style={{color:'white'}}><p>.</p></div>}
+                                    </div>               
+                                </div>
+                            </div>    
+                            <br/>
+                            <div className="button_containar1">
+                                <button className="yellow_buttons1" type="submit" formNoValidate onClick={signup} value="Sign up" >Sign up</button>
+                            </div>
+                            <p className="check1" style={{marginLeft:89}}><p></p> <Link to="/company">Extera forms for company</Link></p>
+                            
+                        </form>
+                        
+                    </div>
+                    <div class="imgBox">
+                        <h1>Welcome Back!</h1>
+                        <p> <br/>To keep connected with us please login</p>
+                        <p> with your personal info<br/><br/></p>
+                        <p><Link to="/">SIGN IN</Link></p>
+                    </div>
                 </div>
-
-                <div className="input-box">
-                    <span className="details">Last Name</span>
-                    <input
-                    id="lastname"
-                    type="text" 
-                    placeholder="Enter your last name" 
-                    name="lastname"
-                    value={lastname}
-                    onChange={ (e)=> setlname(e.target.value)}
-                    />
-                    {errors.lastname && <p>{errors.lastname}!</p>} 
-                </div>
-
-                
-                <div className="input-box">
-                    <span className="details">Username</span>
-                    <input 
-                    id="username"
-                    type="text" 
-                    placeholder="Enter your username" 
-                    name="username"
-                    value={username}
-                    onChange={ (e)=> setusername(e.target.value)}
-                    />
-                    {errors.username && <p>{errors.username}!</p>} 
-                </div>
-
-                <div className="input-box">
-                    <span className="details">Email</span>
-                    <input
-                    id="email"
-                    type="text" 
-                    placeholder="Enter your email" 
-                    name="email"
-                    value={email}
-                    onChange={ (e)=> setemail(e.target.value)}
-                    />
-                    {errors.email && <p>{errors.email}!</p>}                   
-                </div>
-
-
-                <div className="input-box">
-                    <span className="details">Password</span>
-                    <input
-                    id="password"
-                    type="password" 
-                    placeholder="Enter your password" 
-                    name="password"
-                    value={password}
-                    onChange={ (e)=> setlpass(e.target.value)}
-                    />
-                    {errors.password && <p>{errors.password}!</p>} 
-                </div>
-
-                <div className="input-box">
-                    <span className="details">Confirm Password</span>
-                    <input
-                    id="password2"
-                    type="password" 
-                    placeholder="Confirm your password" 
-                    name="password2"
-                    value={password2}
-                    onChange={(e)=>setlpass2(e.target.value) }         
-                    />
-                    {errors.password2 && <p>{errors.password2}!</p>} 
-                </div>               
             </div>
-
-
-            <div className="button_containar">
-                <button className="yellow_buttons" type="submit" onClick={signup} value="Sign up" >Sign up</button>
-            </div>
-
-            <p className="check"><p>Do you have an Account?</p> <Link to="/">log in</Link></p>
-            <p className="check"><p>Do you want company account ?</p><Link to="/company">Sign up as company </Link></p>
-        </form>
-
-    </div>
-    </div>
-        
-    </>
-    )
-}
-export default withRouter(FormSignup);
+        </section>
+        </>
+        )
+    }
+    export default FormSignup
+    
