@@ -29,7 +29,8 @@ class profileuser extends React.Component {
         condition:null,
         consave:true,
         showcv:false,
-        showbloge:true
+        showbloge:true,
+        
     };
 
     profilerequest =() =>{
@@ -141,6 +142,8 @@ class profileuser extends React.Component {
         this.setState({showbloge : true})
     }
 
+
+
     
     render() {
         let update = null;
@@ -158,9 +161,7 @@ class profileuser extends React.Component {
         let errors = {};
         errors=validProfile(name,lastname,username,email);        
         
-        const handleSubmit = async event=> {       
-            event.preventDefault();       
-        };
+
 
         if(this.state.showbloge){
             blogComponent=(
@@ -203,25 +204,39 @@ class profileuser extends React.Component {
             update=(
             <>
             <div className="main_body6">
-                <form className="form6"  onSubmit={handleSubmit}>
-                    <input type="text" placeholder="Firstname" value={name} onChange={this.handleChangename} className="namepro6"/>
-                    <div className="check6">
-                    {errors.name && <p>{errors.name}!</p>}
+                <form className="form6"  onSubmit={event => event.preventDefault()}>
+                    <div className="box6">
+                        <input type="text" placeholder="Firstname" value={name} onChange={this.handleChangename} className="namepro6"/>
+                        <div className="check6">
+                        {errors.name && <p>{errors.name}!</p>}
+                        </div>
                     </div>
-                    <input type="text" placeholder="Lastname" value={lastname} onChange={this.handleChangelastname} className="lastpro6"/>
-                    <div className="check6">
-                    {errors.lastname && <p>{errors.lastname}!</p>}
+
+                    <div className="box6">
+                        <input type="text" placeholder="Lastname" value={lastname} onChange={this.handleChangelastname} className="lastpro6"/>
+                        <div className="check6">
+                        {errors.lastname && <p>{errors.lastname}!</p>}
+                        </div>
                     </div>
-                    <input type="text" placeholder="Username" value={username} onChange={this.handleChangeusername} className="userpro6"/>
-                    <div className="check6">
-                    {errors.username && <p>{errors.username}!</p>}
+
+                    <div className="box6">
+                        <input type="text" placeholder="Username" value={username} onChange={this.handleChangeusername} className="userpro6"/>
+                        <div className="check6">
+                        {errors.username && <p>{errors.username}!</p>}
+                        </div>
                     </div>
-                    <input type="text" placeholder="Email" value={email} onChange={this.handleChangeEmail} className="email6"/>
-                    <div className="check6">
-                    {errors.email && <p>{errors.email}!</p>}
+
+                    <div className="box6">
+                        <input type="text" placeholder="Email" value={email} onChange={this.handleChangeEmail} className="email6"/>
+                        <div className="check6">
+                        {errors.email && <p>{errors.email}!</p>}
+                        </div>
                     </div>
-                    <textarea type="text" placeholder="Bio" value={bio} onChange={this.handleChangebio} className="biopro6"/>
-                    
+
+                    <div className="box6">
+                        <textarea type="text" placeholder="Bio" value={bio} onChange={this.handleChangebio} className="biopro6"/>
+                    </div>
+
                 </form>
                 <div>
                     <button className="btn6" onClick={()=>{this.handleShowupdate(); this.handleShowinfo(); this.profilerequest() }}>save</button>

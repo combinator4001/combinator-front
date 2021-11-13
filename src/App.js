@@ -28,7 +28,7 @@ const App =()=> {
         <Route path="/company" component={FormSignupCompany} />
         <Route path="/forgetpassword" component={ForgetPass} />
         <Route path="/profileuser" component={profileuser} />
-        <Route path="/changepassword" component={Changepass} />
+        <Route path="/reset/token" component={Changepass} />
       </switch>
     </div>
   </Router>

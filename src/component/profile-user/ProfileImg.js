@@ -26,7 +26,8 @@ export default function Img() {
         { preview ? <img className="img5" src={preview} onClick={() =>{
             setImage(null);
         }}/> :
-        <button onClick={(event) =>{ 
+
+        <button className="btn7" onClick={(event) =>{ 
                 event.preventDefault();
                 fileInputRef.current.click();
                 }}>Add Image</button>}

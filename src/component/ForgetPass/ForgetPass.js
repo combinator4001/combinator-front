@@ -88,7 +88,7 @@ const ForgetPass = () => {
                 <button className="yellow_buttons3" type="submit" onClick={ForgetPass}  value="send" >Send verification code </button>
             </div>
 
-            <p ><Link to="/changepassword">changepass</Link></p>
+            <p ><Link to="/reset/token">changepass</Link></p>
 
         </form>
     </div>
