@@ -57,7 +57,6 @@ const Login =({history}) => {
             .then(response => {
                 console.log(response);
                 localStorage.setItem("token",response.access_token);
-                reset();
                 history.replace("/profileuser");
             })
             .catch( err => console.log(err));

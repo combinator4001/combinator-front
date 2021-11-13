@@ -63,6 +63,7 @@ const FormSignup = ({history}) => {
             
 
             fetch(url + "/person",{
+                crossDomain:true,
                 method:'POST',
                 headers: {'Content-Type' : 'application/json'},
                 body:JSON.stringify(item)
@@ -81,7 +82,6 @@ const FormSignup = ({history}) => {
                         position: "top-right",
                         closeOnClick: true
                     });                    
-                    throw new Error('Username already exists!\n' + response.statusText);
                 }else {
                     toast.error("Failed to register, try again ", {
                         position: "top-right",

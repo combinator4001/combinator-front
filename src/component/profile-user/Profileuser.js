@@ -30,7 +30,8 @@ class profileuser extends React.Component {
         consave:true,
         showcv:false,
         showbloge:true,
-        
+        role:null,
+        token:null        
     };
 
     profilerequest =() =>{
@@ -73,11 +74,11 @@ class profileuser extends React.Component {
                     throw new Error('Username already exists!\n' + response.statusText);
                 }
                 else {
-                    toast.error("Failed ", {
-                        position: "top-left",
-                        closeOnClick: true                        
-                    });
-                    this.setState({consave:false});
+                    // toast.error("Failed ", {
+                    //     position: "top-left",
+                    //     closeOnClick: true                        
+                    // });
+                    // this.setState({consave:false});
                     console.log(this.state.consave);
                     throw new Error('Failed .\n' + response.statusText);
                 }                
@@ -88,6 +89,11 @@ class profileuser extends React.Component {
                          
 
         }    
+
+    }
+    componentDidMount(){
+        this.setState({token:localStorage.getItem("token")});
+        console.log(this.state.token);
 
     }
 
@@ -153,6 +159,7 @@ class profileuser extends React.Component {
         let username=this.state.username;
         let bio=this.state.bio;
         let email=this.state.email;
+        let role=this.state.role;
         let consave=this.state.consave;
         let t=true;
         let blogComponent = null;
@@ -181,6 +188,7 @@ class profileuser extends React.Component {
             info=(
                 <>
                     <div className="info_content">
+                        <div className="info role5">{role}</div>
                         <div className="info name5">{name+" "+lastname}</div>
                         <div className="info usernam5">{username}</div>
                         <div className="info bio5">{bio}</div>

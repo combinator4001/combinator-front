@@ -59,6 +59,7 @@ const FormSignupCompany = ({history}) => {
             
 
             fetch(url + "/company",{
+                crossDomain:true,
                 method:'POST',
                 headers: {'Content-Type' : 'application/json'},
                 body:JSON.stringify(item)
@@ -77,7 +78,7 @@ const FormSignupCompany = ({history}) => {
                         position: "top-right",
                         closeOnClick: true
                     });                                     
-                    throw new Error('Username already exists!\n' + response.statusText);
+                   
                 }else {
                     toast.error("Failed to register, try again ", {
                         position: "top-right",
@@ -216,7 +217,7 @@ const FormSignupCompany = ({history}) => {
             </div>
 
             <p className="check"><p>Do you have an Account?</p> <Link to="/">log in</Link></p>
-            <p className="check"><p>Do you want user account ?</p><Link to="/person">Sign up as company </Link></p>        
+            <p className="check"><p>Do you want user account ?</p><Link to="/person">Sign up as person</Link></p>        
 
         </form>
 
