@@ -18,6 +18,7 @@ import url from '../../variables';
 
 
 class profileuser extends React.Component {
+
     state={
         showupdate:false,
         showinfo:true,

@@ -8,6 +8,7 @@ import url from '../../variables';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { toast } from 'react-toastify';
 import { withRouter } from "react-router-dom";
+import profileuser from '../profile-user/Profileuser';
 
 
 const Login =({history}) => {
@@ -26,7 +27,7 @@ const Login =({history}) => {
 		setpass("");
     }
   	
-	const loginButton = (event) =>
+	const loginButton =async (event) =>
 	{
 		if(username && pass)
 		{
@@ -42,9 +43,19 @@ const Login =({history}) => {
                 headers: {'Content-Type' : 'application/json'},
                 body:JSON.stringify(item)
             })
-            .then( response => {
+            .then(async response => {
                 if(response.status === 201){
-                    return response.json();
+                    response=await response.json();
+                    toast.success(response.message,{
+                        position:"top-right",
+                        closeOnClick:true
+                    });
+                    localStorage.setItem("token",response.access_token);
+                    if(response.role==="PERSON")
+                    {                
+                    history.replace("/profileuser");
+                    console.log(response.email);
+                    }
                 }
                 else{
                     toast.error("Failed to login, try again later", {
@@ -56,14 +67,11 @@ const Login =({history}) => {
             })
             .then(response => {
                 console.log(response);
-                localStorage.setItem("token",response.access_token);
-                history.replace("/profileuser");
             })
             .catch( err => console.log(err));
 			
 		}
 		else{
-            history.replace("/profileuser");
 			toast.error("please fill!", {
 				position: "top-right",
 				closeOnClick: true

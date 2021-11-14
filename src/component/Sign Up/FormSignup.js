@@ -71,24 +71,30 @@ const FormSignup = ({history}) => {
             .then( async (response) => {
                 if(response.status === 201){
                     response = await response.json();
-                    toast.success("sign up successfully!", {
+                    toast.success(response.message, {
                         position: "top-right",
                         closeOnClick: true
                     });
                     history.replace("/");
+                }else if(response.status === 400){
+                    response = await response.json();
+                    toast.error(response.message[0], {
+                        position: "top-right",
+                        closeOnClick: true
+                    });                    
                 }else if(response.status === 401){
                     response = await response.json();
                     toast.error(response.message, {
                         position: "top-right",
                         closeOnClick: true
-                    });                    
-                }else {
-                    toast.error("Failed to register, try again ", {
+                    });
+                } 
+                else{
+                    toast.error("Failed to register, try again later.", {
                         position: "top-right",
                         closeOnClick: true
                     });
-                    throw new Error('Failed to register, try again later.\n' + response.statusText);
-                }                
+                }               
 
             })
             .catch( err => console.log(err));

@@ -211,7 +211,7 @@ form .button1 input:hover{
     background-color: #5175bd;
     border: none;
     float: left;
-    width: 35%;
+    width: 60%;
     color: white;
     margin-left: 7.3%;
 }
@@ -272,6 +272,11 @@ form .button1 input:hover{
     .title1{
         font-size: 15px;
     }
+}
+.yellow_buttons1:hover{
+  cursor: pointer;
+  background-color: #3a0480;
+  transition: background-color 1s ;
 }
 @media(max-width:991px){
   section .container{
