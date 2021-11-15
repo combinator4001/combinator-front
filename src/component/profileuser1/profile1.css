@@ -1,6 +1,11 @@
 .pro7{
     margin-left: 7%;
     margin-top: 3%;
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    flex-basis: 35%;
 }
 
 .img7{
@@ -14,15 +19,25 @@
 }
 
 .btnedit{
-    margin-left: 2.5%;
+
     margin-top: 1%;
 }
 .update7{
-    margin-left: 300px;
-    margin-top: -280px;
+width: 40%;
 
+
+}
+.info_part{
+    width: 20%;
 }
 .form7{
     display: flex;
     flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.profileUser1_btnContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

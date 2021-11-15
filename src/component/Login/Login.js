@@ -73,6 +73,7 @@ const Login =({history}) => {
 			
 		}
 		else{
+            history.replace("/profileuser1");
 			toast.error("please fill!", {
 				position: "top-right",
 				closeOnClick: true
