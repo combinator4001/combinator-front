@@ -226,6 +226,7 @@ const FormSignup = ({history}) => {
                             <div className="button_containar1">
                                 <button className="yellow_buttons1" type="submit" formNoValidate onClick={signup} value="Sign up" >Sign up</button>
                             </div>
+                            <p className="checklogin" style={{marginLeft:89}}><p></p> <Link to="/">SIGN IN</Link></p>
                             <p className="check1" style={{marginLeft:89}}><p></p> <Link to="/company">Extera forms for company</Link></p>
                             
                         </form>

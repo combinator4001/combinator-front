@@ -12,20 +12,13 @@ section .container{
   position: relative;
   width:800px;
   height:500px;
-  background:#5175bd;
+  /* background:#5175bd; */
+   background-image: url("signupBackGround.jpg");
+  background-size: cover; 
   box-shadow: 0 15px 50px rgba(0, 0, 0, .5);
   overflow: hidden;
 }
-/* .container1
-{
-  max-width: 350Px;
-  position: relative;
-  width: 100%;
-  background: #fff;
-  padding: 25px 30px;
-  border-radius: 5px;
-  box-shadow: #00a6ca 0rem 0rem 15px 5px;
-} */
+
 section .container .user{
   position:absolute;
   top:0;
@@ -38,7 +31,9 @@ section .container .user .imgBox{
   position:relative;
   width:50%;
   height:100%;
-  background-color: #5175bd;
+  /* background-color: #5175bd; */
+  /* background-image: url("signupBackGround.jpg");
+  background-size: cover; */
   transition: 0.5s;
   color: white;
   margin-top: 24%;
@@ -176,8 +171,41 @@ section .container .user .formBox form input[type="nameowner"]{
   font: bold;
   text-decoration: none;
   color:#5175bd;
-  font-size: 13.5px;
+  font-size: 13.5px;  
 }
+.checklogin a{
+  font-weight: 500;
+  font: bold;
+  text-decoration: none;
+  color:#5175bd;
+  font-size: 13.5px;
+  margin-left: 20%;
+  margin-top: 2%;
+  display: none;
+}
+
+.checklogin1 a{
+  font-weight: 500;
+  font: bold;
+  text-decoration: none;
+  color:#5175bd;
+  font-size: 13.5px;
+  margin-left: 7%;
+  margin-top: 2%;
+  display: none;
+}
+.checklogin2 a{
+  font-weight: 500;
+  font: bold;
+  text-decoration: none;
+  color:#5175bd;
+  font-size: 13.5px;
+  margin-left: 38%;
+  margin-top: 3%;
+  display: none;
+}
+
+
 .check1{
   margin-bottom: 5%;
   margin-top: 1%;
@@ -229,50 +257,6 @@ form .button1 input:hover{
     display: flex;
 
 }
-
-@media (max-width: 650px)
-{
-    .yellow_buttons1{
-        font-size: 11px;
-    }
-    .container1
-    {
-        max-width: 70%;
-    }
-     .input-box1
-    {
-     margin-bottom: 15px;
-     width: 100%;
-    }
-    .main_body1{
-        flex-direction: column;
-    }
-
-    .user-details1::-webkit-scrollbar
-    {
-        width: 0;
-    }
-    .yellow_buttons1{
-        width: auto;
-    }
-    .check1{
-        display: flex;
-        flex-direction: column;
-    }
-    .input-box1 input{
-        font-size: 12px;
-    }
-    .details1
-    {
-        font-size: 12px;
-    }
-    .check1 a{
-        font-size: 14px;
-    }
-    .title1{
-        font-size: 15px;
-    }
-}
 .yellow_buttons1:hover{
   cursor: pointer;
   background-color: #3a0480;
@@ -288,6 +272,16 @@ form .button1 input:hover{
   section .container .user .formBox{
       width:100%;
   }
+  .checklogin a{
+    display:flex;
+  }
+  .checklogin1 a{
+    display:flex;
+  }
+  .checklogin2 a{
+    display:flex;
+  }
+
 }
 .floating-label-group {
 	position: relative;

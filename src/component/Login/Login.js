@@ -9,6 +9,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { toast } from 'react-toastify';
 import { withRouter } from "react-router-dom";
 import profileuser from '../profile-user/Profileuser';
+import ProfileUser from '../profileuser1/profileUser1';
 
 
 const Login =({history}) => {
@@ -53,7 +54,7 @@ const Login =({history}) => {
                     localStorage.setItem("token",response.access_token);
                     if(response.role==="PERSON")
                     {                
-                    history.replace("/profileuser");
+                    history.replace("/profileuser1");
                     console.log(response.email);
                     }
                 }
@@ -117,6 +118,7 @@ const Login =({history}) => {
                         <div className="button_containar1">
                             <button className="yellow_buttons1" type="submit" onClick={loginButton} value="log in" >Sign in</button>
                         </div>
+                        <p className="checklogin2"><p></p> <Link to="/person">SIGN UP</Link></p>
                     </form>
                 </div>
             </div>

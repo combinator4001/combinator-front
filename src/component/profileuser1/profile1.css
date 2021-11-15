@@ -1,0 +1,28 @@
+.pro7{
+    margin-left: 7%;
+    margin-top: 3%;
+}
+
+.img7{
+    height: 130px;
+    width: 130px;
+    object-fit: cover;
+    background-color: #caf0f8;
+    border-radius: 50%;
+    margin-top: 0px;
+    margin-left: 0px;
+}
+
+.btnedit{
+    margin-left: 2.5%;
+    margin-top: 1%;
+}
+.update7{
+    margin-left: 300px;
+    margin-top: -280px;
+
+}
+.form7{
+    display: flex;
+    flex-direction: column;
+}
