@@ -151,7 +151,7 @@ const ProfileUser = props => {
                         variant="outlined"
                         style={{marginTop:"3%" , width:"70%" }}
                         onChange={handlebioChange}
-                        value={setbioinput}
+                        value={bioinput}
                     />
                     <div className="profileUser1_btnContainer">
                         <Button variant="contained" color="primary" disableElevation
