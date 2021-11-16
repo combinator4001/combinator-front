@@ -96,74 +96,87 @@ const ProfileUser = props => {
                 </div>
             </div>
 
-            <div className="update7">
-                <form className="form7" onSubmit={handleSubmit}>
-                    <TextField
-                        id="outlined-helperText"
-                        label="Firstname"
-                        variant="outlined"
-                        style={{marginTop:"3%" , width:"70%"}}                        
-                        onChange={handlefnameChange}
-                        value={fnameinput}
-                    />
-                    <div className="check6">
-                    {errors.fnameinput && <p>{errors.fnameinput}!</p>}
-                    </div>
-                    <TextField
-                        id="outlined-helperText"
-                        label="Lastname"
-                        variant="outlined"
-                        style={{marginTop:"3%" , width:"70%"}}
-                        onChange={handlelnameChange}
-                        value={lnameinput}
-                    />
-                    <div className="check6">
-                    {errors.lnameinput && <p>{errors.lnameinput}!</p>}
-                    </div>
 
-                    <TextField
-                        id="outlined-helperText"
-                        label="Username"
-                        variant="outlined"
-                        style={{marginTop:"3%" , width:"70%"}}
-                        onChange={handleusernameChange}
-                        value={usernameinput}
-                    />
-                    <div className="check6">
-                    {errors.usernameinput && <p>{errors.usernameinput}!</p>}
-                    </div>
+            <Grid container>
+                <Box
+                    sx={{
+                        boxShadow: 3,
+                        bgcolor: 'background.paper',
+                        width :'40%',
+                        p:1
+                    }}
+                >
+                    <div className="update7">
+                        <form className="form7" onSubmit={handleSubmit}>
+                            <TextField
+                                id="outlined-helperText"
+                                label="Firstname"
+                                variant="outlined"
+                                style={{marginTop:"3%" , width:"70%"}}
+                                onChange={handlefnameChange}
+                                value={fnameinput}
+                            />
+                            <div className="check6">
+                                {errors.fnameinput && <p>{errors.fnameinput}!</p>}
+                            </div>
+                            <TextField
+                                id="outlined-helperText"
+                                label="Lastname"
+                                variant="outlined"
+                                style={{marginTop:"3%" , width:"70%"}}
+                                onChange={handlelnameChange}
+                                value={lnameinput}
+                            />
+                            <div className="check6">
+                                {errors.lnameinput && <p>{errors.lnameinput}!</p>}
+                            </div>
 
-                    <TextField
-                        id="outlined-helperText"
-                        label="Email"
-                        variant="outlined"
-                        style={{marginTop:"3%" , width:"70%" }}
-                        onChange={handleemailChange}
-                        value={emailinput}                        
-                    />
-                    <div className="check6">
-                    {errors.emailinput && <p>{errors.emailinput}!</p>}
-                    </div>
+                            <TextField
+                                id="outlined-helperText"
+                                label="Username"
+                                variant="outlined"
+                                style={{marginTop:"3%" , width:"70%"}}
+                                onChange={handleusernameChange}
+                                value={usernameinput}
+                            />
+                            <div className="check6">
+                                {errors.usernameinput && <p>{errors.usernameinput}!</p>}
+                            </div>
 
-                    <TextField
-                        id="outlined-helperText"
-                        label="Bio"
-                        variant="outlined"
-                        style={{marginTop:"3%" , width:"70%" }}
-                        onChange={handlebioChange}
-                        value={bioinput}
-                    />
-                    <div className="profileUser1_btnContainer">
-                        <Button variant="contained" color="primary" disableElevation
-                                style={{marginTop:"3%" , width:"auto", borderRadius:"15px",  }} onClick={handleClick}>
-                            UpdateProfile
-                        </Button>
-                    </div>
+                            <TextField
+                                id="outlined-helperText"
+                                label="Email"
+                                variant="outlined"
+                                style={{marginTop:"3%" , width:"70%" }}
+                                onChange={handleemailChange}
+                                value={emailinput}
+                            />
+                            <div className="check6">
+                                {errors.emailinput && <p>{errors.emailinput}!</p>}
+                            </div>
 
-                </form>
-            </div>
-            </div>
-        <div/>
+                            <TextField
+                                id="outlined-helperText"
+                                label="Bio"
+                                variant="outlined"
+                                style={{marginTop:"3%" , width:"70%" }}
+                                onChange={handlebioChange}
+                                value={bioinput}
+                            />
+                            <div className="profileUser1_btnContainer">
+                                <Button variant="contained" color="primary" disableElevation
+                                        style={{marginTop:"3%" , width:"auto", borderRadius:"15px",  }} onClick={handleClick}>
+                                    UpdateProfile
+                                </Button>
+                            </div>
+
+                        </form>
+                    </div>
+                </Box>
+            </Grid>
+        </div>
+
+
 
 
 
