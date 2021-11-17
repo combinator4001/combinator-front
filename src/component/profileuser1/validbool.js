@@ -1,5 +1,5 @@
 export default function validateInfo(values) {   
-    if(!values.fnameinput.trim()) {
+    if(!values.fnameinput) {
         
         return false
     }

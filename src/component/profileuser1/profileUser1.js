@@ -13,6 +13,7 @@ import Tab from '@mui/material/Tab';
 import ProfileImg from '../profile-user/ProfileImg';
 import Blog from "../Blog/Blog";
 import CV from "../CV/CV";
+import { useLocation } from "react-router-dom";
 //import Avatar from '@mui/material/Avatar';
 //import TabContext from '@mui/lab/TabContext';
 //import TabList from '@mui/lab/TabList';
@@ -25,6 +26,8 @@ import CV from "../CV/CV";
 
 
 const ProfileUser = props => {
+
+    const location = useLocation();
     const [ShowCV,SetShowCV]=useState(false);
     const [Showprofile,SetShowprofile]=useState(true);
     const [ShowBlog,SetShowBlog]=useState(false);
@@ -32,20 +35,20 @@ const ProfileUser = props => {
     //const [condition,Setcondition]=useState('Blog');
     const [isSubmitting, setIsSubmitting] = useState(false);
     //fname
-    const [fnameinput, setfnameinput] = useState('fati');
-    const [fname , Setfname]=useState('fati');
+    const [fnameinput, setfnameinput] = useState(location.firstName);
+    const [fname , Setfname]=useState(location.firstName);
     //lname
-    const [lnameinput, setlnameinput] = useState('askari');
-    const [lname , Setlname]=useState('askari');
+    const [lnameinput, setlnameinput] = useState(location.lastName);
+    const [lname , Setlname]=useState(location.lastName);
     //username
-    const [usernameinput, setusernameinput] = useState('fati1234');
-    const [username , Setusername]=useState('fati1234');
+    const [usernameinput, setusernameinput] = useState(location.username);
+    const [username , Setusername]=useState(location.username);
     //email
-    const [emailinput, setemailinput] = useState('fati@yahoo.com');
-    const [email , Setemail]=useState('initial email');
+    const [emailinput, setemailinput] = useState(location.email);
+    const [email , Setemail]=useState(location.email);
 
-    const [bioinput, setbioinput] = useState('hii');
-    const [bio , Setbio]=useState('hi');
+    const [bioinput, setbioinput] = useState(location.bio);
+    const [bio , Setbio]=useState(location.bio);
 
     const [value, setValue] = React.useState('one');
 

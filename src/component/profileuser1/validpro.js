@@ -1,7 +1,7 @@
 export default function validateInfo(values) {
     let errors={}
     
-    if(!values.fnameinput.trim()) {
+    if(!values.fnameinput) {
         errors.fnameinput ="First name required "        
     }
 

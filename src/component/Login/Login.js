@@ -17,6 +17,7 @@ const Login =({history}) => {
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const [username,setName]=useState("");
 	const [pass,setpass]=useState("");
+    
 
 	const handleSubmit = (event) => {
         setIsSubmitting(true);        
@@ -53,8 +54,18 @@ const Login =({history}) => {
                     });
                     localStorage.setItem("token",response.access_token);
                     if(response.role==="PERSON")
-                    {                
-                    history.replace("/profileuser1");
+                    {
+                    //setfirstname(response.firstName);
+
+                    history.push({
+                        pathname: '/profileuser1',
+                        firstName:response.firstName,
+                        lastName:response.lastName,
+                        username:response.username,
+                        email:response.email,
+                        bio:response.bio
+                    });
+
                     console.log(response.email);
                     }
                 }

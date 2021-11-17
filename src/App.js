@@ -1,6 +1,6 @@
 import Login from './component/Login/Login';
 import './App.css';
-import React  from 'react';
+import React , {useState} from 'react';
 import {useSelector } from 'react-redux';
 import {login, selectuser, signUp} from './features/userSlice';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
@@ -16,6 +16,9 @@ import ProfileUser from './component/profileuser1/profileUser1';
 
 const App =()=> {
   const user = useSelector(selectuser);
+  //const name="zahra";
+
+
 
   
   return (
@@ -24,12 +27,12 @@ const App =()=> {
     <div>
     <ToastContainer/>
       <switch>
-        <Route exact path="/" component={Login} />
+        <Route exact path="/" component={Login}    />
         <Route path="/person" component={FormSignup} />
         <Route path="/company" component={FormSignupCompany} />
         <Route path="/forgetpassword" component={ForgetPass} />
         <Route path="/profileuser" component={profileuser} />
-        <Route path="/profileuser1" component={ProfileUser} />
+        <Route path="/profileuser1"  component={ProfileUser}  />
         <Route path="/reset" component={Changepass} />
       </switch>
     </div>
