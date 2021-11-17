@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import './ForgetPass.css'
+import '../Login/Login.css'
 import { toast } from 'react-toastify';
 import url from '../../variables';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
@@ -76,32 +76,45 @@ const ForgetPass = () => {
     
 
     return (
-        <div className="fa3">
-            <div className="container3">
-        <div className="title3">Forget Password</div>
-        <form onSubmit={handleSubmit}>
-            <div className="user-details3">
-                <div className="input-box3">
-                    <span className="details3">Username</span>
-                    <input 
-                    type="text"
-                    name="username" 
-                    placeholder="Enter your email" 
-                    value={username} 
-                    onChange={(e)=>setemail(e.target.value)}/>
-                    {error && <p>{error}!</p>}                   
-                </div>                            
+    <section>
+        <div className="container">
+            <div className="user signupBox">
+                <div className="formBox">
+                    <form onSubmit={handleSubmit}>
+                        <div className="user-details">
+                            <h2 >Account recovery</h2>
+                            <h5>This helps show that this account really belongs to you</h5>
+                            
+                            <div className="floating-label-group">
+                                <div className="input-box">
+                                    <input type="text"
+                                           name="username" 
+                                           value={username} 
+                                           onChange={(e)=>setemail(e.target.value)}
+                                           autoComplete="off" autoFocus required/>  
+                                    <label className="floating-label">Email</label>  
+                                    {error && <div className='error'><p>{error}!</p></div>} 
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="button_containar1">
+                            <button className="yellow_buttons1" type="submit" formNoValidate onClick={ForgetPass}  value="send" style={{ fontSize: '13px'},{margin:30}}>Get a verification code </button>
+                        </div>
+                        <p className="checklogin" style={{marginRight:-30},{marginTop:-20}}><p></p> <Link to="/">Already have an account? Sign in</Link></p>
+                        {/* <p ><Link to="/reset">changepass</Link></p> */}
+                    </form>
+                </div>
+                
+                <div class="imgBox">
+                    <h1>Welcome Back!</h1>
+                    <p> <br/>To keep connected with us please login</p>
+                    <p> with your personal info<br/><br/></p>
+                    <p><Link to="/" style={{ color:'white'}}>SIGN IN</Link></p>
+                </div>
             </div>
-
-            <div className="button_containar3">
-                <button className="yellow_buttons3" type="submit" onClick={ForgetPass}  value="send" >Send verification code </button>
-            </div>
-
-            <p ><Link to="/reset">changepass</Link></p>
-
-        </form>
-    </div>
-    </div>
+        </div>
+    </section>
     )
 }
 

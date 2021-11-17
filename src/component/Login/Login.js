@@ -110,7 +110,7 @@ const Login =({history}) => {
                     <h1>Hello, Friend!</h1>
                     <p> <br/>Enter your personal details and start</p>
                     <p> journey with us<br/><br/></p>
-                    <p><Link to="/person" onClick= {doToggle}>SIGN UP</Link></p>
+                    <p><Link to="/person" onClick= {doToggle} style={{ color:'white'}}>SIGN UP</Link></p>
                 </div>	
                 <div className="formBox">
                     <form  onSubmit={(e)=>handleSubmit(e)}>
@@ -135,11 +135,11 @@ const Login =({history}) => {
                                 </div>
                            </div>
                         </div>
-                        <p className="check1"><p></p> <Link to="/auth/password">Forgot password</Link></p>
+                        <p className="check1"><p></p> <Link to="/auth/password" style={{marginLeft:5}}>Forgot password</Link></p>
                         <div className="button_containar1">
-                            <button className="yellow_buttons1" type="submit" onClick={loginButton} value="log in" >Sign in</button>
+                            <button className="yellow_buttons1" type="submit"  formNoValidate onClick={loginButton} value="log in" >Sign in</button>
                         </div>
-                        <p className="checklogin2"><p></p> <Link to="/person">SIGN UP</Link></p>
+                        <p className="checklogin2" style={{fontSize:90}}><Link to="/person"  style={{marginLeft:14}}>Don't have an account yet? Sign up</Link></p>
                     </form>
                 </div>
             </div>
