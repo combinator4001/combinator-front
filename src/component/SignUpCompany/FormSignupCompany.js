@@ -20,7 +20,7 @@ const FormSignupCompany = ({history}) => {
     const [email,setemail]=useState("");
     const [password,setlpass]=useState("");
     const [password2,setlpass2]=useState("");
-
+    const owners=[];
     let errors = "";
     if(isSubmitting===true)
     {
@@ -48,11 +48,12 @@ const FormSignupCompany = ({history}) => {
     {
         if(check)
         {
+            owners[0]=nameowner;
             let item = {
                 username,
                 password,
                 name:namecompany ,
-                nameowner:nameowner,              
+                owners:owners,
                 email
             };
             console.warn(item);

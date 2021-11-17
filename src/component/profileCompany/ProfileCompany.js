@@ -13,6 +13,7 @@ import Tab from '@mui/material/Tab';
 import ProfileImg from '../profile-user/ProfileImg';
 import Blog from "../Blog/Blog";
 import CV from "../CV/CV";
+import { useLocation } from "react-router-dom";
 //import Avatar from '@mui/material/Avatar';
 //import TabContext from '@mui/lab/TabContext';
 //import TabList from '@mui/lab/TabList';
@@ -25,28 +26,34 @@ import CV from "../CV/CV";
 
 
 const ProfileCompany = props => {
+    const location = useLocation();
     const [ShowCV,SetShowCV]=useState(false);
     const [Showprofile,SetShowprofile]=useState(true);
     const [ShowBlog,SetShowBlog]=useState(false);
-    //initial name most be given from database
-    //const [condition,Setcondition]=useState('Blog');
     const [isSubmitting, setIsSubmitting] = useState(false);
-    //fname
-    const [Cnameinput, setCnameinput] = useState('fati');
-    const [Cname , SetCname]=useState('fati');
-    //lname
-    //username
-    const [usernameinput, setusernameinput] = useState('fati1234');
-    const [username , Setusername]=useState('fati1234');
-    //email
-    const [emailinput, setemailinput] = useState('fati@yahoo.com');
-    const [email , Setemail]=useState('initial email');
-
-    const [bioinput, setbioinput] = useState('hii');
-    const [bio , Setbio]=useState('hi');
-
     const [value, setValue] = React.useState('one');
 
+    //initial name most be given from database
+    //Company name
+    const [Cnameinput, setCnameinput] = useState(location.name);
+    const [Cname , SetCname]=useState(location.name);
+
+    //username
+    const [usernameinput, setusernameinput] = useState(location.username);
+    const [username , Setusername]=useState(location.username);
+
+    //email
+    const [emailinput, setemailinput] = useState(location.email);
+    const [email , Setemail]=useState(location.email);
+    //bio
+    const [bioinput, setbioinput] = useState(location.bio);
+    const [bio , Setbio]=useState(location.bio);
+    //owner name
+    const [Owner,SetOwner]=useState(location.owners[0]);
+
+
+
+    //validation
     let errors = "";
     if(isSubmitting===true)
     {
@@ -60,6 +67,11 @@ const ProfileCompany = props => {
     const handleusernameChange = (event) => {
         setusernameinput(event.target.value);
     }
+
+    const handleCompanyNameChange=(event) => {
+        setCnameinput(event.target.value);
+    }
+
     const handleemailChange = (event) => {
         setemailinput(event.target.value);
     }
@@ -71,6 +83,23 @@ const ProfileCompany = props => {
         setValue(newValue);
     };
 
+    //handle submit
+    const handleClick = () => {
+        if(check)
+        {
+            SetCname(Cnameinput);
+            Setusername(usernameinput);
+            Setemail(emailinput);
+            Setbio(bioinput);
+        }
+        setIsSubmitting(true);
+    }
+    const handleSubmit = async event=> {
+        setIsSubmitting(true);
+        event.preventDefault();
+    };
+
+    //navbar changing
     const ChangtoCV =()=>{
         SetShowCV(true);
         SetShowBlog(false);
@@ -87,20 +116,7 @@ const ProfileCompany = props => {
         SetShowprofile(false);
     }
 
-    const handleClick = () => {
-        if(check)
-        {
-        SetCname(Cnameinput);
-        Setusername(usernameinput);
-        Setemail(emailinput);
-        Setbio(bioinput);
-        }
-        setIsSubmitting(true);
-    }
-    const handleSubmit = async event=> {
-        setIsSubmitting(true);        
-        event.preventDefault();       
-    };
+
 
 
     const maincomponent =()=>{
@@ -138,6 +154,8 @@ const ProfileCompany = props => {
                                     <div className="info7">
                                         <Typography className="info name7" style={{color:"red", marginBottom:"0.3%" , marginTop:"0.25%" , fontSize:"14px"}}>{"Company Name:"}</Typography>
                                         <Typography className="" >{Cname}</Typography>
+                                        <Typography className="info name7" style={{color:"red", marginBottom:"0.3%" , marginTop:"0.25%" , fontSize:"14px"}}>{"Owner Name:"}</Typography>
+                                        <Typography className="" >{Owner}</Typography>
                                         <Typography className="info username7" style={{color:"red", marginBottom:"0.3%" , marginTop:"0.25%" , fontSize:"14px"}} >{"Username:"}</Typography>
                                         <Typography className="" >{username}</Typography>
                                         <Typography className="info bio7" style={{color:"red", marginBottom:"0.3%", marginTop:"0.25%" , fontSize:"14px" }} >{"Bio:"}</Typography>

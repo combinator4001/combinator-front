@@ -68,6 +68,15 @@ const Login =({history}) => {
 
                     console.log(response.email);
                     }
+                    if(response.role==="COMPANY"){
+                        history.push({
+                            pathname: '/ProfileCompany',
+                            username:response.username,
+                            email:response.email,
+                            bio:response.bio,
+                            owners:response.owners
+                        });
+                    }
                 }
                 else{
                     toast.error("Failed to login, try again later", {

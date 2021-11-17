@@ -12,6 +12,7 @@ import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import Changepass from './component/ForgetPass/Changepass';
 import ProfileUser from './component/profileuser1/profileUser1';
+import ProfileCompany from "./component/profileCompany/ProfileCompany";
 
 
 const App =()=> {
@@ -34,6 +35,7 @@ const App =()=> {
         <Route path="/profileuser" component={profileuser} />
         <Route path="/profileuser1"  component={ProfileUser}  />
         <Route path="/reset" component={Changepass} />
+        <Route path="/ProfileCompany" component={ProfileCompany} />
       </switch>
     </div>
   </Router>
