@@ -2,8 +2,9 @@ import React , {useState} from 'react';
 import  './Changepass.css'
 import { toast } from 'react-toastify';
 import url from '../../variables';
+import { withRouter } from "react-router-dom";
 
-const Changepass = () => {
+const Changepass = ({history}) => {
     const [isSubmitting, setIsSubmitting] = useState(false);
 
     const [password,setlpass]=useState("");
@@ -46,21 +47,28 @@ const Changepass = () => {
         event.preventDefault();       
     };
 
-    const ChangePassbtn =() =>{
+    const ChangePassbtn = async() =>{
         if(check)
         {
+            let item={
+            newPassword:password
+            };
+            const forgettoken = localStorage.setItem("key","value")
                                     
-            fetch(url + "/changepassword",{
+            fetch(url + "/reset",{
+                crossDomain:true,
                 method:'POST',
-                headers: {'Content-Type' : 'application/json'},
-                body:JSON.stringify(password)
+                headers: {'Content-Type' : 'application/json' ,  "Authorization" : `Bearer ${forgettoken }` },
+                body:JSON.stringify(item)
             })
-            .then( response => {
-                if(response.status === 201){
-                    toast.success("Change your password successfully!", {
+            .then(async(response) => {
+                if(response.status === 200){
+                    response = await response.json();
+                    toast.success(response.message, {
                         position: "top-right",
                         closeOnClick: true
                     });
+                    history.replace("/");
                 }else{
                     toast.error("fail!", {
                         position: "top-right",

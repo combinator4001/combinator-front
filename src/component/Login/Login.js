@@ -135,7 +135,7 @@ const Login =({history}) => {
                                 </div>
                            </div>
                         </div>
-                        <p className="check1"><p></p> <Link to="/forgetpassword">Forgot password</Link></p>
+                        <p className="check1"><p></p> <Link to="/auth/password">Forgot password</Link></p>
                         <div className="button_containar1">
                             <button className="yellow_buttons1" type="submit" onClick={loginButton} value="log in" >Sign in</button>
                         </div>

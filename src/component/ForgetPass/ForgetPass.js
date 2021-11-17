@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 import url from '../../variables';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
+
 const ForgetPass = () => {
 
     const[username,setemail]=useState("")
@@ -37,19 +38,27 @@ const ForgetPass = () => {
     };
 
 
-    const ForgetPass = () =>
+    const ForgetPass = async() =>
     {
         if(check)
         {
+            let item={
+                username
+                };
                                     
-            fetch(url + "/forgetpassword",{
+            fetch(url + "/auth/password",{
+                crossDomain:true,
                 method:'POST',
                 headers: {'Content-Type' : 'application/json'},
-                body:JSON.stringify(username)
+                body:JSON.stringify(item)
             })
-            .then( response => {
+            .then(async(response) => {
                 if(response.status === 201){
-                    return response.json();
+                    response = await response.json();
+                    toast.success(response.message, {
+                        position: "top-right",
+                        closeOnClick: true
+                    });
                 }else{
                     toast.error("Username is not exists!", {
                         position: "top-right",

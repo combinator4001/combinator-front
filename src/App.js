@@ -31,7 +31,7 @@ const App =()=> {
         <Route exact path="/" component={Login}    />
         <Route path="/person" component={FormSignup} />
         <Route path="/company" component={FormSignupCompany} />
-        <Route path="/forgetpassword" component={ForgetPass} />
+        <Route path="/auth/password" component={ForgetPass} />
         <Route path="/profileuser" component={profileuser} />
         <Route path="/profileuser1"  component={ProfileUser}  />
         <Route path="/reset" component={Changepass} />
