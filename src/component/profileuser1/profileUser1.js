@@ -1,22 +1,26 @@
 import Typography from '@material-ui/core/Typography';
-import { AppBar, Avatar, Button, Chip, Container, IconButton, Link, makeStyles, MenuItem, Popover, Snackbar, Toolbar, } from '@material-ui/core';
-//  import Img from './ProfileImg'
+//import { AppBar, Avatar, Button, Chip, Container, IconButton, Link, makeStyles, MenuItem, Popover, Snackbar, Toolbar, } from '@material-ui/core';
+import {Button} from "@mui/material";
 import './profile1.css'
 import Grid from '@material-ui/core/Grid';
-import CreateIcon from '@material-ui/icons/Create';
 import TextField from '@material-ui/core/TextField';
-import { shadows } from '@mui/system';
 import Box from '@mui/material/Box';
 import React , {useState} from 'react';
 import validateInfo from './validpro';
 import validbool from './validbool';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import TabContext from '@mui/lab/TabContext';
-import TabList from '@mui/lab/TabList';
-import TabPanel from '@mui/lab/TabPanel';
+import ProfileImg from '../profile-user/ProfileImg';
 import Blog from "../Blog/Blog";
 import CV from "../CV/CV";
+//import Avatar from '@mui/material/Avatar';
+//import TabContext from '@mui/lab/TabContext';
+//import TabList from '@mui/lab/TabList';
+//import TabPanel from '@mui/lab/TabPanel';
+//import Stack from '@mui/material/Stack';
+//import { shadows } from '@mui/system';
+//import CreateIcon from '@material-ui/icons/Create';
+//import Img from './ProfileImg'
 
 
 
@@ -25,7 +29,7 @@ const ProfileUser = props => {
     const [Showprofile,SetShowprofile]=useState(true);
     const [ShowBlog,SetShowBlog]=useState(false);
     //initial name most be given from database
-    const [condition,Setcondition]=useState('Blog');
+    //const [condition,Setcondition]=useState('Blog');
     const [isSubmitting, setIsSubmitting] = useState(false);
     //fname
     const [fnameinput, setfnameinput] = useState('fati');
@@ -103,33 +107,51 @@ const ProfileUser = props => {
         setIsSubmitting(true);        
         event.preventDefault();       
     };
+
+
     const maincomponent =()=>{
         if (Showprofile){
             return(
                 <div className="pro7">
 
-                    <div className="info_part">
-                        <div className="img7"></div>
-                        <div className="btnedit">
-                            <Chip
-                                icon={<CreateIcon />}
-                                clickable
-                                size="small"
-                                color="secondary"
-                                label="Edit"
-                                variant="default"
-                            />
-                            <div className="info7">
-                                <Typography className="info name7" style={{color:"red", marginBottom:"0.3%" , marginTop:"0.25%" , fontSize:"14px"}}>{"Name:"}</Typography>
-                                <Typography className="" >{fname} {lname}</Typography>
-                                <Typography className="info username7" style={{color:"red", marginBottom:"0.3%" , marginTop:"0.25%" , fontSize:"14px"}} >{"Username:"}</Typography>
-                                <Typography className="" >{username}</Typography>
-                                <Typography className="info bio7" style={{color:"red", marginBottom:"0.3%", marginTop:"0.25%" , fontSize:"14px" }} >{"Bio:"}</Typography>
-                                <Typography className="" >{bio}</Typography>
+                    <Grid container>
+                        <Box
+                            sx={{
+                                boxShadow: 3,
+                                bgcolor: 'background.paper',
+                                width :'40%',
+                                p:1,
+                                margin:'0%'
+                            }}
+                        >
+                            <div className="info_part">
+                                <div className="img7Container">
+                                    {/*<Avatar
+                                        alt="Remy Sharp"
+                                        src=""
+                                        sx={{width: 200, height: 200}}
+                                    />
+                                    <Chip
+                                        icon={<CreateIcon />}
+                                        clickable
+                                        size="small"
+                                        color="secondary"
+                                        label="Edit"
+                                        variant="default"
+                                    />*/}
+                                    <ProfileImg></ProfileImg>
+                                </div>
+                                    <div className="info7">
+                                        <Typography className="info name7" style={{color:"red", marginBottom:"0.3%" , marginTop:"0.25%" , fontSize:"14px"}}>{"Name:"}</Typography>
+                                        <Typography className="" >{fname} {lname}</Typography>
+                                        <Typography className="info username7" style={{color:"red", marginBottom:"0.3%" , marginTop:"0.25%" , fontSize:"14px"}} >{"Username:"}</Typography>
+                                        <Typography className="" >{username}</Typography>
+                                        <Typography className="info bio7" style={{color:"red", marginBottom:"0.3%", marginTop:"0.25%" , fontSize:"14px" }} >{"Bio:"}</Typography>
+                                        <Typography className="" >{bio}</Typography>
+                                    </div>
                             </div>
-                        </div>
-                    </div>
-
+                        </Box>
+                    </Grid>
 
                     <Grid container>
                         <Box
@@ -199,7 +221,7 @@ const ProfileUser = props => {
                                     />
                                     <div className="profileUser1_btnContainer">
                                         <Button variant="contained" color="primary" disableElevation
-                                                style={{marginTop:"3%" , width:"auto", borderRadius:"15px",  }} onClick={handleClick}>
+                                                style={{marginTop:"20px",marginBottom:"20px" , width:"auto", borderRadius:"15px"  }} onClick={handleClick}>
                                             UpdateProfile
                                         </Button>
                                     </div>
@@ -207,6 +229,7 @@ const ProfileUser = props => {
                             </div>
                         </Box>
                     </Grid>
+
                 </div>
             );
         }

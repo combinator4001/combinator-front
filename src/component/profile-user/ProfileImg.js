@@ -21,30 +21,34 @@ export default function Img() {
 
     }, [image])
 
+    const handleImgClick = (event) =>{
+        const file = event.target.files[0];
+
+        if(file  && file.type.substring(0, 5) === "image"){
+            setImage(file);
+        }
+        else{
+            setImage(null);
+        }
+    }
+
+    const AddIMG=(event) =>{
+        event.preventDefault();
+        fileInputRef.current.click();
+    }
     return (
-    <div className="img5" >
+        <div className="img5" >
         { preview ? <img className="img5" src={preview} onClick={() =>{
             setImage(null);
         }}/> :
 
-        <button className="btn7" onClick={(event) =>{ 
-                event.preventDefault();
-                fileInputRef.current.click();
-                }}>Add Image</button>}
+        <button className="btn7"
+                onClick={AddIMG}>Add Image</button>}
         <input type="file" 
                style={{display: "none" }}
                accept="image/*"
                ref={fileInputRef }
-               onChange={(event) =>{
-                   const file = event.target.files[0];
-
-                   if(file  && file.type.substring(0, 5) === "image"){
-                       setImage(file);
-                   }
-                   else{
-                       setImage(null);
-                   }
-           }}/> 
+               onChange={handleImgClick}/>
      </div>
     )
 }

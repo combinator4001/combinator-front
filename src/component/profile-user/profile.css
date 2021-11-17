@@ -50,10 +50,11 @@
     height: 250px;
     width: 250px;
     object-fit: cover;
-    background-color: #caf0f8;
+    background-color: #88E3FF;
     border-radius: 50%;
     margin-top: 0px;
     margin-left: 0px;
+
 }
 .info_content{
     border: #0077b6 2px dashed;
