@@ -107,7 +107,7 @@ const ProfileUser = props => {
                 email : emailinput,
                 bio:emailinput
             };
-            fetch(url + "/profileuser1",{
+            fetch(url + "/username",{
                 crossDomain:true,
                 method:'POST',
                 headers: {'Content-Type' : 'application/json'},
@@ -142,6 +142,10 @@ const ProfileUser = props => {
 
                 })
                 .catch( err => console.log(err));
+            location.firstName=fnameinput;
+            location.lastName=lnameinput;
+            location.email=emailinput;
+            location.bio=bioinput;
         Setfname(fnameinput);
         Setlname(lnameinput);
         Setusername(usernameinput);
