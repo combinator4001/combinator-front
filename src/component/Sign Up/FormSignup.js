@@ -59,7 +59,7 @@ const FormSignup = ({history}) => {
                 lastName : lastname,                
                 email
             };
-            console.warn(item);
+            //console.warn(item);
             
 
             fetch(url + "/person",{

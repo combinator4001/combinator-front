@@ -14,6 +14,8 @@ import ProfileImg from '../profile-user/ProfileImg';
 import Blog from "../Blog/Blog";
 import CV from "../CV/CV";
 import { useLocation } from "react-router-dom";
+import url from "../../variables";
+import {toast} from "react-toastify";
 //import Avatar from '@mui/material/Avatar';
 //import TabContext from '@mui/lab/TabContext';
 //import TabList from '@mui/lab/TabList';
@@ -95,14 +97,57 @@ const ProfileUser = props => {
         SetShowprofile(false);
     }
 
-    const handleClick = () => {
+    const handleClick = async() => {
+
         if(check)
         {
+            let item = {
+                firstName: fnameinput,
+                lastName : lnameinput,
+                email : emailinput,
+                bio:emailinput
+            };
+            fetch(url + "/person",{
+                crossDomain:true,
+                method:'POST',
+                headers: {'Content-Type' : 'application/json'},
+                body:JSON.stringify(item)
+            })
+                .then( async (response) => {
+                    if(response.status === 201){
+                        response = await response.json();
+                        toast.success(response.message, {
+                            position: "top-right",
+                            closeOnClick: true
+                        });
+                    }else if(response.status === 400){
+                        response = await response.json();
+                        toast.error(response.message[0], {
+                            position: "top-right",
+                            closeOnClick: true
+                        });
+                    }else if(response.status === 401){
+                        response = await response.json();
+                        toast.error(response.message, {
+                            position: "top-right",
+                            closeOnClick: true
+                        });
+                    }
+                    else{
+                        toast.error("Failed to register, try again later.", {
+                            position: "top-right",
+                            closeOnClick: true
+                        });
+                    }
+
+                })
+                .catch( err => console.log(err));
         Setfname(fnameinput);
         Setlname(lnameinput);
         Setusername(usernameinput);
         Setemail(emailinput);
         Setbio(bioinput);
+
         }
         setIsSubmitting(true);
     }
