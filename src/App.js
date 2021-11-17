@@ -34,7 +34,7 @@ const App =()=> {
         <Route path="/auth/password" component={ForgetPass} />
         <Route path="/profileuser" component={profileuser} />
         <Route path="/profileuser1"  component={ProfileUser}  />
-        <Route path="/reset" component={Changepass} />
+        <Route path="/reset/:forgetPassToken" component={Changepass} />
         <Route path="/ProfileCompany" component={ProfileCompany} />
       </switch>
     </div>

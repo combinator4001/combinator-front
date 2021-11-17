@@ -3,6 +3,7 @@ import  './Changepass.css'
 import { toast } from 'react-toastify';
 import url from '../../variables';
 import { withRouter } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const Changepass = ({history}) => {
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -41,6 +42,7 @@ const Changepass = ({history}) => {
             check=true;
         }
     }
+    const { forgetPassToken } = useParams();
 
     const handleSubmit = async event=> {
         setIsSubmitting(true);        
@@ -53,12 +55,14 @@ const Changepass = ({history}) => {
             let item={
             newPassword:password
             };
-            const forgettoken = localStorage.setItem("key","value")
                                     
-            fetch(url + "/reset",{
+            fetch(url + "/auth/password",{
                 crossDomain:true,
-                method:'POST',
-                headers: {'Content-Type' : 'application/json' ,  "Authorization" : `Bearer ${forgettoken }` },
+                method:'PUT',
+                headers: {
+                    'Content-Type' : 'application/json' ,
+                    "Authorization" : `Bearer ${forgetPassToken}`
+                },
                 body:JSON.stringify(item)
             })
             .then(async(response) => {
@@ -70,6 +74,8 @@ const Changepass = ({history}) => {
                     });
                     history.replace("/");
                 }else{
+                    //401
+                    //500
                     toast.error("fail!", {
                         position: "top-right",
                         closeOnClick: true
