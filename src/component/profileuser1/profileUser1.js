@@ -107,7 +107,7 @@ const ProfileUser = props => {
                 email : emailinput,
                 bio:emailinput
             };
-            fetch(url + "/person",{
+            fetch(url + "/profileuser1",{
                 crossDomain:true,
                 method:'POST',
                 headers: {'Content-Type' : 'application/json'},
@@ -161,7 +161,6 @@ const ProfileUser = props => {
         if (Showprofile){
             return(
                 <div className="pro7">
-
                     <Grid container>
                         <Box
                             sx={{
@@ -199,14 +198,11 @@ const ProfileUser = props => {
                                     </div>
                             </div>
                         </Box>
-                    </Grid>
-
-                    <Grid container>
                         <Box
                             sx={{
                                 boxShadow: 3,
                                 bgcolor: 'background.paper',
-                                width :'40%',
+                                width :'50%',
                                 p:1
                             }}
                         >
@@ -277,7 +273,6 @@ const ProfileUser = props => {
                             </div>
                         </Box>
                     </Grid>
-
                 </div>
             );
         }
