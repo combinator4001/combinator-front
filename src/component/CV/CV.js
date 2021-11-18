@@ -250,6 +250,9 @@ const CV = ()=> {
             );
         }
     }
+    const logout =()=>{
+
+    }
 
     return(
         <div className="pro7">

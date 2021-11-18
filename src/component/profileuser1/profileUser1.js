@@ -16,6 +16,7 @@ import CV from "../CV/CV";
 import { useLocation } from "react-router-dom";
 import url from "../../variables";
 import {toast} from "react-toastify";
+import { withRouter } from "react-router-dom";
 //import Avatar from '@mui/material/Avatar';
 //import TabContext from '@mui/lab/TabContext';
 //import TabList from '@mui/lab/TabList';
@@ -27,7 +28,7 @@ import {toast} from "react-toastify";
 
 
 
-const ProfileUser = props => {
+const ProfileUser =  ({history}) => {
 
     const location = useLocation();
     const [ShowCV,SetShowCV]=useState(false);
@@ -54,6 +55,9 @@ const ProfileUser = props => {
 
     const [value, setValue] = React.useState('one');
 
+    const logout=()=>{
+        history.replace('/');
+    }
     let errors = "";
     if(isSubmitting===true)
     {
@@ -311,6 +315,7 @@ const ProfileUser = props => {
                     <Tab value="one" label="profile"  onClick={Changtoprofile} />
                     <Tab value="two" label="CV" onClick={ChangtoCV}/>
                     <Tab value="three" label="Blog" onClick={ChangtoBlog}/>
+                    <Tab value="four" label="LogOut" onClick={logout}/>
                 </Tabs>
             </Box>
 
@@ -321,4 +326,4 @@ const ProfileUser = props => {
      );
 }
  
-export default ProfileUser;
+export default withRouter(ProfileUser);
