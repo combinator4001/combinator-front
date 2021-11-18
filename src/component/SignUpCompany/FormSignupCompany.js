@@ -93,42 +93,10 @@ const FormSignupCompany = ({history}) => {
                         position: "top-right",
                         closeOnClick: true
                     });                   
-                }                
-
+                }
             })
             .catch( err => console.log(err));
-
-
-            // axios
-            //     .post(
-            //         url + "/FormSignup",
-            //         JSON.stringify(item),
-            //         {
-            //             headers: {
-            //                 'Content-Type' : 'application/json'} 
-            //         }
-            //     ).then(response => {
-            //         if(response.status === 200){
-            //             setMessage('sign up successfully!');
-            //             toast.success("jj");
-            //             reset();
-            //             return response.json();
-            //         }
-            //         else if(response.status === 400){
-            //             setMessage('Username already exists!');
-            //             throw new Error('Username already exists!\n' + response.statusText);
-            //         }else {
-            //             reset();                        
-            //             setMessage('Failed to register, try again later.');
-            //             throw new Error('Failed to register, try again later.\n' + response.statusText);
-            //         }
-
-            //     }
-            //     )
-            //     .then(response => alert(response))
-            //     .catch( err => console.log(err));
-        }        
-
+        }
     }
 
     return (

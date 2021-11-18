@@ -209,9 +209,7 @@ const ProfileCompany = props => {
                                     </div>
                             </div>
                         </Box>
-                    </Grid>
 
-                    <Grid container>
                         <Box
                             sx={{
                                 boxShadow: 3,
@@ -276,6 +274,7 @@ const ProfileCompany = props => {
                             </div>
                         </Box>
                     </Grid>
+
 
                 </div>
             );
