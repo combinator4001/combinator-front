@@ -67,6 +67,15 @@ section .container .user .formBox h1{
   margin-bottom: 50px;
   color:#5071b4;
 }
+section .container .user .formBox h5{
+  font-weight: 500;
+  font-size: 13px;
+  font: bold;
+  text-align: center;
+  width:100%;
+  margin-bottom: 50px;
+  color:#5071b4;
+}
 .error{
     color:red;
     font-size: 9.5px;
@@ -126,9 +135,8 @@ section .container .user .formBox form input[type="nameowner"]{
 }
 .details1
 {
-    font-size: 16px;
+    font-size: 12px;
     display: block;
-    font-weight:bold;
     margin-bottom: 5px;    
 } 
  .user-details1
@@ -147,7 +155,6 @@ section .container .user .formBox form input[type="nameowner"]{
 .details1
 {
   display: block;
-  font-weight:bold;
   margin-top: 20px;
   margin-bottom: 5px;
   font-size: 16px;  

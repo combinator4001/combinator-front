@@ -227,15 +227,15 @@ const FormSignupCompany = ({history}) => {
                             <div className="button_containar1">
                                 <button className="yellow_buttons1" type="submit" formNoValidate onClick={signup} value="Sign up" >Sign up</button>
                             </div>
-                            <p className="checklogin1" style={{marginLeft:133}}><p></p> <Link to="/person">SIGN IN</Link></p>
                             <p className="check1" style={{marginLeft:133}}><p></p> <Link to="/person">User Sign up</Link></p>
+                            <p className="checklogin" style={{marginRight:-30}}><p></p> <Link to="/">Already have an account? Sign in</Link></p>
                         </form>
                     </div>
                     <div class="imgBox">
                         <h1>Welcome Back!</h1>
                         <p> <br/>To keep connected with us please login</p>
                         <p> with your personal info<br/><br/></p>
-                        <p><Link to="/">SIGN IN</Link></p>
+                        <p><Link to="/" style={{ color:'white'}}>SIGN IN</Link></p>
                     </div>
                 </div>
             </div>
