@@ -29,20 +29,13 @@ const CV = ()=> {
     const [identityShow,SetidentityShow]=useState(false);
     const [contactShow,SetcontactShow]=useState(false);
     //fname
-    const [fnameinput, setfnameinput] = useState(location.firstName);
     const [fname , Setfname]=useState(location.firstName);
     //lname
-    const [lnameinput, setlnameinput] = useState(location.lastName);
     const [lname , Setlname]=useState(location.lastName);
     //username
-    const [usernameinput, setusernameinput] = useState(location.username);
     const [username , Setusername]=useState(location.username);
     //email
-    const [emailinput, setemailinput] = useState(location.email);
     const [email , Setemail]=useState(location.email);
-
-    const [bioinput, setbioinput] = useState(location.bio);
-    const [bio , Setbio]=useState(location.bio);
 
     const [value, setValue] = React.useState('one');
     //father name
@@ -60,28 +53,18 @@ const CV = ()=> {
     //Telgram
     const [TIDinput,SetTIDinput]=useState('');
     const [TID,SetTID]=useState('');
-    let errors = "";
-    if(isSubmitting===true)
-    {
-        errors=validateInfo({fnameinput,lnameinput,usernameinput,emailinput});
-    }
-    const check= validbool({fnameinput,lnameinput,usernameinput,emailinput})
-
-    const handlefnameChange = (event) => {
-        setfnameinput(event.target.value);
-    }
-    const handlelnameChange = (event) => {
-        setlnameinput(event.target.value);
-    }
-    const handleusernameChange = (event) => {
-        setusernameinput(event.target.value);
-    }
-    const handleemailChange = (event) => {
-        setemailinput(event.target.value);
-    }
-    const handlebioChange = (event) => {
-        setbioinput(event.target.value);
-    }
+    //whatsApp
+    const [WTSAPinput,SetWTSAPinput]=useState('');
+    const [WTSAP,SetWTSAP]=useState('');
+    //mobile
+    const [mobileinput,Setmobileinput]=useState('');
+    const [mobile,Setmobile]=useState('');
+    //homenumber
+    const [homenumberinput,Sethomenumberinput]=useState('');
+    const [homenumber,Sethomenumber]=useState('');
+    //Postal Cod
+    const [Postalinput,SetPosatlinput]=useState('');
+    const [Postal,SetPostal]=useState('');
     const handlefatherinput = (event)=>{
         SetFatherinput(event.target.value);
     }
@@ -97,6 +80,20 @@ const CV = ()=> {
     const handleTIDinput = (event)=>{
         SetTIDinput(event.target.value);
     }
+    const handeleWTSAPinput = (event)=>{
+        SetWTSAPinput(event.target.value);
+    }
+    const handelemobileinput = (event)=>{
+        Setmobileinput(event.target.value);
+    }
+    const handelehomenumberinput = (event)=>{
+        Sethomenumberinput(event.target.value);
+    }
+    const handelePostalinput = (event)=>{
+        SetPosatlinput(event.target.value);
+    }
+
+
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -124,13 +121,17 @@ const CV = ()=> {
         SetidentityShow(false);
     }
     const handelidentityAdd =()=>{
-       SetFatherName(Fatherinput);
-       SetNID(NIDinput);
-       Setage(ageinput);
-       Setgender(genderinput);
+        SetFatherName(Fatherinput);
+        SetNID(NIDinput);
+        Setage(ageinput);
+        Setgender(genderinput);
     }
     const Addcontact=()=>{
         SetTID(TIDinput);
+        SetWTSAP(WTSAPinput);
+        Setmobile(mobileinput);
+        Sethomenumber(homenumberinput);
+        SetPostal(Postalinput);
     }
 
 
@@ -143,7 +144,7 @@ const CV = ()=> {
                             id="outlined-helperText"
                             label="Father name"
                             variant="outlined"
-                            style={{marginTop:"3%" , width:"70%"}}
+                            style={{marginTop:"3%" , width:"70%",height:"10%"}}
                             onChange={handlefatherinput}
                             value={Fatherinput}
                         />
@@ -151,7 +152,7 @@ const CV = ()=> {
                             id="outlined-helperText"
                             label="National ID"
                             variant="outlined"
-                            style={{marginTop:"3%" , width:"70%"}}
+                            style={{marginTop:"3%" , width:"70%",height:"10%"}}
                             onChange={handleNIDinput}
                             value={NIDinput}
                         />
@@ -159,13 +160,13 @@ const CV = ()=> {
                         <TextField
                             label="Age"
                             variant="outlined"
-                            style={{marginTop:"3%" , width:"70%"}}
+                            style={{marginTop:"3%" , width:"70%",height:"10%"}}
                             onChange={handleageinput}
                             value={ageinput}
                         />
                         <Select
                             label="Gender"
-                            style={{marginTop:"3%", width:"70%",color:"black"}}
+                            style={{marginTop:"3%", width:"70%",color:"black",height:"10%"}}
                             onChange={handleGenderinput}
                             value={genderinput}
                         >
@@ -196,7 +197,7 @@ const CV = ()=> {
                             id="outlined-helperText"
                             label="telgram ID"
                             variant="outlined"
-                            style={{marginTop:"3%" , width:"70%"}}
+                            style={{marginTop:"3%" , width:"70%",height:"10%"}}
                             onChange={handleTIDinput}
                             value={TIDinput}
                         />
@@ -204,35 +205,35 @@ const CV = ()=> {
                             id="outlined-helperText"
                             label="WhatsApp"
                             variant="outlined"
-                            style={{marginTop:"3%" , width:"70%"}}
-                            //onChange={handlelnameChange}
-                            //value={lnameinput}
+                            style={{marginTop:"3%" , width:"70%",height:"10%"}}
+                            onChange={handeleWTSAPinput}
+                            value={WTSAPinput}
                         />
 
                         <TextField
                             id="outlined-helperText"
                             label="Mobile Phone"
                             variant="outlined"
-                            style={{marginTop:"3%" , width:"70%"}}
-                            //onChange={handleusernameChange}
-                            //value={usernameinput}
+                            style={{marginTop:"3%" , width:"70%",height:"10%"}}
+                            onChange={handelemobileinput}
+                            value={mobileinput}
                         />
 
                         <TextField
                             id="outlined-helperText"
-                            label="Home Phone"
+                            label="Home number"
                             variant="outlined"
-                            style={{marginTop:"3%" , width:"70%" }}
-                            //onChange={handlebioChange}
-                            //value={bioinput}
+                            style={{marginTop:"3%" , width:"70%",height:"10%" }}
+                            onChange={handelehomenumberinput}
+                            value={homenumberinput}
                         />
                         <TextField
                             id="outlined-helperText"
                             label="Postal Code"
                             variant="outlined"
-                            style={{marginTop:"3%" , width:"70%" }}
-                            //onChange={handlebioChange}
-                            //value={bioinput}
+                            style={{marginTop:"3%" , width:"70%",height:"10%" }}
+                            onChange={handelePostalinput}
+                            value={Postalinput}
                         />
                         <div className="profileUser1_btnContainer">
                             <Button variant="contained" color="primary" disableElevation
@@ -258,9 +259,9 @@ const CV = ()=> {
                         boxShadow: 3,
                         bgcolor: 'background.paper',
                         width :'30%',
-                        flexGrow:0,
-                        alignSelf:'start',
-                        p:1
+                        alignSelf:"start",
+                        paddingBottom:0,
+                        p:0
                     }}
                 >
                     <Tabs
@@ -274,6 +275,9 @@ const CV = ()=> {
                         <Tab value="two" label="contact" onClick={contactOpen}/>
                     </Tabs>
                     {info()}
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                        <path fill="#0099ff" fill-opacity="1" d="M0,192L80,176C160,160,320,128,480,138.7C640,149,800,203,960,218.7C1120,235,1280,213,1360,202.7L1440,192L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path>
+                    </svg>
                 </Box>
 
                 <Box
@@ -281,6 +285,7 @@ const CV = ()=> {
                         boxShadow: 3,
                         bgcolor: 'background.paper',
                         width :'60%',
+                        alignSelf:"start",
                         p:1,
                         margin:'0%'
                     }}
@@ -305,16 +310,17 @@ const CV = ()=> {
                                 <Typography className="info name7" style={{color:"red", marginBottom:"0.3%" , marginTop:"0.25%" , fontSize:"14px"}}>{"Telegram ID:"}</Typography>
                                 <Typography className="" >{TID}</Typography>
                                 <Typography className="info username7" style={{color:"red", marginBottom:"0.3%" , marginTop:"0.25%" , fontSize:"14px"}} >{"Whatsapp Number:"}</Typography>
-                                <Typography className="" >{username}</Typography>
+                                <Typography className="" >{WTSAP}</Typography>
                                 <Typography className="info name7" style={{color:"red", marginBottom:"0.3%", marginTop:"0.25%" , fontSize:"14px" }} >{"Mobile Phone Number:"}</Typography>
-                                <Typography className="" >{FatherName}</Typography>
+                                <Typography className="" >{mobile}</Typography>
                                 <Typography className="info name7" style={{color:"red", marginBottom:"0.3%", marginTop:"0.25%" , fontSize:"14px" }} >{"Home Phone Number:"}</Typography>
-                                <Typography className="" >{NID}</Typography>
+                                <Typography className="" >{homenumber}</Typography>
                                 <Typography className="info name7" style={{color:"red", marginBottom:"0.3%", marginTop:"0.25%" , fontSize:"14px" }} >{"email:"}</Typography>
                                 <Typography className="" >{email}</Typography>
                                 <Typography className="info name7" style={{color:"red", marginBottom:"0.3%", marginTop:"0.25%" , fontSize:"14px" }} >{"Postal code:"}</Typography>
-                                <Typography className="" >{age}</Typography>
+                                <Typography className="" >{Postal}</Typography>
                             </div>
+                            
                         </div>
                     </div>
                 </Box>
