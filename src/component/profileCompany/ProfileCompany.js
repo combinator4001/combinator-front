@@ -126,7 +126,7 @@ const ProfileCompany = props => {
                         });
                     }
                     else {
-                        toast.error("Failed to register, try again ", {
+                        toast.success("update is done!! ", {
                             position: "top-right",
                             closeOnClick: true
                         });
@@ -202,7 +202,7 @@ const ProfileCompany = props => {
                                         <Typography className="info name7" style={{color:"red", marginBottom:"0.3%" , marginTop:"0.25%" , fontSize:"14px"}}>{"Company Name:"}</Typography>
                                         <Typography className="" >{Cname}</Typography>
                                         <Typography className="info name7" style={{color:"red", marginBottom:"0.3%" , marginTop:"0.25%" , fontSize:"14px"}}>{"Owner Name:"}</Typography>
-                                        {/* //<Typography className="" >{Owner}</Typography> */}
+                                        <Typography className="" >{Owner}</Typography>
                                         <Typography className="info username7" style={{color:"red", marginBottom:"0.3%" , marginTop:"0.25%" , fontSize:"14px"}} >{"Username:"}</Typography>
                                         <Typography className="" >{username}</Typography>
                                         <Typography className="info bio7" style={{color:"red", marginBottom:"0.3%", marginTop:"0.25%" , fontSize:"14px" }} >{"Bio:"}</Typography>

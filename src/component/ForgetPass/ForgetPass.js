@@ -60,11 +60,11 @@ const ForgetPass = () => {
                         closeOnClick: true
                     });
                 }else{
-                    toast.error("Username is not exists!", {
+                    toast.error("Username does not exist!", {
                         position: "top-right",
                         closeOnClick: true
                     });
-                    throw new Error('Username is not exist!\n' + response.statusText);
+                    throw new Error('Username does not exist!\n' + response.statusText);
                 }               
             })
             .then(response => alert(response))
@@ -99,9 +99,9 @@ const ForgetPass = () => {
                         </div>
 
                         <div className="button_containar1">
-                            <button className="yellow_buttons1" type="submit" formNoValidate onClick={ForgetPass}  value="send" style={{ fontSize: '13px'},{margin:30}}>Get a verification code </button>
+                            <button className="yellow_buttons1" type="submit" formNoValidate onClick={ForgetPass}  value="send" style={{ fontSize: '13px' , margin:30}}>Get a verification code </button>
                         </div>
-                        <p className="checklogin" style={{marginRight:-30},{marginTop:-20}}><p></p> <Link to="/">Already have an account? Sign in</Link></p>
+                        <p className="checklogin" style={{marginRight:-30 , marginTop:-20}}><p></p> <Link to="/">Already have an account? Sign in</Link></p>
                         {/* <p ><Link to="/reset">changepass</Link></p> */}
                     </form>
                 </div>

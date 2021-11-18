@@ -258,6 +258,8 @@ const CV = ()=> {
                         boxShadow: 3,
                         bgcolor: 'background.paper',
                         width :'30%',
+                        flexGrow:0,
+                        alignSelf:'start',
                         p:1
                     }}
                 >
@@ -313,7 +315,6 @@ const CV = ()=> {
                                 <Typography className="info name7" style={{color:"red", marginBottom:"0.3%", marginTop:"0.25%" , fontSize:"14px" }} >{"Postal code:"}</Typography>
                                 <Typography className="" >{age}</Typography>
                             </div>
-
                         </div>
                     </div>
                 </Box>

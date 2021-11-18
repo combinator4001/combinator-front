@@ -76,7 +76,7 @@ const Login =({history}) => {
                             username:response.username,
                             email:response.email,
                             bio:response.bio,
-                            owners:response.owners.text()
+                            owners:response.owners[0]
                         });
                     }
                 }

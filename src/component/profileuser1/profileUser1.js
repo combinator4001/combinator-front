@@ -134,7 +134,7 @@ const ProfileUser = props => {
                         });
                     }
                     else{
-                        toast.error("Failed to register, try again later.", {
+                        toast.success("update is done!!", {
                             position: "top-right",
                             closeOnClick: true
                         });
