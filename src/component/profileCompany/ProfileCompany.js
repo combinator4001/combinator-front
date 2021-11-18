@@ -314,7 +314,10 @@ const ProfileCompany = ({history}) => {
                     <Tab value="one" label="profile"  onClick={Changtoprofile} />
                     <Tab value="two" label="CV" onClick={ChangtoCV}/>
                     <Tab value="three" label="Blog" onClick={ChangtoBlog}/>
-                    <Tab value="four" label="LogOut" onClick={logout}/>
+                    <Button variant="contained" color="primary" disableElevation
+                            style={{marginTop:"20px",marginBottom:"20px" , width:"auto", borderRadius:"15px"  }} onClick={logout}>
+                        Logout
+                    </Button>
                 </Tabs>
             </Box>
 
