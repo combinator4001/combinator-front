@@ -92,7 +92,7 @@ const ForgetPass = () => {
                                            value={username} 
                                            onChange={(e)=>setemail(e.target.value)}
                                            autoComplete="off" autoFocus required/>  
-                                    <label className="floating-label">Email</label>  
+                                    <label className="floating-label">Username</label>  
                                     {error && <div className='error'><p>{error}!</p></div>} 
                                 </div>
                             </div>
