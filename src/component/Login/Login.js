@@ -69,13 +69,14 @@ const Login =({history}) => {
                     console.log(response.email);
                     }
                     if(response.role==="COMPANY"){
+
                         history.push({
                             pathname: '/ProfileCompany',
                             name:response.name,
                             username:response.username,
                             email:response.email,
                             bio:response.bio,
-                            owners:response.owners[0]
+                            owners:response.owners.text()
                         });
                     }
                 }

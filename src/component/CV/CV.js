@@ -57,6 +57,9 @@ const CV = ()=> {
     //gender
     const [genderinput,Setgenderinput]=useState('');
     const [gender,Setgender]=useState('');
+    //Telgram
+    const [TIDinput,SetTIDinput]=useState('');
+    const [TID,SetTID]=useState('');
     let errors = "";
     if(isSubmitting===true)
     {
@@ -91,6 +94,9 @@ const CV = ()=> {
     const handleGenderinput = (event)=>{
         Setgenderinput(event.target.value);
     }
+    const handleTIDinput = (event)=>{
+        SetTIDinput(event.target.value);
+    }
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -122,6 +128,9 @@ const CV = ()=> {
        SetNID(NIDinput);
        Setage(ageinput);
        Setgender(genderinput);
+    }
+    const Addcontact=()=>{
+        SetTID(TIDinput);
     }
 
 
@@ -188,60 +197,51 @@ const CV = ()=> {
                             label="telgram ID"
                             variant="outlined"
                             style={{marginTop:"3%" , width:"70%"}}
-                            onChange={handlefnameChange}
-                            //value={fnameinput}
+                            onChange={handleTIDinput}
+                            value={TIDinput}
                         />
-                        <div className="check6">
-                            {/*errors.fnameinput && <p>{errors.fnameinput}!</p>*/}
-                        </div>
                         <TextField
                             id="outlined-helperText"
-                            label="Lastname"
+                            label="WhatsApp"
                             variant="outlined"
                             style={{marginTop:"3%" , width:"70%"}}
-                            onChange={handlelnameChange}
-                            value={lnameinput}
+                            //onChange={handlelnameChange}
+                            //value={lnameinput}
                         />
-                        <div className="check6">
-                            {errors.lnameinput && <p>{errors.lnameinput}!</p>}
-                        </div>
 
                         <TextField
                             id="outlined-helperText"
-                            label="Username"
+                            label="Mobile Phone"
                             variant="outlined"
                             style={{marginTop:"3%" , width:"70%"}}
-                            onChange={handleusernameChange}
-                            value={usernameinput}
+                            //onChange={handleusernameChange}
+                            //value={usernameinput}
                         />
-                        <div className="check6">
-                            {errors.usernameinput && <p>{errors.usernameinput}!</p>}
-                        </div>
 
                         <TextField
                             id="outlined-helperText"
-                            label="Email"
+                            label="Home Phone"
                             variant="outlined"
                             style={{marginTop:"3%" , width:"70%" }}
-                            onChange={handleemailChange}
-                            value={emailinput}
+                            //onChange={handlebioChange}
+                            //value={bioinput}
                         />
-                        <div className="check6">
-                            {errors.emailinput && <p>{errors.emailinput}!</p>}
-                        </div>
-
                         <TextField
                             id="outlined-helperText"
-                            label="Bio"
+                            label="Postal Code"
                             variant="outlined"
                             style={{marginTop:"3%" , width:"70%" }}
-                            onChange={handlebioChange}
-                            value={bioinput}
+                            //onChange={handlebioChange}
+                            //value={bioinput}
                         />
                         <div className="profileUser1_btnContainer">
                             <Button variant="contained" color="primary" disableElevation
                                     style={{marginTop:"20px",marginBottom:"20px" , width:"auto", borderRadius:"15px"  }} onClick={contactClose}>
                                 close
+                            </Button>
+                            <Button variant="contained" color="primary" disableElevation
+                                    style={{marginTop:"20px",marginBottom:"20px" , width:"auto", borderRadius:"15px"  }} onClick={Addcontact}>
+                                Add
                             </Button>
                         </div>
                     </form>
@@ -297,6 +297,20 @@ const CV = ()=> {
                                 <Typography className="info name7" style={{color:"red", marginBottom:"0.3%", marginTop:"0.25%" , fontSize:"14px" }} >{"Gender:"}</Typography>
                                 <Typography className="" >{gender}</Typography>
                                 <Typography className="info name7" style={{color:"red", marginBottom:"0.3%", marginTop:"0.25%" , fontSize:"14px" }} >{"Age:"}</Typography>
+                                <Typography className="" >{age}</Typography>
+                            </div>
+                            <div className="info7_part1">
+                                <Typography className="info name7" style={{color:"red", marginBottom:"0.3%" , marginTop:"0.25%" , fontSize:"14px"}}>{"Telegram ID:"}</Typography>
+                                <Typography className="" >{TID}</Typography>
+                                <Typography className="info username7" style={{color:"red", marginBottom:"0.3%" , marginTop:"0.25%" , fontSize:"14px"}} >{"Whatsapp Number:"}</Typography>
+                                <Typography className="" >{username}</Typography>
+                                <Typography className="info name7" style={{color:"red", marginBottom:"0.3%", marginTop:"0.25%" , fontSize:"14px" }} >{"Mobile Phone Number:"}</Typography>
+                                <Typography className="" >{FatherName}</Typography>
+                                <Typography className="info name7" style={{color:"red", marginBottom:"0.3%", marginTop:"0.25%" , fontSize:"14px" }} >{"Home Phone Number:"}</Typography>
+                                <Typography className="" >{NID}</Typography>
+                                <Typography className="info name7" style={{color:"red", marginBottom:"0.3%", marginTop:"0.25%" , fontSize:"14px" }} >{"email:"}</Typography>
+                                <Typography className="" >{email}</Typography>
+                                <Typography className="info name7" style={{color:"red", marginBottom:"0.3%", marginTop:"0.25%" , fontSize:"14px" }} >{"Postal code:"}</Typography>
                                 <Typography className="" >{age}</Typography>
                             </div>
 
