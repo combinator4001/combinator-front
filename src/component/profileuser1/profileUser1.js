@@ -13,7 +13,7 @@ import Tab from '@mui/material/Tab';
 import ProfileImg from '../profile-user/ProfileImg';
 import Blog from "../Blog/Blog";
 import CV from "../CV/CV";
-import { useLocation } from "react-router-dom";
+import {useLocation, useParams} from "react-router-dom";
 import url from "../../variables";
 import {toast} from "react-toastify";
 import { withRouter } from "react-router-dom";
@@ -100,26 +100,31 @@ const ProfileUser =  ({history}) => {
         SetShowBlog(true);
         SetShowprofile(false);
     }
-
+    const [accessT,SetaccessT]=useState(location.access_token);
+    //const { ProfileToken } = useParams();
     const handleClick = async() => {
 
         if(check)
         {
+            //console.log('profileToken:',accessT);
             let item = {
                 firstName: fnameinput,
                 lastName : lnameinput,
                 email : emailinput,
-                bio:emailinput
+                bio:bioinput
             };
-            fetch(url + "/username",{
+            fetch(url + "/person",{
                 crossDomain:true,
-                method:'POST',
-                headers: {'Content-Type' : 'application/json'},
+                method:'PATCH',
+                mode: 'cors',
+                headers: {'Content-Type' : 'application/json' ,
+                    "Authorization" : `Bearer ${accessT}`},
                 body:JSON.stringify(item)
             })
                 .then( async (response) => {
-                    if(response.status === 201){
+                    if(response.status === 200){
                         response = await response.json();
+                        console.log(response);
                         toast.success(response.message, {
                             position: "top-right",
                             closeOnClick: true
@@ -138,7 +143,7 @@ const ProfileUser =  ({history}) => {
                         });
                     }
                     else{
-                        toast.success("update is done!!", {
+                        toast.error("not done!!", {
                             position: "top-right",
                             closeOnClick: true
                         });
@@ -239,17 +244,17 @@ const ProfileUser =  ({history}) => {
                                         {errors.lnameinput && <p>{errors.lnameinput}!</p>}
                                     </div>
 
-                                    <TextField
-                                        id="outlined-helperText"
-                                        label="Username"
-                                        variant="outlined"
-                                        style={{marginTop:"3%" , width:"70%"}}
-                                        onChange={handleusernameChange}
-                                        value={usernameinput}
-                                    />
-                                    <div className="check6">
-                                        {errors.usernameinput && <p>{errors.usernameinput}!</p>}
-                                    </div>
+                                    {/*<TextField*/}
+                                    {/*    id="outlined-helperText"*/}
+                                    {/*    label="Username"*/}
+                                    {/*    variant="outlined"*/}
+                                    {/*    style={{marginTop:"3%" , width:"70%"}}*/}
+                                    {/*    onChange={handleusernameChange}*/}
+                                    {/*    value={usernameinput}*/}
+                                    {/*/>*/}
+                                    {/*<div className="check6">*/}
+                                    {/*    {errors.usernameinput && <p>{errors.usernameinput}!</p>}*/}
+                                    {/*</div>*/}
 
                                     <TextField
                                         id="outlined-helperText"

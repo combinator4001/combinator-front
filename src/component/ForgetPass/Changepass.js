@@ -59,6 +59,7 @@ const Changepass = ({history}) => {
             fetch(url + "/auth/password",{
                 crossDomain:true,
                 method:'PUT',
+                mode: 'cors',
                 headers: {
                     'Content-Type' : 'application/json' ,
                     "Authorization" : `Bearer ${forgetPassToken}`

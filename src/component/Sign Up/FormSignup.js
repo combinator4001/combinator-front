@@ -65,6 +65,7 @@ const FormSignup = ({history}) => {
             fetch(url + "/person",{
                 crossDomain:true,
                 method:'POST',
+                mode: 'cors',
                 headers: {'Content-Type' : 'application/json'},
                 body:JSON.stringify(item)
             })
@@ -210,7 +211,7 @@ const FormSignup = ({history}) => {
     
                                     <div className="input-box" style={{display:'inline-block'}}>
                                         <input id="password2"
-                                               type="confirm" 
+                                               type="confirm"
                                                name="password2"
                                                value={password2}
                                                onChange={(e)=>setlpass2(e.target.value) }         

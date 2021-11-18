@@ -42,6 +42,7 @@ const Login =({history}) => {
 
             fetch(url + "/auth/login",{
                 method:'POST',
+                mode: 'cors',
                 headers: {'Content-Type' : 'application/json'},
                 body:JSON.stringify(item)
             })
@@ -52,17 +53,17 @@ const Login =({history}) => {
                         position:"top-right",
                         closeOnClick:true
                     });
-                    localStorage.setItem("token",response.access_token);
                     if(response.role==="PERSON")
                     {
                     //setfirstname(response.firstName);
-
+                    console.log(response.access_token);
                     history.push({
                         pathname: '/profileuser1',
                         firstName:response.firstName,
                         lastName:response.lastName,
                         username:response.username,
                         email:response.email,
+                        access_token:response.access_token,
                         bio:response.bio
                     });
 
@@ -89,7 +90,7 @@ const Login =({history}) => {
                 }                
             })
             .then(response => {
-                console.log(response);
+                //console.log(response);
             })
             .catch( err => console.log(err));
 			

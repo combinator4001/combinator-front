@@ -88,6 +88,7 @@ const ProfileCompany = ({history}) => {
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
+    const [accessT,SetaccessT]=useState(location.access_token);
     const owners=[];
     //handle submit
     const handleClick = () => {
@@ -97,19 +98,22 @@ const ProfileCompany = ({history}) => {
             let item = {
                 name:Cnameinput ,
                 owners:owners,
-                email
+                email,
+                bio:bioinput
             };
-            console.warn(item);
+            //console.warn(item);
 
 
-            fetch(url + "/profilecompany",{
+            fetch(url + "/company",{
                 crossDomain:true,
-                method:'POST',
-                headers: {'Content-Type' : 'application/json'},
+                method:'PATCH',
+                mode: 'cors',
+                headers: {'Content-Type' : 'application/json' ,
+                    "Authorization" : `Bearer ${accessT}`},
                 body:JSON.stringify(item)
             })
                 .then( async (response) => {
-                    if(response.status === 201){
+                    if(response.status === 200){
                         response = await response.json();
                         toast.success(response.message, {
                             position: "top-right",

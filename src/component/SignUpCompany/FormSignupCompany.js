@@ -62,6 +62,7 @@ const FormSignupCompany = ({history}) => {
             fetch(url + "/company",{
                 crossDomain:true,
                 method:'POST',
+                mode: 'cors',
                 headers: {'Content-Type' : 'application/json'},
                 body:JSON.stringify(item)
             })

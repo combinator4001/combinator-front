@@ -49,6 +49,7 @@ const ForgetPass = () => {
             fetch(url + "/auth/password",{
                 crossDomain:true,
                 method:'POST',
+                mode: 'cors',
                 headers: {'Content-Type' : 'application/json'},
                 body:JSON.stringify(item)
             })
