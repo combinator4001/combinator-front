@@ -1,6 +1,7 @@
 import Typography from '@material-ui/core/Typography';
 //import { AppBar, Avatar, Button, Chip, Container, IconButton, Link, makeStyles, MenuItem, Popover, Snackbar, Toolbar, } from '@material-ui/core';
 import '../profileuser1/profile1.css'
+import './CV.css'
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import Box from '@mui/material/Box';
@@ -284,18 +285,21 @@ const CV = ()=> {
                 >
                     <div className="info_part">
                         <div className="info7">
-                            <Typography className="info name7" style={{color:"red", marginBottom:"0.3%" , marginTop:"0.25%" , fontSize:"14px"}}>{"Name:"}</Typography>
-                            <Typography className="" >{fname} {lname}</Typography>
-                            <Typography className="info username7" style={{color:"red", marginBottom:"0.3%" , marginTop:"0.25%" , fontSize:"14px"}} >{"Combinator Username:"}</Typography>
-                            <Typography className="" >{username}</Typography>
-                            <Typography className="info name7" style={{color:"red", marginBottom:"0.3%", marginTop:"0.25%" , fontSize:"14px" }} >{"Father Name:"}</Typography>
-                            <Typography className="" >{FatherName}</Typography>
-                            <Typography className="info name7" style={{color:"red", marginBottom:"0.3%", marginTop:"0.25%" , fontSize:"14px" }} >{"National ID:"}</Typography>
-                            <Typography className="" >{NID}</Typography>
-                            <Typography className="info name7" style={{color:"red", marginBottom:"0.3%", marginTop:"0.25%" , fontSize:"14px" }} >{"Gender:"}</Typography>
-                            <Typography className="" >{gender}</Typography>
-                            <Typography className="info name7" style={{color:"red", marginBottom:"0.3%", marginTop:"0.25%" , fontSize:"14px" }} >{"Age:"}</Typography>
-                            <Typography className="" >{age}</Typography>
+                            <div className="info7_part1">
+                                <Typography className="info name7" style={{color:"red", marginBottom:"0.3%" , marginTop:"0.25%" , fontSize:"14px"}}>{"Name:"}</Typography>
+                                <Typography className="" >{fname} {lname}</Typography>
+                                <Typography className="info username7" style={{color:"red", marginBottom:"0.3%" , marginTop:"0.25%" , fontSize:"14px"}} >{"Combinator Username:"}</Typography>
+                                <Typography className="" >{username}</Typography>
+                                <Typography className="info name7" style={{color:"red", marginBottom:"0.3%", marginTop:"0.25%" , fontSize:"14px" }} >{"Father Name:"}</Typography>
+                                <Typography className="" >{FatherName}</Typography>
+                                <Typography className="info name7" style={{color:"red", marginBottom:"0.3%", marginTop:"0.25%" , fontSize:"14px" }} >{"National ID:"}</Typography>
+                                <Typography className="" >{NID}</Typography>
+                                <Typography className="info name7" style={{color:"red", marginBottom:"0.3%", marginTop:"0.25%" , fontSize:"14px" }} >{"Gender:"}</Typography>
+                                <Typography className="" >{gender}</Typography>
+                                <Typography className="info name7" style={{color:"red", marginBottom:"0.3%", marginTop:"0.25%" , fontSize:"14px" }} >{"Age:"}</Typography>
+                                <Typography className="" >{age}</Typography>
+                            </div>
+
                         </div>
                     </div>
                 </Box>
