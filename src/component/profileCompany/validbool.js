@@ -7,7 +7,7 @@ export default function validateInfo(values) {
     if(!values.usernameinput.trim()) {
         return false
         
-    }else if(values.emailinput.length<6){
+    }else if(values.usernameinput.length<6){
         
         return false
     }
