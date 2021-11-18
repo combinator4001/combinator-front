@@ -1,10 +1,5 @@
 export default function validateInfo(values) {   
-    if(!values.fnameinput.trim()) {
-        
-        return false
-    }
-
-    if(!values.lnameinput.trim()) {
+    if(!values.Cnameinput) {
         
         return false
     }

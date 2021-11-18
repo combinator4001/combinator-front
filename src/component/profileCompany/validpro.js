@@ -1,13 +1,10 @@
 export default function validateInfo(values) {
     let errors={}
     
-    if(!values.fnameinput.trim()) {
-        errors.fnameinput ="First name required "        
+    if(!values.Cnameinput) {
+        errors.Cnameinput ="First name required "        
     }
 
-    if(!values.lnameinput.trim()) {
-        errors.lnameinput="Last name required "        
-    }
 
     if(!values.usernameinput.trim()) {
         errors.usernameinput ="Username required "        

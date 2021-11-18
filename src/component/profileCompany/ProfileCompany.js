@@ -33,7 +33,7 @@ const ProfileCompany = props => {
     const [Showprofile,SetShowprofile]=useState(true);
     const [ShowBlog,SetShowBlog]=useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const [value, setValue] = React.useState('one');
+    const [value, setValue] = useState('one');
 
     //initial name most be given from database
     //Company name
@@ -51,7 +51,7 @@ const ProfileCompany = props => {
     const [bioinput, setbioinput] = useState(location.bio);
     const [bio , Setbio]=useState(location.bio);
     //owner name
-    const [Owner,SetOwner]=useState(location.owners[0]);
+    //const [Owner,SetOwner]=useState(location.owners[0]);
 
 
 
@@ -89,7 +89,7 @@ const ProfileCompany = props => {
     const handleClick = () => {
         if(check)
         {
-            owners[0]=Owner;
+            //owners[0]=Owner;
             let item = {
                 name:Cnameinput ,
                 owners:owners,
@@ -201,7 +201,7 @@ const ProfileCompany = props => {
                                         <Typography className="info name7" style={{color:"red", marginBottom:"0.3%" , marginTop:"0.25%" , fontSize:"14px"}}>{"Company Name:"}</Typography>
                                         <Typography className="" >{Cname}</Typography>
                                         <Typography className="info name7" style={{color:"red", marginBottom:"0.3%" , marginTop:"0.25%" , fontSize:"14px"}}>{"Owner Name:"}</Typography>
-                                        <Typography className="" >{Owner}</Typography>
+                                        {/* //<Typography className="" >{Owner}</Typography> */}
                                         <Typography className="info username7" style={{color:"red", marginBottom:"0.3%" , marginTop:"0.25%" , fontSize:"14px"}} >{"Username:"}</Typography>
                                         <Typography className="" >{username}</Typography>
                                         <Typography className="info bio7" style={{color:"red", marginBottom:"0.3%", marginTop:"0.25%" , fontSize:"14px" }} >{"Bio:"}</Typography>
