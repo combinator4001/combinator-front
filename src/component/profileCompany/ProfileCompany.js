@@ -102,7 +102,7 @@ const ProfileCompany = ({history}) => {
             console.warn(item);
 
 
-            fetch(url + "/company",{
+            fetch(url + "/profilecompany",{
                 crossDomain:true,
                 method:'POST',
                 headers: {'Content-Type' : 'application/json'},
