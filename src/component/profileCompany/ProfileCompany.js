@@ -51,7 +51,7 @@ const ProfileCompany = props => {
     const [bioinput, setbioinput] = useState(location.bio);
     const [bio , Setbio]=useState(location.bio);
     //owner name
-    //const [Owner,SetOwner]=useState(location.owners[0]);
+    const [Owner,SetOwner]=useState(location.owners);
 
 
 

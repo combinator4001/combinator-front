@@ -71,10 +71,11 @@ const Login =({history}) => {
                     if(response.role==="COMPANY"){
                         history.push({
                             pathname: '/ProfileCompany',
+                            name:response.name,
                             username:response.username,
                             email:response.email,
                             bio:response.bio,
-                            owners:response.owners
+                            owners:response.owners[0]
                         });
                     }
                 }
