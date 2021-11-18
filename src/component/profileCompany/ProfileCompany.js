@@ -115,6 +115,7 @@ const ProfileCompany = ({history}) => {
                 .then( async (response) => {
                     if(response.status === 200){
                         response = await response.json();
+                        console.log(response);
                         toast.success(response.message, {
                             position: "top-right",
                             closeOnClick: true
@@ -208,8 +209,8 @@ const ProfileCompany = ({history}) => {
                                     <div className="info7">
                                         <Typography className="info name7" style={{color:"red", marginBottom:"0.3%" , marginTop:"0.25%" , fontSize:"14px"}}>{"Company Name:"}</Typography>
                                         <Typography className="" >{Cname}</Typography>
-                                        <Typography className="info name7" style={{color:"red", marginBottom:"0.3%" , marginTop:"0.25%" , fontSize:"14px"}}>{"Owner Name:"}</Typography>
-                                        <Typography className="" >{Owner}</Typography>
+                                        {/*<Typography className="info name7" style={{color:"red", marginBottom:"0.3%" , marginTop:"0.25%" , fontSize:"14px"}}>{"Owner Name:"}</Typography>*/}
+                                        {/*<Typography className="" >{location.owners}</Typography>*/}
                                         <Typography className="info username7" style={{color:"red", marginBottom:"0.3%" , marginTop:"0.25%" , fontSize:"14px"}} >{"Username:"}</Typography>
                                         <Typography className="" >{username}</Typography>
                                         <Typography className="info bio7" style={{color:"red", marginBottom:"0.3%", marginTop:"0.25%" , fontSize:"14px" }} >{"Bio:"}</Typography>

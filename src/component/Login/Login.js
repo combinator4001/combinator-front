@@ -70,8 +70,9 @@ const Login =({history}) => {
                     console.log(response.email);
                     }
                     if(response.role==="COMPANY"){
-
+                        //console.log(response.owners[0]);
                         history.push({
+                            access_token:response.access_token,
                             pathname: '/ProfileCompany',
                             name:response.name,
                             username:response.username,
