@@ -13,6 +13,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Changepass from './component/ForgetPass/Changepass';
 import ProfileUser from './component/profileuser1/profileUser1';
 import ProfileCompany from "./component/profileCompany/ProfileCompany";
+import Dashboard from './component/Dashboard/Dashboard';
 
 
 const App =()=> {
@@ -36,6 +37,7 @@ const App =()=> {
         <Route path="/profileuser1"  component={ProfileUser}  />
         <Route path="/reset/:forgetPassToken" component={Changepass} />
         <Route path="/ProfileCompany" component={ProfileCompany} />
+        <Route path="/Dashboard" component={Dashboard} />
       </switch>
     </div>
   </Router>
