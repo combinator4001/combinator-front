@@ -38,21 +38,21 @@ const ProfileCompany = ({history}) => {
 
     //initial name most be given from database
     //Company name
-    const [Cnameinput, setCnameinput] = useState(location.name);
-    const [Cname , SetCname]=useState(location.name);
+    const [Cnameinput, setCnameinput] = useState('');
+    const [Cname , SetCname]=useState('');
 
     //username
-    const [usernameinput, setusernameinput] = useState(location.username);
-    const [username , Setusername]=useState(location.username);
+    const [usernameinput, setusernameinput] = useState('');
+    const [username , Setusername]=useState('');
 
     //email
-    const [emailinput, setemailinput] = useState(location.email);
-    const [email , Setemail]=useState(location.email);
+    const [emailinput, setemailinput] = useState('');
+    const [email , Setemail]=useState('');
     //bio
-    const [bioinput, setbioinput] = useState(location.bio);
-    const [bio , Setbio]=useState(location.bio);
+    const [bioinput, setbioinput] = useState('');
+    const [bio , Setbio]=useState('');
     //owner name
-    const [Owner,SetOwner]=useState(location.owners);
+    const [Owner,SetOwner]=useState('');
     //SetOwner(location.owners);
 
     const logout=()=>{
@@ -90,6 +90,55 @@ const ProfileCompany = ({history}) => {
     };
     const [accessT,SetaccessT]=useState(location.access_token);
     const owners=[];
+    const [openingPage,SetopeningPage]=useState(true);
+
+    if(openingPage){
+        fetch(url + "/me",{
+            method:'GET',
+            mode: 'cors',
+            headers: {'Content-Type' : 'application/json' ,
+                "Authorization" : `Bearer ${location.access_token}`},
+            //body:JSON.stringify(item)
+        })
+            .then(async response => {
+                if(response.status === 200){
+                    response=await response.json();
+                    toast.success(response.message,{
+                        position:"top-right",
+                        closeOnClick:true
+                    });
+                    if(response.role==="COMPANY")
+                    {
+                        //setfirstname(response.firstName);
+                        console.log(response.access_token);
+                        console.log(response.email);
+                        setCnameinput(response.firstName);
+                        SetCname(response.firstName);
+                        setusernameinput(response.username);
+                        Setusername(response.username);
+                        setemailinput(response.email);
+                        Setemail(response.email);
+                        setbioinput(response.bio);
+                        Setbio(response.bio);
+                        owners[0]=response.owners[0];
+                        SetopeningPage(false);
+                    }
+
+                }
+                else{
+                    toast.error("Failed to load your personal info", {
+                        position: "top-right",
+                        closeOnClick: true
+                    });
+                    throw new Error('Failed to load your personal info.\n' + response.statusText);
+                }
+            })
+            .then(response => {
+                //console.log(response);
+            })
+            .catch( err => console.log(err));
+
+    }
     //handle submit
     const handleClick = () => {
         if(check)
@@ -153,25 +202,6 @@ const ProfileCompany = ({history}) => {
         setIsSubmitting(true);
         event.preventDefault();
     };
-
-    //navbar changing
-    const ChangtoCV =()=>{
-        SetShowCV(true);
-        SetShowBlog(false);
-        SetShowprofile(false);
-    }
-    const Changtoprofile =()=>{
-        SetShowCV(false);
-        SetShowBlog(false);
-        SetShowprofile(true);
-    }
-    const ChangtoBlog =()=>{
-        SetShowCV(false);
-        SetShowBlog(true);
-        SetShowprofile(false);
-    }
-
-
 
 
     const maincomponent =()=>{
@@ -288,46 +318,11 @@ const ProfileCompany = ({history}) => {
                 </div>
             );
         }
-        if (ShowBlog){
-            return <Blog></Blog>
-
-        }
-        if(ShowCV){
-            return <CV></CV>
-        }
-
     }
 
     return ( 
         <>
-            <Box
-                sx={{
-                    width: '100%',
-                    backgroundColor:'#EAEEF3',
-                    display:'flex',
-                    justifyContent:'center',
-                    alignItems:'center',
-                    gap:'20px'
-                }}>
-                <Tabs
-                    value={value}
-                    onChange={handleChange}
-                    textColor="secondary"
-                    indicatorColor="secondary"
-                    aria-label="secondary tabs example"
-                >
-                    <Tab value="one" label="profile"  onClick={Changtoprofile} />
-                    <Tab value="two" label="CV" onClick={ChangtoCV}/>
-                    <Tab value="three" label="Blog" onClick={ChangtoBlog}/>
-                    <Button variant="contained" color="primary" disableElevation
-                            style={{marginTop:"20px",marginBottom:"20px",marginLeft:'20px' , width:"auto", borderRadius:"15px",position: 'fixed',left:0  }} onClick={logout}>
-                        Logout
-                    </Button>
-                </Tabs>
-            </Box>
-
             {maincomponent()}
-
         </>
 
      );

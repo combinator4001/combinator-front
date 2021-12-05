@@ -36,20 +36,76 @@ const ProfileUser =  ({history}) => {
     //const [condition,Setcondition]=useState('Blog');
     const [isSubmitting, setIsSubmitting] = useState(false);
     //fname
-    const [fnameinput, setfnameinput] = useState(location.firstName);
-    const [fname , Setfname]=useState(location.firstName);
+    const [fnameinput, setfnameinput] = useState('');
+    const [fname , Setfname]=useState('');
     //lname
-    const [lnameinput, setlnameinput] = useState(location.lastName);
-    const [lname , Setlname]=useState(location.lastName);
+    const [lnameinput, setlnameinput] = useState('');
+    const [lname , Setlname]=useState('');
     //username
-    const [usernameinput, setusernameinput] = useState(location.username);
-    const [username , Setusername]=useState(location.username);
+    const [usernameinput, setusernameinput] = useState('');
+    const [username , Setusername]=useState('');
     //email
-    const [emailinput, setemailinput] = useState(location.email);
-    const [email , Setemail]=useState(location.email);
+    const [emailinput, setemailinput] = useState('');
+    const [email , Setemail]=useState('');
 
-    const [bioinput, setbioinput] = useState(location.bio);
-    const [bio , Setbio]=useState(location.bio);
+    const [bioinput, setbioinput] = useState('');
+    const [bio , Setbio]=useState('');
+    const [openingPage,SetopeningPage]=useState(true);
+    //let item = {
+        //token:location.access_token
+    //};
+    //console.warn(item);
+    if(openingPage){
+        fetch(url + "/me",{
+            method:'GET',
+            mode: 'cors',
+            headers: {'Content-Type' : 'application/json' ,
+                "Authorization" : `Bearer ${location.access_token}`},
+            //body:JSON.stringify(item)
+        })
+            .then(async response => {
+                if(response.status === 200){
+                    response=await response.json();
+                    toast.success(response.message,{
+                        position:"top-right",
+                        closeOnClick:true
+                    });
+                    if(response.role==="PERSON")
+                    {
+                        //setfirstname(response.firstName);
+                        console.log(response.access_token);
+                        console.log(response.email);
+                        setfnameinput(response.firstName);
+                        Setfname(response.firstName);
+                        setlnameinput(response.lastName);
+                        Setlname(response.lastName);
+                        setusernameinput(response.username);
+                        Setusername(response.username);
+                        setemailinput(response.email);
+                        Setemail(response.email);
+                        setbioinput(response.bio);
+                        Setbio(response.bio);
+                        SetopeningPage(false);
+                    }
+
+                }
+                else{
+                    toast.error("Failed to load your personal info", {
+                        position: "top-right",
+                        closeOnClick: true
+                    });
+                    throw new Error('Failed to load your personal info.\n' + response.statusText);
+                }
+            })
+            .then(response => {
+                //console.log(response);
+            })
+            .catch( err => console.log(err));
+
+    }
+
+
+
 
     const [value, setValue] = React.useState('one');
 
@@ -138,11 +194,11 @@ const ProfileUser =  ({history}) => {
             location.lastName=lnameinput;
             location.email=emailinput;
             location.bio=bioinput;
-        Setfname(fnameinput);
-        Setlname(lnameinput);
-        Setusername(usernameinput);
-        Setemail(emailinput);
-        Setbio(bioinput);
+            Setfname(fnameinput);
+            Setlname(lnameinput);
+            Setusername(usernameinput);
+            Setemail(emailinput);
+            Setbio(bioinput);
 
         }
         setIsSubmitting(true);

@@ -59,12 +59,12 @@ const Login =({history}) => {
                     console.log(response.access_token);
                     history.push({
                         pathname: '/Dashboard',
-                        firstName:response.firstName,
-                        lastName:response.lastName,
-                        username:response.username,
-                        email:response.email,
+                        //firstName:response.firstName,
+                        //lastName:response.lastName,
+                        //username:response.username,
+                        //email:response.email,
                         access_token:response.access_token,
-                        bio:response.bio
+                        //bio:response.bio
                     });
 
                     console.log(response.email);
