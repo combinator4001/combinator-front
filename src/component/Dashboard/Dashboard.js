@@ -167,25 +167,22 @@ export default function MiniDrawer() {
         </DrawerHeader>
         <Divider />
         <List>
-          {['Dashboard', 'BLOG', 'CV'].map((text, index) => (
-            <ListItemButton key={text}>
-              {/* <ListItemIcon>
-                {index === 0 && <HomeIcon />}
-                {index === 1 && <RssFeedIcon />}
-                {index === 2 && <CoPresentIcon />}
-              </ListItemIcon> */}
-              {index === 0 && 
-              <ListItemIcon onClick={ChangtoCV}><HomeIcon /></ListItemIcon>
-              }
-              {index === 1 && 
-              <ListItemIcon onClick={ChangtoBlog}><RssFeedIcon /></ListItemIcon>
-              }
-              {index === 2 && 
-              <ListItemIcon onClick={Changtoprofile}><CoPresentIcon /></ListItemIcon>
-              }
-              <ListItemText primary={text} />
-            </ListItemButton>
-          ))}
+          
+          <ListItemButton  onClick={ChangtoCV} key={'Dashboard'}>
+            <ListItemIcon><HomeIcon /></ListItemIcon>
+            <ListItemText primary={'Dashboard'} />
+          </ListItemButton>
+
+          <ListItemButton  onClick={ChangtoBlog} key={'BLOG'}>
+            <ListItemIcon><RssFeedIcon /></ListItemIcon>
+            <ListItemText primary={'BLOG'} />
+          </ListItemButton>
+
+          <ListItemButton  onClick={Changtoprofile} key={'CV'}>
+            <ListItemIcon><CoPresentIcon /></ListItemIcon>
+            <ListItemText primary={'CV'} />
+          </ListItemButton>
+
         </List>
         <Divider />
         <List>
