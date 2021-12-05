@@ -168,7 +168,7 @@ export default function MiniDrawer() {
         <Divider />
         <List>
           
-          <ListItemButton  onClick={ChangtoCV} key={'Dashboard'}>
+          <ListItemButton  onClick={Changtoprofile} key={'Dashboard'}>
             <ListItemIcon><HomeIcon /></ListItemIcon>
             <ListItemText primary={'Dashboard'} />
           </ListItemButton>
@@ -178,7 +178,7 @@ export default function MiniDrawer() {
             <ListItemText primary={'BLOG'} />
           </ListItemButton>
 
-          <ListItemButton  onClick={Changtoprofile} key={'CV'}>
+          <ListItemButton  onClick={ChangtoCV} key={'CV'}>
             <ListItemIcon><CoPresentIcon /></ListItemIcon>
             <ListItemText primary={'CV'} />
           </ListItemButton>

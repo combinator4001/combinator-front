@@ -31,9 +31,7 @@ import { withRouter } from "react-router-dom";
 const ProfileUser =  ({history}) => {
 
     const location = useLocation();
-    const [ShowCV,SetShowCV]=useState(false);
     const [Showprofile,SetShowprofile]=useState(true);
-    const [ShowBlog,SetShowBlog]=useState(false);
     //initial name most be given from database
     //const [condition,Setcondition]=useState('Blog');
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -85,21 +83,6 @@ const ProfileUser =  ({history}) => {
         setValue(newValue);
     };
 
-    const ChangtoCV =()=>{
-        SetShowCV(true);
-        SetShowBlog(false);
-        SetShowprofile(false);
-    }
-    const Changtoprofile =()=>{
-        SetShowCV(false);
-        SetShowBlog(false);
-        SetShowprofile(true);
-    }
-    const ChangtoBlog =()=>{
-        SetShowCV(false);
-        SetShowBlog(true);
-        SetShowprofile(false);
-    }
     const [accessT,SetaccessT]=useState(location.access_token);
     //const { ProfileToken } = useParams();
     const handleClick = async() => {
@@ -289,46 +272,11 @@ const ProfileUser =  ({history}) => {
                 </div>
             );
         }
-        if (ShowBlog){
-            return <Blog></Blog>
-
-        }
-        if(ShowCV){
-            return <CV></CV>
-        }
-
     }
 
     return ( 
         <>
-            <Box
-                sx={{
-                    width: '100%',
-                    backgroundColor:'#EAEEF3',
-                    display:'flex',
-                    justifyContent:'center',
-                    alignItems:'center',
-                    gap:'20px'
-                }}>
-                <Tabs
-                    value={value}
-                    onChange={handleChange}
-                    textColor="secondary"
-                    indicatorColor="secondary"
-                    aria-label="secondary tabs example"
-                >
-                    <Tab value="one" label="profile"  onClick={Changtoprofile} />
-                    <Tab value="two" label="CV" onClick={ChangtoCV}/>
-                    <Tab value="three" label="Blog" onClick={ChangtoBlog}/>
-                    <Button variant="contained" color="primary" disableElevation
-                            style={{marginTop:"20px",marginBottom:"20px",marginLeft:'20px' , width:"auto", borderRadius:"15px",position: 'fixed',left:0  }} onClick={logout}>
-                        Logout
-                    </Button>
-                </Tabs>
-            </Box>
-
             {maincomponent()}
-
         </>
 
      );

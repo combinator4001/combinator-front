@@ -58,7 +58,7 @@ const Login =({history}) => {
                     //setfirstname(response.firstName);
                     console.log(response.access_token);
                     history.push({
-                        pathname: '/profileuser1',
+                        pathname: '/Dashboard',
                         firstName:response.firstName,
                         lastName:response.lastName,
                         username:response.username,
@@ -73,7 +73,7 @@ const Login =({history}) => {
                         //console.log(response.owners[0]);
                         history.push({
                             access_token:response.access_token,
-                            pathname: '/ProfileCompany',
+                            pathname: '/Dashboard',
                             name:response.name,
                             username:response.username,
                             email:response.email,
