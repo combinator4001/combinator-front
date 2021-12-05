@@ -1,4 +1,4 @@
-import handle from "./Profileuser";
+//import handle from "./Profileuser";
 
 export default function validateInfo(name,lastname,username,email) {    
     if(!name.trim()) {

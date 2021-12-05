@@ -8,6 +8,8 @@ import url from '../../variables';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { toast } from 'react-toastify';
 import { withRouter } from "react-router-dom";
+import profileuser from '../profile-user/Profileuser';
+import ProfileUser from '../profileuser1/profileUser1';
 
 
 const Login =({history}) => {
@@ -15,6 +17,7 @@ const Login =({history}) => {
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const [username,setName]=useState("");
 	const [pass,setpass]=useState("");
+    
 
 	const handleSubmit = (event) => {
         setIsSubmitting(true);        
@@ -26,7 +29,7 @@ const Login =({history}) => {
 		setpass("");
     }
   	
-	const loginButton = (event) =>
+	const loginButton =async (event) =>
 	{
 		if(username && pass)
 		{
@@ -37,14 +40,47 @@ const Login =({history}) => {
             console.warn(item);
             
 
-            fetch(url + "/user/auth/login",{
+            fetch(url + "/auth/login",{
                 method:'POST',
+                mode: 'cors',
                 headers: {'Content-Type' : 'application/json'},
                 body:JSON.stringify(item)
             })
-            .then( response => {
+            .then(async response => {
                 if(response.status === 201){
-                    return response.json();
+                    response=await response.json();
+                    toast.success(response.message,{
+                        position:"top-right",
+                        closeOnClick:true
+                    });
+                    if(response.role==="PERSON")
+                    {
+                    //setfirstname(response.firstName);
+                    console.log(response.access_token);
+                    history.push({
+                        pathname: '/Dashboard',
+                        //firstName:response.firstName,
+                        //lastName:response.lastName,
+                        //username:response.username,
+                        //email:response.email,
+                        access_token:response.access_token,
+                        //bio:response.bio
+                    });
+
+                    console.log(response.email);
+                    }
+                    if(response.role==="COMPANY"){
+                        //console.log(response.owners[0]);
+                        history.push({
+                            access_token:response.access_token,
+                            pathname: '/Dashboard',
+                            name:response.name,
+                            username:response.username,
+                            email:response.email,
+                            bio:response.bio,
+                            owners:response.owners[0]
+                        });
+                    }
                 }
                 else{
                     toast.error("Failed to login, try again later", {
@@ -55,16 +91,13 @@ const Login =({history}) => {
                 }                
             })
             .then(response => {
-                console.log(response);
-                localStorage.setItem("token",response.access_token);
-                reset();
-                history.replace("/profileuser");
+                //console.log(response);
             })
             .catch( err => console.log(err));
 			
 		}
 		else{
-            history.replace("/profileuser");
+
 			toast.error("please fill!", {
 				position: "top-right",
 				closeOnClick: true
@@ -81,7 +114,7 @@ const Login =({history}) => {
                     <h1>Hello, Friend!</h1>
                     <p> <br/>Enter your personal details and start</p>
                     <p> journey with us<br/><br/></p>
-                    <p><Link to="/person" onClick= {doToggle}>SIGN UP</Link></p>
+                    <p><Link to="/person" onClick= {doToggle} style={{ color:'white'}}>SIGN UP</Link></p>
                 </div>	
                 <div className="formBox">
                     <form  onSubmit={(e)=>handleSubmit(e)}>
@@ -106,10 +139,11 @@ const Login =({history}) => {
                                 </div>
                            </div>
                         </div>
-                        <p className="check1"><p></p> <Link to="/forgetpassword">Forgot password</Link></p>
+                        <p className="check1"><p></p> <Link to="/auth/password" style={{marginLeft:5}}>Forgot password</Link></p>
                         <div className="button_containar1">
-                            <button className="yellow_buttons1" type="submit" onClick={loginButton} value="log in" >Sign in</button>
+                            <button className="yellow_buttons1" type="submit"  formNoValidate onClick={loginButton} value="log in" >Sign in</button>
                         </div>
+                        <p className="checklogin2" style={{fontSize:90}}><Link to="/person"  style={{marginLeft:14}}>Don't have an account yet? Sign up</Link></p>
                     </form>
                 </div>
             </div>

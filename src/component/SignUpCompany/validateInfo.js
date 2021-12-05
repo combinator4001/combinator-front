@@ -13,7 +13,7 @@ export default function validateInfo(values) {
     if(!values.username.trim()) {
         errors.username ="Username required "        
     }else if(values.username.length<6){
-        errors.username='Username needs to be 6 characters or more'        
+        errors.username='Use 6 characters or more'        
     }
     //Email
     if(!values.email){
@@ -29,7 +29,7 @@ export default function validateInfo(values) {
         errors.password ='Password is required'        
     }
     else if(values.password.length<6){
-        errors.password='Password needs to be 6 characters or more'       
+        errors.password='Use 6 characters or more'       
     }
     if(!values.password2)
     {

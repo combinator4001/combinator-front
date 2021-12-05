@@ -1,6 +1,6 @@
 import Login from './component/Login/Login';
 import './App.css';
-import React  from 'react';
+import React , {useState} from 'react';
 import {useSelector } from 'react-redux';
 import {login, selectuser, signUp} from './features/userSlice';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
@@ -11,10 +11,16 @@ import profileuser from './component/profile-user/Profileuser';
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import Changepass from './component/ForgetPass/Changepass';
+import ProfileUser from './component/profileuser1/profileUser1';
+import ProfileCompany from "./component/profileCompany/ProfileCompany";
+import Dashboard from './component/Dashboard/Dashboard';
 
 
 const App =()=> {
   const user = useSelector(selectuser);
+  //const name="zahra";
+
+
 
   
   return (
@@ -23,12 +29,15 @@ const App =()=> {
     <div>
     <ToastContainer/>
       <switch>
-        <Route exact path="/" component={Login} />
+        <Route exact path="/" component={Login}    />
         <Route path="/person" component={FormSignup} />
         <Route path="/company" component={FormSignupCompany} />
-        <Route path="/forgetpassword" component={ForgetPass} />
+        <Route path="/auth/password" component={ForgetPass} />
         <Route path="/profileuser" component={profileuser} />
-        <Route path="/changepassword" component={Changepass} />
+        <Route path="/profileuser1"  component={ProfileUser}  />
+        <Route path="/reset/:forgetPassToken" component={Changepass} />
+        <Route path="/ProfileCompany" component={ProfileCompany} />
+        <Route path="/Dashboard" component={Dashboard} />
       </switch>
     </div>
   </Router>

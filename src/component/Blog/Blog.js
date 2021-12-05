@@ -1,10 +1,16 @@
 import React from "react";
+import Editor from "./Editor/Editor";
+import {Button} from "@mui/material";
 
-function Blog  ()  {
+
+
+const Blog=  ()=>  {
     return(
         <div>
-            <h1>Blog</h1>
+            <Editor/>
+
         </div>
+
     );
 }
 

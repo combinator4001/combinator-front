@@ -1,23 +1,25 @@
 import './profile.css'
 import Img from './ProfileImg'
-import React, { useEffect, useState,Fragment } from 'react';
+//import React, { useEffect, useState,Fragment } from 'react';
+import React from "react";
 import Navbar3 from '../navbar3/Navbar3'
 import CV from "../CV/CV"
 import Blog from "../Blog/Blog";
-import {BrowserRouter as Router, Route} from "react-router-dom";
+//import {BrowserRouter as Router, Route} from "react-router-dom";
 import validProfile from "./validProfile";
 import validbool from "./validbool";
-import {ToastContainer} from "react-toastify";
-import Login from "../Login/Login";
-import FormSignup from "../Sign Up/FormSignup";
-import FormSignupCompany from "../SignUpCompany/FormSignupCompany";
-import ForgetPass from "../ForgetPass/ForgetPass";
-import Changepass from "../ForgetPass/Changepass";
+//import {ToastContainer} from "react-toastify";
+//import Login from "../Login/Login";
+//import FormSignup from "../Sign Up/FormSignup";
+//import FormSignupCompany from "../SignUpCompany/FormSignupCompany";
+//import ForgetPass from "../ForgetPass/ForgetPass";
+//import Changepass from "../ForgetPass/Changepass";
 import { toast } from 'react-toastify';
 import url from '../../variables';
 
 
 class profileuser extends React.Component {
+
     state={
         showupdate:false,
         showinfo:true,
@@ -29,7 +31,9 @@ class profileuser extends React.Component {
         condition:null,
         consave:true,
         showcv:false,
-        showbloge:true
+        showbloge:true,
+        role:null,
+        token:null        
     };
 
     profilerequest =() =>{
@@ -41,7 +45,7 @@ class profileuser extends React.Component {
              let username=this.state.username;             
             let bio=this.state.bio;
             let email=this.state.email;
-             let item={
+            let item={
                 name,
                 lastname,
                 username,
@@ -72,11 +76,11 @@ class profileuser extends React.Component {
                     throw new Error('Username already exists!\n' + response.statusText);
                 }
                 else {
-                    toast.error("Failed ", {
-                        position: "top-left",
-                        closeOnClick: true                        
-                    });
-                    this.setState({consave:false});
+                    // toast.error("Failed ", {
+                    //     position: "top-left",
+                    //     closeOnClick: true                        
+                    // });
+                    // this.setState({consave:false});
                     console.log(this.state.consave);
                     throw new Error('Failed .\n' + response.statusText);
                 }                
@@ -87,6 +91,11 @@ class profileuser extends React.Component {
                          
 
         }    
+
+    }
+    componentDidMount(){
+        this.setState({token:localStorage.getItem("token")});
+        console.log(this.state.token);
 
     }
 
@@ -141,6 +150,8 @@ class profileuser extends React.Component {
         this.setState({showbloge : true})
     }
 
+
+
     
     render() {
         let update = null;
@@ -150,6 +161,7 @@ class profileuser extends React.Component {
         let username=this.state.username;
         let bio=this.state.bio;
         let email=this.state.email;
+        let role=this.state.role;
         let consave=this.state.consave;
         let t=true;
         let blogComponent = null;
@@ -158,9 +170,7 @@ class profileuser extends React.Component {
         let errors = {};
         errors=validProfile(name,lastname,username,email);        
         
-        const handleSubmit = async event=> {       
-            event.preventDefault();       
-        };
+
 
         if(this.state.showbloge){
             blogComponent=(
@@ -180,6 +190,7 @@ class profileuser extends React.Component {
             info=(
                 <>
                     <div className="info_content">
+                        <div className="info role5">{role}</div>
                         <div className="info name5">{name+" "+lastname}</div>
                         <div className="info usernam5">{username}</div>
                         <div className="info bio5">{bio}</div>
@@ -203,25 +214,39 @@ class profileuser extends React.Component {
             update=(
             <>
             <div className="main_body6">
-                <form className="form6"  onSubmit={handleSubmit}>
-                    <input type="text" placeholder="Firstname" value={name} onChange={this.handleChangename} className="namepro6"/>
-                    <div className="check6">
-                    {errors.name && <p>{errors.name}!</p>}
+                <form className="form6"  onSubmit={event => event.preventDefault()}>
+                    <div className="box6">
+                        <input type="text" placeholder="Firstname" value={name} onChange={this.handleChangename} className="namepro6"/>
+                        <div className="check6">
+                        {errors.name && <p>{errors.name}!</p>}
+                        </div>
                     </div>
-                    <input type="text" placeholder="Lastname" value={lastname} onChange={this.handleChangelastname} className="lastpro6"/>
-                    <div className="check6">
-                    {errors.lastname && <p>{errors.lastname}!</p>}
+
+                    <div className="box6">
+                        <input type="text" placeholder="Lastname" value={lastname} onChange={this.handleChangelastname} className="lastpro6"/>
+                        <div className="check6">
+                        {errors.lastname && <p>{errors.lastname}!</p>}
+                        </div>
                     </div>
-                    <input type="text" placeholder="Username" value={username} onChange={this.handleChangeusername} className="userpro6"/>
-                    <div className="check6">
-                    {errors.username && <p>{errors.username}!</p>}
+
+                    <div className="box6">
+                        <input type="text" placeholder="Username" value={username} onChange={this.handleChangeusername} className="userpro6"/>
+                        <div className="check6">
+                        {errors.username && <p>{errors.username}!</p>}
+                        </div>
                     </div>
-                    <input type="text" placeholder="Email" value={email} onChange={this.handleChangeEmail} className="email6"/>
-                    <div className="check6">
-                    {errors.email && <p>{errors.email}!</p>}
+
+                    <div className="box6">
+                        <input type="text" placeholder="Email" value={email} onChange={this.handleChangeEmail} className="email6"/>
+                        <div className="check6">
+                        {errors.email && <p>{errors.email}!</p>}
+                        </div>
                     </div>
-                    <textarea type="text" placeholder="Bio" value={bio} onChange={this.handleChangebio} className="biopro6"/>
-                    
+
+                    <div className="box6">
+                        <textarea type="text" placeholder="Bio" value={bio} onChange={this.handleChangebio} className="biopro6"/>
+                    </div>
+
                 </form>
                 <div>
                     <button className="btn6" onClick={()=>{this.handleShowupdate(); this.handleShowinfo(); this.profilerequest() }}>save</button>
