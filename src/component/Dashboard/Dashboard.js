@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {useState} from 'react';
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import MuiDrawer from '@mui/material/Drawer';
@@ -21,6 +22,10 @@ import CoPresentIcon from '@mui/icons-material/CoPresent';
 import SettingsIcon from '@mui/icons-material/Settings';
 import InfoIcon from '@mui/icons-material/Info';
 
+import Profile from "../profileuser1/profileUser1"
+import Blog from "../Blog/Blog";
+import CV from "../CV/CV";
+import ListItemButton from '@mui/material/ListItemButton';
 
 
 const drawerWidth = 240;
@@ -102,6 +107,36 @@ export default function MiniDrawer() {
     setOpen(false);
   };
 
+
+
+
+
+
+  const [ShowCV,SetShowCV]=useState(false);
+  const [Showprofile,SetShowprofile]=useState(false);
+  const [ShowBlog,SetShowBlog]=useState(true);
+
+  const ChangtoCV =()=>{
+    SetShowCV(true);
+    SetShowBlog(false);
+    SetShowprofile(false);
+  }
+  const Changtoprofile =()=>{
+    SetShowCV(false);
+    SetShowBlog(false);
+    SetShowprofile(true);
+  }
+  const ChangtoBlog =()=>{
+    SetShowCV(false);
+    SetShowBlog(true);
+    SetShowprofile(false);
+  }
+
+
+
+
+
+
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
@@ -133,34 +168,47 @@ export default function MiniDrawer() {
         <Divider />
         <List>
           {['Dashboard', 'BLOG', 'CV'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
+            <ListItemButton key={text}>
+              {/* <ListItemIcon>
                 {index === 0 && <HomeIcon />}
                 {index === 1 && <RssFeedIcon />}
                 {index === 2 && <CoPresentIcon />}
-              </ListItemIcon>
+              </ListItemIcon> */}
+              {index === 0 && 
+              <ListItemIcon onClick={ChangtoCV}><HomeIcon /></ListItemIcon>
+              }
+              {index === 1 && 
+              <ListItemIcon onClick={ChangtoBlog}><RssFeedIcon /></ListItemIcon>
+              }
+              {index === 2 && 
+              <ListItemIcon onClick={Changtoprofile}><CoPresentIcon /></ListItemIcon>
+              }
               <ListItemText primary={text} />
-            </ListItem>
+            </ListItemButton>
           ))}
         </List>
         <Divider />
         <List>
           {['Settings', 'About Us'].map((text, index) => (
-            <ListItem button key={text}>
+            <ListItemButton key={text}>
               <ListItemIcon>
                 {index === 0 && <SettingsIcon />}
                 {index === 1 && <InfoIcon />}
               </ListItemIcon>
               <ListItemText primary={text} />
-            </ListItem>
+            </ListItemButton>
           ))}
         </List>
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
-        <Typography paragraph>
-          Dashboard.
-        </Typography>
+
+
+        {ShowCV && (<CV />) }
+        {Showprofile && (<Profile />) }
+        {ShowBlog && (<Blog />) }
+
+            
       </Box>
     </Box>
   );
