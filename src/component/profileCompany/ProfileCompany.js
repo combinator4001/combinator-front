@@ -103,15 +103,15 @@ const ProfileCompany = ({history}) => {
             .then(async response => {
                 if(response.status === 200){
                     response=await response.json();
-                    toast.success(response.message,{
-                        position:"top-right",
-                        closeOnClick:true
-                    });
+                    //toast.success(response.message,{
+                        //position:"top-right",
+                        //closeOnClick:true
+                    //});
                     if(response.role==="COMPANY")
                     {
                         //setfirstname(response.firstName);
-                        console.log(response.access_token);
-                        console.log(response.email);
+                        //console.log(response.access_token);
+                        //console.log(response.email);
                         setCnameinput(response.firstName);
                         SetCname(response.firstName);
                         setusernameinput(response.username);

@@ -66,15 +66,15 @@ const ProfileUser =  ({history}) => {
             .then(async response => {
                 if(response.status === 200){
                     response=await response.json();
-                    toast.success(response.message,{
-                        position:"top-right",
-                        closeOnClick:true
-                    });
+                    //toast.success(response.message,{
+                        //position:"top-right",
+                        //closeOnClick:true
+                    //});
                     if(response.role==="PERSON")
                     {
                         //setfirstname(response.firstName);
-                        console.log(response.access_token);
-                        console.log(response.email);
+                        //console.log(response.access_token);
+                        //console.log(response.email);
                         setfnameinput(response.firstName);
                         Setfname(response.firstName);
                         setlnameinput(response.lastName);
