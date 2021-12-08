@@ -30,6 +30,8 @@
     "react-scripts": "4.0.3",
     "react-toastify": "^8.1.0",
     "redux": "^4.1.2",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^2.0.4",
     "simple-react-validator": "^1.6.1",
     "toastify": "^2.0.1",
     "web-vitals": "^1.1.2"
