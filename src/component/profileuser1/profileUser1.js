@@ -318,7 +318,7 @@ const ProfileUser =  ({history}) => {
                                     <div className="profileUser1_btnContainer">
                                         <Button variant="contained" color="primary" disableElevation
                                                 style={{marginTop:"20px",marginBottom:"20px" , width:"auto", borderRadius:"15px"  }} onClick={handleClick}>
-                                            UpdateProfile
+                                            Update
                                         </Button>
                                     </div>
                                 </form>

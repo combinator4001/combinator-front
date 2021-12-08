@@ -29,13 +29,13 @@ const CV = ()=> {
     const [identityShow,SetidentityShow]=useState(false);
     const [contactShow,SetcontactShow]=useState(false);
     //fname
-    const [fname , Setfname]=useState(location.firstName);
+    const [fname , Setfname]=useState('');
     //lname
-    const [lname , Setlname]=useState(location.lastName);
+    const [lname , Setlname]=useState('');
     //username
-    const [username , Setusername]=useState(location.username);
+    const [username , Setusername]=useState('');
     //email
-    const [email , Setemail]=useState(location.email);
+    const [email , Setemail]=useState('');
 
     const [value, setValue] = React.useState('one');
     //father name
@@ -65,6 +65,42 @@ const CV = ()=> {
     //Postal Cod
     const [Postalinput,SetPosatlinput]=useState('');
     const [Postal,SetPostal]=useState('');
+
+    const [openingPage,SetopeningPage]=useState(true);
+    //let item = {
+    //token:location.access_token
+    //};
+    //console.warn(item);
+    if(openingPage){
+        fetch(url + "/me",{
+            method:'GET',
+            mode: 'cors',
+            headers: {'Content-Type' : 'application/json' ,
+                "Authorization" : `Bearer ${location.access_token}`},
+            //body:JSON.stringify(item)
+        })
+            .then(async response => {
+                if(response.status === 200){
+                    response=await response.json();
+                    Setfname(response.firstName);
+                    Setlname(response.lastName);
+                    Setemail(response.email);
+                    SetopeningPage(false);
+                }
+                else{
+                    toast.error("Failed to load your personal info", {
+                        position: "top-right",
+                        closeOnClick: true
+                    });
+                    throw new Error('Failed to load your personal info.\n' + response.statusText);
+                }
+            })
+            .then(response => {
+                //console.log(response);
+            })
+            .catch( err => console.log(err));
+
+    }
     const handlefatherinput = (event)=>{
         SetFatherinput(event.target.value);
     }
