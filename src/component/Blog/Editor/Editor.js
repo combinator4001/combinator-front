@@ -62,7 +62,7 @@ const modules = {
     }
 }*/
 
-const Editor=()=>{
+/*const Editor=()=>{
     const location = useLocation();
     const [html,Sethtml]=useState(" ");
     const modules = {
@@ -134,5 +134,33 @@ return(
         <button onClick={handleChange}>check</button>
     </div>
 );
+}*/
+class Editor extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = { text: '' } // You can also pass a Quill Delta here
+        this.handleChange = this.handleChange.bind(this)
+        this.Post = this.Post.bind(this)
+    }
+
+    handleChange(value) {
+        this.setState({ text: value })
+        console.log(value);
+    }
+    Post(value){
+        this.setState({ text: value })
+        //request to back
+    }
+
+    render() {
+        return (
+            <ReactQuill value={this.state.text}
+                        theme="snow"
+                        placeholder="Type here"
+                        modules={modules}
+                        onChange={this.handleChange} />
+
+        )
+    }
 }
 export default Editor;
