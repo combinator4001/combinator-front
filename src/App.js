@@ -14,7 +14,7 @@ import Changepass from './component/ForgetPass/Changepass';
 import ProfileUser from './component/profileuser1/profileUser1';
 import ProfileCompany from "./component/profileCompany/ProfileCompany";
 import Dashboard from './component/Dashboard/Dashboard';
-
+import DashboardCo from './component/DashboardCompany/Dashboard';
 
 const App =()=> {
   const user = useSelector(selectuser);
@@ -38,6 +38,7 @@ const App =()=> {
         <Route path="/reset/:forgetPassToken" component={Changepass} />
         <Route path="/ProfileCompany" component={ProfileCompany} />
         <Route path="/Dashboard" component={Dashboard} />
+        <Route path="/DashboardCompany" component={DashboardCo} />
       </switch>
     </div>
   </Router>
