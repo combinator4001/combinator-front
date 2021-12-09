@@ -8,23 +8,16 @@ import Box from '@mui/material/Box';
 import React , {useState} from 'react';
 import validateInfo from './validpro';
 import validbool from './validbool';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
+
+
 import ProfileImg from '../profile-user/ProfileImg';
-import Blog from "../Blog/Blog";
-import CV from "../CV/CV";
+
+
 import {useLocation, useParams} from "react-router-dom";
 import url from "../../variables";
 import {toast} from "react-toastify";
 import { withRouter } from "react-router-dom";
-//import Avatar from '@mui/material/Avatar';
-//import TabContext from '@mui/lab/TabContext';
-//import TabList from '@mui/lab/TabList';
-//import TabPanel from '@mui/lab/TabPanel';
-//import Stack from '@mui/material/Stack';
-//import { shadows } from '@mui/system';
-//import CreateIcon from '@material-ui/icons/Create';
-//import Img from './ProfileImg'
+
 
 
 
@@ -54,6 +47,7 @@ const ProfileUser =  ({history}) => {
     //let item = {
         //token:location.access_token
     //};
+
     //console.warn(item);
     if(openingPage){
         fetch(url + "/me",{
@@ -86,6 +80,8 @@ const ProfileUser =  ({history}) => {
                         setbioinput(response.bio);
                         Setbio(response.bio);
                         SetopeningPage(false);
+                        Setimage(response.imageUrl);
+
                     }
 
                 }
