@@ -66,6 +66,7 @@ const Login =({history}) => {
                         access_token:response.access_token,
                         //bio:response.bio
                     });
+                    localStorage.setItem('token',response.access_token);
 
                     console.log(response.email);
                     }

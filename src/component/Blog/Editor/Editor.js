@@ -28,137 +28,91 @@ const modules = {
         matchVisual: false
     }
 };
-/*class Editor extends React.Component {
+
+class Editor extends React.Component {
     constructor(props) {
-        //const location = useLocation();
         super(props)
-        this.state =
-            { text: '',tags :['']/*,accessT:location.access_token } // You can also pass a Quill Delta here
-        this.handleChange = this.handleChange.bind(this)
+        this.state = { text: '' ,isSUBMITed:false} // You can also pass a Quill Delta here
+        //this.handleChange = this.handleChange.bind(this)
         //this.Post = this.Post.bind(this)
-        //const tags =[];
+        //const access_token = localStorage.getItem('token')
     }
 
-    handleChange(value) {
+    handleChange=(value)=> {
         this.setState({ text: value })
-        console.log(value);
+        //console.log(value);
     }
+    Post=()=>{
+        //this.setState({isSUBMITed:true});
 
+        console.log("post func")
+        this.handleClick();
+    }
+    handleClick = async() => {
+
+
+        if(!this.state.isSUBMITed){
+            this.state.isSUBMITed=true;
+            let alltags=[,];
+            let item = {
+                title:'new post',
+                content:this.state.text,
+                estimatedMinutes:5,
+                tags:alltags
+            };
+            fetch(url + "/blog",{
+                crossDomain:true,
+                method:'POST',
+                mode: 'cors',
+                headers: {'Content-Type' : 'application/json' ,
+                    "Authorization" : `Bearer ${localStorage.getItem('token')}`},
+                body:JSON.stringify(item)
+            })
+                .then( async (response) => {
+                    if(response.status === 201){
+                        response = await response.json();
+                        console.log(response);
+                        toast.success(response.message, {
+                            position: "top-right",
+                            closeOnClick: true
+                        });
+                    }else if(response.status === 400){
+                        response = await response.json();
+                        toast.error(response.message[0], {
+                            position: "top-right",
+                            closeOnClick: true
+                        });
+                    }else if(response.status === 401){
+                        response = await response.json();
+                        toast.error(response.message, {
+                            position: "top-right",
+                            closeOnClick: true
+                        });
+                    }
+                    else{
+                        toast.error("not done!!", {
+                            position: "top-right",
+                            closeOnClick: true
+                        });
+                    }
+
+                })
+                .catch( err => console.log(err));
+
+        }
+
+    }
 
     render() {
         return (
-            <div>
+            <>
                 <ReactQuill value={this.state.text}
                             theme="snow"
                             placeholder="Type here"
                             modules={modules}
                             onChange={this.handleChange} ></ReactQuill>
-                <button /*onClick={Post(this.state.text)}></button>
-            </div>
-
-            //<button onClick={}>sdfg</button>
-
-        )
-    }
-}*/
-
-/*const Editor=()=>{
-    const location = useLocation();
-    const [html,Sethtml]=useState(" ");
-    const modules = {
-        toolbar: [
-            [{ header: "1" }, { header: "2" }, { font: [] }],
-            [{ size: [] }],
-            ["bold", "italic", "underline", "strike", "blockquote"],
-            [
-                { list: "ordered" },
-                { list: "bullet" },
-                { indent: "-1" },
-                { indent: "+1" }
-            ],
-            ["link", "image", "video"],
-            ["clean"]
-        ],
-        clipboard: {
-            // toggle to add extra line breaks when pasting HTML:
-            matchVisual: false
-        }
-    };
-    const handleChange= (event)=>{
-        //Sethtml(event.target.value);
-        console.log(event.target.value);
-    }
-    const Sendpost= async() => {
-        let item = {
-            title:"new post",
-            content:html,
-            estimatedMinutes:5,
-            tags:this.state.tags
-        };
-        fetch(url + "/blog",{
-            crossDomain:true,
-            method:'POST',
-            mode: 'cors',
-            headers: {'Content-Type' : 'application/json' ,
-                "Authorization" : `Bearer ${location.location.access_token}`},
-            body:JSON.stringify(item)
-        })
-            .then(async response => {
-                if(response.status === 201){
-                    response=await response.json();
-                    toast.success(response.message,{
-                        position:"top-right",
-                        closeOnClick:true
-                    });
-                }
-                else{
-                    toast.error("Failed to submit your post, try again later", {
-                        position: "top-right",
-                        closeOnClick: true
-                    });
-                    throw new Error('Failed to submit your post, try again later\n' + response.statusText);
-                }
-            })
-            .catch( err => console.log(err));
-    }
-return(
-    <div>
-        <ReactQuill value={html}
-                    theme="snow"
-                    placeholder="Type here"
-                    modules={modules}
-                    onChange={handleChange} ></ReactQuill>
-
-
-        <button onClick={Sendpost}>send</button>
-        <button onClick={handleChange}>check</button>
-    </div>
-);
-}*/
-class Editor extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = { text: '' } // You can also pass a Quill Delta here
-        this.handleChange = this.handleChange.bind(this)
-        this.Post = this.Post.bind(this)
-    }
-
-    handleChange(value) {
-        this.setState({ text: value })
-        console.log(value);
-    }
-    Post(value){
-        this.setState({ text: value })
-        //request to back
-    }
-
-    render() {
-        return (
-            <ReactQuill value={this.state.text}
-                        theme="snow"
-                        placeholder="Type here"
-                        modules={modules}
-                        onChange={this.handleChange} />
+                <button onClick={this.Post}>post</button>
+            </>
 
         )
     }
