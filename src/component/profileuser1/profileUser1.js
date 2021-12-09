@@ -80,7 +80,6 @@ const ProfileUser =  ({history}) => {
                         setbioinput(response.bio);
                         Setbio(response.bio);
                         SetopeningPage(false);
-                        Setimage(response.imageUrl);
 
                     }
 

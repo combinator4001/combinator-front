@@ -11,6 +11,7 @@ export default function Img() {
     const [image, setImage] = useState("");
     const [openingPage,SetopeningPage]=useState(true);
 
+    console.log("run");
 
 
         //console.warn(item);
@@ -88,7 +89,7 @@ export default function Img() {
 		const formData = new FormData();
 
 
-		formData.append('File', image);
+		formData.append('image', image);
 
 
 		fetch(
@@ -96,9 +97,9 @@ export default function Img() {
 			url + "/image",
 
 			{
-
+                crossDomain:true,
 				method: 'PUT',
-
+                mode: 'cors',
 				body: formData,
 
                 headers: {'Content-Type' : 'application/json' ,
@@ -139,6 +140,8 @@ export default function Img() {
             })
             .catch( err => console.log(err));
 
+
+            console.log(response);
 	};
 
 
@@ -163,6 +166,9 @@ export default function Img() {
                    if(file  && file.type.substring(0, 5) === "image"){
                        setImage(file);
                        submitimage();
+                       console.log(response);
+                       console.log("run");
+
                    }
                    else{
                        setImage(null);
