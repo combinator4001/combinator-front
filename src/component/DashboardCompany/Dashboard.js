@@ -23,7 +23,7 @@ import CoPresentIcon from '@mui/icons-material/CoPresent';
 import SettingsIcon from '@mui/icons-material/Settings';
 import LogoutIcon from '@mui/icons-material/Logout';
 
-import Profile from "../profileuser1/profileUser1"
+import Profile from "../profileCompany/ProfileCompany"
 import Blog from "../Blog/Blog";
 import CV from "../CV/CV";
 import ListItemButton from '@mui/material/ListItemButton';
