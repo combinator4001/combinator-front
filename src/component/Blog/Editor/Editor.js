@@ -8,6 +8,7 @@ import {toast} from "react-toastify";
 import { Message } from 'semantic-ui-react';
 import {  Comment, Form, Header } from 'semantic-ui-react';
 import { Grid } from 'semantic-ui-react';
+import ListBlog from "./ListBlog";
 
 const modules = {
     toolbar: [
@@ -42,6 +43,7 @@ class Editor extends React.Component {
         this.setState({ text: value })
         //console.log(value);
     }
+
     Post=()=>{
         //this.setState({isSUBMITed:true});
 
@@ -103,6 +105,7 @@ class Editor extends React.Component {
 
     }
 
+
     render() {
         return (
             <>
@@ -111,7 +114,12 @@ class Editor extends React.Component {
                             placeholder="Type here"
                             modules={modules}
                             onChange={this.handleChange} ></ReactQuill>
-                <button onClick={this.Post}>post</button>
+                <Button variant="contained" color="primary" disableElevation
+                        style={{marginTop:"20px",marginBottom:"20px" , width:"auto", borderRadius:"15px"  }} onClick={this.Post}>
+                    Post
+                </Button>
+
+                <ListBlog></ListBlog>
             </>
 
         )

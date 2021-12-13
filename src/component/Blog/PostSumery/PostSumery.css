@@ -1,0 +1,33 @@
+.PostBody{
+    width:90% ;
+    margin: 5%;
+}
+.mainBody{
+    height: auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.Post_main_Body{
+    width: 60%;
+    height: auto;
+    padding: 2%;
+    margin: 2%;
+    border: 2px solid red;
+    border-radius: 25px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: left;
+    flex-basis: 30%;
+}
+.Post_main_Body p{
+    font-size: 20px;
+    margin: 0px;
+    width: 33%;
+
+}
+.Post_main_Body_link:hover{
+    cursor: pointer;
+}

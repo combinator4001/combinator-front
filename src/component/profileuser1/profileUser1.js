@@ -307,14 +307,17 @@ const ProfileUser =  ({history}) => {
                                         {errors.emailinput && <p>{errors.emailinput}!</p>}
                                     </div>
 
-                                    <TextField
+
+                                    <textarea
+                                        rows="4"
+                                        cols="68"
                                         id="outlined-helperText"
                                         label="Bio"
                                         variant="outlined"
-                                        style={{marginTop:"3%" , width:"70%" }}
+                                        style={{marginTop:"3%" , width:"70%" , padding:"2%" }}
                                         onChange={handlebioChange}
                                         value={bioinput}
-                                    />
+                                    ></textarea>
                                     <div className="profileUser1_btnContainer">
                                         <Button variant="contained" color="primary" disableElevation
                                                 style={{marginTop:"20px",marginBottom:"20px" , width:"auto", borderRadius:"15px"  }} onClick={handleClick}>
