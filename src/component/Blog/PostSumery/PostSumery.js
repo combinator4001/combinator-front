@@ -36,13 +36,21 @@ class PostSumery extends React.Component {
                     if(response.role==="PERSON")
                     {
                         history.push({
-                            //pathname: '/Dashboard'
+                            //pathname: '/SinglePost'
+                            title:this.state.titl,
+                            id:this.state.id,
+                            estimate:this.state.estimat,
+                            date:this.state.dateOfSubmit
                         });
                     }
                     if(response.role==="COMPANY"){
                         //console.log(response.owners[0]);
                         history.push({
                             //pathname: '/Dashboard'
+                            title:this.state.titl,
+                            id:this.state.id,
+                            estimate:this.state.estimat,
+                            date:this.state.dateOfSubmit
                         });
                     }
                 }
