@@ -76,7 +76,7 @@ const SpeceficPost=({prop})=>{
 
     return (
         <div>
-
+            {id}
         </div>
 
 

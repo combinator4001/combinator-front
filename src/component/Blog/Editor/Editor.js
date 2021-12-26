@@ -9,7 +9,7 @@ import { Message } from 'semantic-ui-react';
 import {  Comment, Form, Header } from 'semantic-ui-react';
 import { Grid } from 'semantic-ui-react';
 import ListBlog from "./ListBlog";
-
+import AllPostSummery from "../AllPostSummery/AllPostSummery";
 const modules = {
     toolbar: [
         [{ header: "1" }, { header: "2" }, { font: [] }],
@@ -33,7 +33,7 @@ const modules = {
 class Editor extends React.Component {
     constructor(props) {
         super(props)
-        this.state = { text: '' ,isSUBMITed:false} // You can also pass a Quill Delta here
+        this.state = { text: '' ,isSUBMITed:false,username:props.username} // You can also pass a Quill Delta here
         //this.handleChange = this.handleChange.bind(this)
         //this.Post = this.Post.bind(this)
         //const access_token = localStorage.getItem('token')
@@ -106,6 +106,7 @@ class Editor extends React.Component {
     }
 
 
+
     render() {
         return (
             <>
@@ -119,7 +120,7 @@ class Editor extends React.Component {
                     Post
                 </Button>
 
-                <ListBlog></ListBlog>
+                <AllPostSummery />
             </>
 
         )

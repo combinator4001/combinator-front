@@ -56,19 +56,13 @@ const Login =({history}) => {
                     if(response.role==="PERSON")
                     {
                     //setfirstname(response.firstName);
-                    console.log(response.access_token);
-                    history.push({
-                        pathname: '/Dashboard',
-                        //firstName:response.firstName,
-                        //lastName:response.lastName,
-                        //username:response.username,
-                        //email:response.email,
-                        access_token:response.access_token,
-                        //bio:response.bio
-                    });
+                    //console.log(response.access_token);
                     localStorage.setItem('token',response.access_token);
-
-                    console.log(response.email);
+                    //console.log(response.email);
+                        history.push({
+                            pathname: '/Dashboard',
+                            access_token:response.access_token,
+                        });
                     }
                     if(response.role==="COMPANY"){
                         //console.log(response.owners[0]);
