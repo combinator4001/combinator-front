@@ -10,7 +10,7 @@ import validateInfo from './validpro';
 import validbool from './validbool';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import ProfileImg from '../profile-user/ProfileImg';
+import ProfileImg from '../profileuser1/ProfileImg';
 import Blog from "../Blog/Blog";
 import CV from "../CV/CV";
 import { useLocation } from "react-router-dom";
