@@ -3,13 +3,10 @@ import 'react-quill/dist/quill.snow.css';
 import React , {useState} from 'react';
 import {Button} from "@mui/material";
 import url from "../../../variables";
-import {useLocation, useParams} from "react-router-dom";
 import {toast} from "react-toastify";
-import { Message } from 'semantic-ui-react';
-import {  Comment, Form, Header } from 'semantic-ui-react';
-import { Grid } from 'semantic-ui-react';
-import ListBlog from "./ListBlog";
-import AllPostSummery from "../AllPostSummery/AllPostSummery";
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+
 const modules = {
     toolbar: [
         [{ header: "1" }, { header: "2" }, { font: [] }],
@@ -33,7 +30,7 @@ const modules = {
 class Editor extends React.Component {
     constructor(props) {
         super(props)
-        this.state = { text: '' ,isSUBMITed:false,username:props.username} // You can also pass a Quill Delta here
+        this.state = { text: '' ,isSUBMITed:false,username:props.username,title:"",estimat:0} // You can also pass a Quill Delta here
         //this.handleChange = this.handleChange.bind(this)
         //this.Post = this.Post.bind(this)
         //const access_token = localStorage.getItem('token')
@@ -43,11 +40,23 @@ class Editor extends React.Component {
         this.setState({ text: value })
         //console.log(value);
     }
+    handleTitleChange=( event)=>{
+        this.setState({title:event.target.value})
+        //console.log( this.state.title);
+    }
+    handleMinoutChange=(event)=>{
+        this.setState({estimat:event.target.value})
+        //console.log(this.state.estimat);
+    }
 
     Post=()=>{
         //this.setState({isSUBMITed:true});
 
-        console.log("post func")
+        //console.log("post func")
+        //console.log(localStorage.getItem('token'));
+        //console.log(typeof parseInt(this.state.estimat) );
+        //console.log(typeof this.state.title);
+        //console.log(typeof this.state.text);
         this.handleClick();
     }
     handleClick = async() => {
@@ -55,12 +64,12 @@ class Editor extends React.Component {
 
         if(!this.state.isSUBMITed){
             this.state.isSUBMITed=true;
-            let alltags=[,];
+            let alltags=[];
             let item = {
-                title:'new post',
+                title:this.state.title,
                 content:this.state.text,
-                estimatedMinutes:5,
-                tags:alltags
+                estimatedMinutes:parseInt(this.state.estimat)+1,
+                tagIds:alltags
             };
             fetch(url + "/blog",{
                 crossDomain:true,
@@ -110,6 +119,33 @@ class Editor extends React.Component {
     render() {
         return (
             <>
+                <Box
+                    component="form"
+                    sx={{
+                        '& .MuiTextField-root': { m: 1, width: '25ch' },
+                    }}
+                    noValidate
+                    autoComplete="off"
+                >
+                    <TextField
+
+                        type="text"
+                        id="outlined-basic"
+                        label="title"
+                        defaultValue="Post Title"
+                        onChange={this.handleTitleChange.bind(this)}
+                    />
+                    <TextField
+                        id="standard-number"
+                        label="Estimated time"
+                        type="number"
+                        InputLabelProps={{
+                            shrink: true,
+                        }}
+                        onChange={this.handleMinoutChange.bind(this)}
+                    />
+                </Box>
+
                 <ReactQuill value={this.state.text}
                             theme="snow"
                             placeholder="Type here"
@@ -120,7 +156,6 @@ class Editor extends React.Component {
                     Post
                 </Button>
 
-                <AllPostSummery />
             </>
 
         )

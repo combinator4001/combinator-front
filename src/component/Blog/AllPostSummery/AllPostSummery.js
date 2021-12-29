@@ -4,6 +4,7 @@ import {toast} from "react-toastify";
 //import './PostSumery.css'
 import {useLocation, useParams} from "react-router-dom";
 import React , {useState,useEffect} from 'react';
+import PostSumery from "../PostSumery/PostSumery";
 
 
 
@@ -69,16 +70,17 @@ const AllPostSummery= ()=>{
     },[])
 
 
-
+    const listItems=list.map((item)=>(
+        <PostSumery id={item.id} title={item.title} estimatedMinutes={item.estimatedMinutes} createdAt={item.createdAt}/>
+    ));
 
 
     return(
 
         <div>
             {
-                console.log( list[0])
-
-
+                //console.log(list[1].id.toString())
+                listItems
                 //console.log(Object.values(list))
                 // list.map((value,i) => console.log(value,i))
                 // list.forEach(value => {
