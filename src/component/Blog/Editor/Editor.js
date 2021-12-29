@@ -6,7 +6,7 @@ import url from "../../../variables";
 import {toast} from "react-toastify";
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-
+import AddTag from "../AddTag/AddTag";
 const modules = {
     toolbar: [
         [{ header: "1" }, { header: "2" }, { font: [] }],
@@ -155,6 +155,7 @@ class Editor extends React.Component {
                         style={{marginTop:"20px",marginBottom:"20px" , width:"auto", borderRadius:"15px"  }} onClick={this.Post}>
                     Post
                 </Button>
+                <AddTag/>
 
             </>
 
