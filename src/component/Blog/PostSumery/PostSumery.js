@@ -1,7 +1,7 @@
 import Box from '@mui/material/Box';
 import url from "../../../variables";
 import {toast} from "react-toastify";
-//import './PostSumery.css'
+import './PostSumery.css'
 import {useLocation, useParams} from "react-router-dom";
 import React , {useState} from 'react';
 

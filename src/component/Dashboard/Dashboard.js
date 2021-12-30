@@ -22,12 +22,13 @@ import BookIcon from '@mui/icons-material/Book';
 import CoPresentIcon from '@mui/icons-material/CoPresent';
 import SettingsIcon from '@mui/icons-material/Settings';
 import LogoutIcon from '@mui/icons-material/Logout';
-
+import SendIcon from '@mui/icons-material/Send';
 import Profile from "../profileuser1/profileUser1"
 import Blog from "../Blog/Blog";
 import CV from "../CV/CV";
 import ListItemButton from '@mui/material/ListItemButton';
 import { Link } from 'react-router-dom';
+import AllPostSummery from "../Blog/AllPostSummery/AllPostSummery";
 
 
 const drawerWidth = 240;
@@ -116,23 +117,33 @@ export default function MiniDrawer() {
 
   const [ShowCV,SetShowCV]=useState(false);
   const [Showprofile,SetShowprofile]=useState(false);
-  const [ShowBlog,SetShowBlog]=useState(true);
+  const [ShowBlog,SetShowBlog]=useState(false);
+  const [ShowPosts,SetShowPosts]=useState(true);
   
 
   const ChangtoCV =()=>{
     SetShowCV(true);
     SetShowBlog(false);
     SetShowprofile(false);
+    SetShowPosts(false);
   }
   const Changtoprofile =()=>{
     SetShowCV(false);
     SetShowBlog(false);
     SetShowprofile(true);
+    SetShowPosts(false);
   }
   const ChangtoBlog =()=>{
     SetShowCV(false);
     SetShowBlog(true);
     SetShowprofile(false);
+    SetShowPosts(false);
+  }
+  const ChangtoPosts =()=>{
+    SetShowCV(false);
+    SetShowBlog(false);
+    SetShowprofile(false);
+    SetShowPosts(true);
   }
 
 
@@ -188,6 +199,11 @@ export default function MiniDrawer() {
             <ListItemText primary={'CV'} />
           </ListItemButton>
 
+          <ListItemButton  onClick={ChangtoPosts} key={'myposts'}>
+            <ListItemIcon><SendIcon /></ListItemIcon>
+            <ListItemText primary={'My posts'} />
+          </ListItemButton>
+
         </List>
         <Divider />
         <List>
@@ -212,6 +228,7 @@ export default function MiniDrawer() {
         {ShowCV && (<CV />) }
         {Showprofile && (<Profile />) }
         {ShowBlog && (<Blog />) }
+        {ShowPosts && (<AllPostSummery />) }
 
             
       </Box>
