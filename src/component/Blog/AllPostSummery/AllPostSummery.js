@@ -5,15 +5,17 @@ import {toast} from "react-toastify";
 import {useLocation, useParams} from "react-router-dom";
 import React , {useState,useEffect} from 'react';
 import PostSumery from "../PostSumery/PostSumery";
+import './AllPostSummery.css'
 
 
 
 const AllPostSummery= ()=>{
 
     const [summeries,Setsummeries ]=useState();
+    let [list,Setlist]=useState([]);
     const [username,Setusername]=useState('');
     //const [list,Setlist]=useState();
-    let [list,Setlist]=useState([]);
+
     const [isConecting,SetisConecting]=useState(false);
     //get username
     useEffect(async ()=>{
@@ -77,7 +79,7 @@ const AllPostSummery= ()=>{
 
     return(
 
-        <div>
+        <div className="main_part_AllPostSumery">
             {
                 //console.log(list[1].id.toString())
                 listItems
