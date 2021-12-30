@@ -1,7 +1,6 @@
 import Box from '@mui/material/Box';
 import url from "../../../variables";
 import {toast} from "react-toastify";
-import './PostSumery.css'
 import {useLocation, useParams} from "react-router-dom";
 import React , {useState} from 'react';
 
@@ -57,15 +56,12 @@ const SpeceficPost=({prop})=>{
                 }
             }
             else{
-                toast.error("Failed to login, try again later", {
+                toast.error("Failed to load this post, try again later", {
                     position: "top-right",
                     closeOnClick: true
                 });
-                throw new Error('Failed to login, try again later.\n' + response.statusText);
+                throw new Error('Failed to load this post, try again later.\n' + response.statusText);
             }
-        })
-        .then(response => {
-            //console.log(response);
         })
         .catch( err => console.log(err));
 
@@ -76,6 +72,8 @@ const SpeceficPost=({prop})=>{
 
     return (
         <div>
+            {title}
+            <br/>
             {id}
         </div>
 

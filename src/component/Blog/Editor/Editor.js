@@ -7,6 +7,16 @@ import {toast} from "react-toastify";
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import AddTag from "../AddTag/AddTag";
+import { styled } from '@mui/material/styles';
+import Paper from '@mui/material/Paper';
+import AllTags from "../AllTags/AllTags";
+
+const Item = styled(Paper)(({ theme }) => ({
+    ...theme.typography.body2,
+    padding: theme.spacing(1),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+}));
 const modules = {
     toolbar: [
         [{ header: "1" }, { header: "2" }, { font: [] }],
@@ -51,7 +61,6 @@ class Editor extends React.Component {
 
     Post=()=>{
         //this.setState({isSUBMITed:true});
-
         //console.log("post func")
         //console.log(localStorage.getItem('token'));
         //console.log(typeof parseInt(this.state.estimat) );
@@ -119,44 +128,59 @@ class Editor extends React.Component {
     render() {
         return (
             <>
-                <Box
-                    component="form"
-                    sx={{
-                        '& .MuiTextField-root': { m: 1, width: '25ch' },
-                    }}
-                    noValidate
-                    autoComplete="off"
-                >
-                    <TextField
-
-                        type="text"
-                        id="outlined-basic"
-                        label="title"
-                        defaultValue="Post Title"
-                        onChange={this.handleTitleChange.bind(this)}
-                    />
-                    <TextField
-                        id="standard-number"
-                        label="Estimated time"
-                        type="number"
-                        InputLabelProps={{
-                            shrink: true,
-                        }}
-                        onChange={this.handleMinoutChange.bind(this)}
-                    />
+                <Box sx={{ width: 1 }}>
+                    <Box display="grid" gridTemplateColumns="repeat(12, 1fr)" gap={2}>
+                        <Box gridColumn="span 6">
+                            <Item>
+                                <TextField
+                                style={{width: "50%"}}
+                                type="text"
+                                id="outlined-basic"
+                                label="title"
+                                defaultValue="Post Title"
+                                onChange={this.handleTitleChange.bind(this)}
+                            />
+                            </Item>
+                        </Box>
+                        <Box gridColumn="span 6">
+                            <Item>
+                                <TextField
+                                id="standard-number"
+                                label="Estimated time"
+                                type="number"
+                                InputLabelProps={{
+                                    shrink: true,
+                                }}
+                                onChange={this.handleMinoutChange.bind(this)}
+                            />
+                            </Item>
+                        </Box>
+                        <Box gridColumn="span 12">
+                            <Item>
+                                <ReactQuill value={this.state.text}
+                                              theme="snow"
+                                              placeholder="Type here"
+                                              modules={modules}
+                                              onChange={this.handleChange} >
+                                </ReactQuill>
+                            </Item>
+                        </Box>
+                        <Box gridColumn="span 12">
+                            <div >
+                                <Button variant="contained" color="primary" disableElevation
+                                        style={{marginTop:"20px",marginBottom:"20px" , width:"auto", borderRadius:"15px"  }} onClick={this.Post}>
+                                    Post
+                                </Button>
+                            </div>
+                        </Box>
+                        <Box gridColumn="span 12">
+                            <Item>
+                                <AddTag/>
+                            </Item>
+                        </Box>
+                    </Box>
                 </Box>
-
-                <ReactQuill value={this.state.text}
-                            theme="snow"
-                            placeholder="Type here"
-                            modules={modules}
-                            onChange={this.handleChange} ></ReactQuill>
-                <Button variant="contained" color="primary" disableElevation
-                        style={{marginTop:"20px",marginBottom:"20px" , width:"auto", borderRadius:"15px"  }} onClick={this.Post}>
-                    Post
-                </Button>
-                <AddTag/>
-
+                <AllTags/>
             </>
 
         )
