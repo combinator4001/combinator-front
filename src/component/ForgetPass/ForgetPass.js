@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 import '../Login/Login.css'
 import { toast } from 'react-toastify';
 import url from '../../variables';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import {  Link } from "react-router-dom";
 
 
 const ForgetPass = () => {

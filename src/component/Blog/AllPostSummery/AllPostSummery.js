@@ -1,8 +1,5 @@
-import Box from '@mui/material/Box';
 import url from "../../../variables";
 import {toast} from "react-toastify";
-//import './PostSumery.css'
-import {useLocation, useParams} from "react-router-dom";
 import React , {useState,useEffect} from 'react';
 import PostSumery from "../PostSumery/PostSumery";
 import './AllPostSummery.css'
@@ -11,9 +8,7 @@ import './AllPostSummery.css'
 
 const AllPostSummery= ()=>{
 
-    const [summeries,Setsummeries ]=useState();
     let [list,Setlist]=useState([]);
-    const [username,Setusername]=useState('');
     //const [list,Setlist]=useState();
 
     const [isConecting,SetisConecting]=useState(false);

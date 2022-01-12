@@ -2,7 +2,6 @@ import React , {useState} from 'react';
 import  './Changepass.css'
 import { toast } from 'react-toastify';
 import url from '../../variables';
-import { withRouter } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
 const Changepass = ({history}) => {

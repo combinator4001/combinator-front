@@ -1,4 +1,4 @@
-import handle from "./FormSignup";
+
 
 export default function validateInfo(values) {
     let errors={}

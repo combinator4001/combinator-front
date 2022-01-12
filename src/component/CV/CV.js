@@ -1,15 +1,11 @@
 import Typography from '@material-ui/core/Typography';
-//import { AppBar, Avatar, Button, Chip, Container, IconButton, Link, makeStyles, MenuItem, Popover, Snackbar, Toolbar, } from '@material-ui/core';
 import '../profileuser1/profile1.css'
 import './CV.css'
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import Box from '@mui/material/Box';
 import React , {useState} from 'react';
-import validateInfo from './validpro';
-import validbool from './validbool';
 import Button from '@mui/material/Button';
-import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { useLocation } from "react-router-dom";
 import url from "../../variables";
@@ -17,7 +13,7 @@ import {toast} from "react-toastify";
 import Tab from "@mui/material/Tab";
 import Tabs from "@mui/material/Tabs";
 import Select from '@mui/material/Select';
-import DateTimePicker from '@mui/lab/DateTimePicker';
+
 
 
 

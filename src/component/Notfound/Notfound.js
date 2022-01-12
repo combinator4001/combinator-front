@@ -1,8 +1,6 @@
-import React , {useState} from 'react';
+import React  from 'react';
 import './Notfound.css';
-import {useSelector , useDispatch} from 'react-redux';
-import url from '../../variables';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
 
 
 

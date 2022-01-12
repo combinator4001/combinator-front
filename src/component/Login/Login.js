@@ -1,15 +1,12 @@
-import React , {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './Login.css';
 import doToggle from '../ToggleFunc.js';
-import SimpleReactValidator from 'simple-react-validator';
-import {useSelector , useDispatch} from 'react-redux';
 import {login} from '../../features/userSlice'
 import url from '../../variables';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import {  Link } from "react-router-dom";
 import { toast } from 'react-toastify';
 import { withRouter } from "react-router-dom";
-import profileuser from '../profile-user/Profileuser';
-import ProfileUser from '../profileuser1/profileUser1';
+
 
 
 const Login =({history}) => {
@@ -28,17 +25,90 @@ const Login =({history}) => {
 		setName("");
 		setpass("");
     }
-  	
-	const loginButton =async (event) =>
+  	function LoginBTN() {
+	    const [login,Setlogin]=useState(false);
+
+        useEffect(async()=>{
+            if(username && pass)
+            {
+                let item = {
+                    username,
+                    password : pass
+                };
+                console.warn(item);
+
+
+                fetch(url + "/auth/login",{
+                    method:'POST',
+                    mode: 'cors',
+                    headers: {'Content-Type' : 'application/json'},
+                    body:JSON.stringify(item)
+                })
+                    .then(async response => {
+                        if(response.status === 201){
+                            response=await response.json();
+                            toast.success(response.message,{
+                                position:"top-right",
+                                closeOnClick:true
+                            });
+                            if(response.role==="PERSON")
+                            {
+                                //setfirstname(response.firstName);
+                                //console.log(response.access_token);
+                                localStorage.setItem('token',response.access_token);
+                                //console.log(response.email);
+                                history.push({
+                                    pathname: '/Dashboard',
+                                    access_token:response.access_token,
+                                });
+                            }
+                            if(response.role==="COMPANY"){
+                                //console.log(response.owners[0]);
+                                history.push({
+                                    access_token:response.access_token,
+                                    pathname: '/Dashboard',
+                                    name:response.name,
+                                    username:response.username,
+                                    email:response.email,
+                                    bio:response.bio,
+                                    owners:response.owners[0]
+                                });
+                            }
+                        }
+                        else{
+                            toast.error("Failed to login, try again later", {
+                                position: "top-right",
+                                closeOnClick: true
+                            });
+                            throw new Error('Failed to login, try again later.\n' + response.statusText);
+                        }
+                    })
+                    .then(response => {
+                        //console.log(response);
+                    })
+                    .catch( err => console.log(err));
+
+            }
+            else{
+
+                toast.error("please fill!", {
+                    position: "top-right",
+                    closeOnClick: true
+                });
+            }
+        },[]);
+    }
+	const LoginButton =async (event) =>
 	{
-		if(username && pass)
-		{
-			let item = {
-				username,
-				password : pass
+	    console.log("login");
+        if(username && pass)
+        {
+            let item = {
+                username,
+                password : pass
             };
             console.warn(item);
-            
+
 
             fetch(url + "/auth/login",{
                 method:'POST',
@@ -46,59 +116,60 @@ const Login =({history}) => {
                 headers: {'Content-Type' : 'application/json'},
                 body:JSON.stringify(item)
             })
-            .then(async response => {
-                if(response.status === 201){
-                    response=await response.json();
-                    toast.success(response.message,{
-                        position:"top-right",
-                        closeOnClick:true
-                    });
-                    if(response.role==="PERSON")
-                    {
-                    //setfirstname(response.firstName);
-                    //console.log(response.access_token);
-                    localStorage.setItem('token',response.access_token);
-                    //console.log(response.email);
-                        history.push({
-                            pathname: '/Dashboard',
-                            access_token:response.access_token,
+                .then(async response => {
+                    if(response.status === 201){
+                        response=await response.json();
+                        toast.success(response.message,{
+                            position:"top-right",
+                            closeOnClick:true
                         });
+                        if(response.role==="PERSON")
+                        {
+                            //setfirstname(response.firstName);
+                            //console.log(response.access_token);
+                            localStorage.setItem('token',response.access_token);
+                            //console.log(response.email);
+                            history.push({
+                                pathname: '/Dashboard',
+                                access_token:response.access_token,
+                            });
+                        }
+                        if(response.role==="COMPANY"){
+                            //console.log(response.owners[0]);
+                            history.push({
+                                access_token:response.access_token,
+                                pathname: '/Dashboard',
+                                name:response.name,
+                                username:response.username,
+                                email:response.email,
+                                bio:response.bio,
+                                owners:response.owners[0]
+                            });
+                        }
                     }
-                    if(response.role==="COMPANY"){
-                        //console.log(response.owners[0]);
-                        history.push({
-                            access_token:response.access_token,
-                            pathname: '/Dashboard',
-                            name:response.name,
-                            username:response.username,
-                            email:response.email,
-                            bio:response.bio,
-                            owners:response.owners[0]
+                    else{
+                        toast.error("Failed to login, try again later", {
+                            position: "top-right",
+                            closeOnClick: true
                         });
+                        throw new Error('Failed to login, try again later.\n' + response.statusText);
                     }
-                }
-                else{
-                    toast.error("Failed to login, try again later", {
-                        position: "top-right",
-                        closeOnClick: true
-                    });					
-                    throw new Error('Failed to login, try again later.\n' + response.statusText);
-                }                
-            })
-            .then(response => {
-                //console.log(response);
-            })
-            .catch( err => console.log(err));
-			
-		}
-		else{
+                })
+                .then(response => {
+                    //console.log(response);
+                })
+                .catch( err => console.log(err));
 
-			toast.error("please fill!", {
-				position: "top-right",
-				closeOnClick: true
-			});
-		}     
-	}	     
+        }
+        else{
+
+            toast.error("please fill!", {
+                position: "top-right",
+                closeOnClick: true
+            });
+        }
+
+	}
 
   return (
     <>
@@ -134,9 +205,9 @@ const Login =({history}) => {
                                 </div>
                            </div>
                         </div>
-                        <p className="check1"><p></p> <Link to="/auth/password" style={{marginLeft:5}}>Forgot password</Link></p>
+                        <p className="check1"> <Link to="/auth/password" style={{marginLeft:5}}>Forgot password</Link></p>
                         <div className="button_containar1">
-                            <button className="yellow_buttons1" type="submit"  formNoValidate onClick={loginButton} value="log in" >Sign in</button>
+                            <button className="yellow_buttons1" type="submit"  formNoValidate onClick={LoginButton} value="log in" >Sign in</button>
                         </div>
                         <p className="checklogin2" style={{fontSize:90}}><Link to="/person"  style={{marginLeft:14}}>Don't have an account yet? Sign up</Link></p>
                     </form>
