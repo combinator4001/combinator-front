@@ -14,6 +14,7 @@ import Dashboard from './component/Dashboard/Dashboard';
 import DashboardCo from './component/DashboardCompany/Dashboard';
 import SignIn from "./component/SignIn";
 import SignUp from "./component/SignUp";
+import emailVerify from './component/email-verify/email-verify';
 
 const App =()=> {
 
@@ -34,6 +35,7 @@ const App =()=> {
         <Route path="/ProfileCompany" component={ProfileCompany} />
         <Route path="/Dashboard" component={Dashboard} />
         <Route path="/DashboardCompany" component={DashboardCo} />
+        <Route path="/email-verify" component={emailVerify} />
       </switch>
     </div>
   </Router>
