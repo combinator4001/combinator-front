@@ -25,7 +25,7 @@ function Copyright(props) {
     );
 }
 
-const emailVerify = () => {
+const SendVerifyEmailLink = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -121,4 +121,4 @@ const emailVerify = () => {
       );
 };
 
-export default emailVerify;
+export default SendVerifyEmailLink;
