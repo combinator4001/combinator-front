@@ -3,7 +3,6 @@ import React, {useEffect, useState} from 'react';
 import {Button} from "@mui/material";
 import url from "../../../variables";
 import {toast} from "react-toastify";
-import Tag from "./Tag";
 
 const AllTags=()=>{
     let [list,Setlist]=useState([]);

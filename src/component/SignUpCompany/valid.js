@@ -1,4 +1,4 @@
-import handle from "./FormSignupCompany";
+
 
 export default function validateInfo(values) {    
     if(!values.namecompany.trim()) {

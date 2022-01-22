@@ -1,9 +1,6 @@
 import Login from './component/Login/Login';
 import './App.css';
-import React , {useState} from 'react';
-import {useSelector } from 'react-redux';
-import {login, selectuser, signUp} from './features/userSlice';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import FormSignup from "./component/Sign Up/FormSignup";
 import ForgetPass from './component/ForgetPass/ForgetPass'
 import FormSignupCompany from './component/SignUpCompany/FormSignupCompany';
@@ -15,12 +12,10 @@ import ProfileUser from './component/profileuser1/profileUser1';
 import ProfileCompany from "./component/profileCompany/ProfileCompany";
 import Dashboard from './component/Dashboard/Dashboard';
 import DashboardCo from './component/DashboardCompany/Dashboard';
+import SignIn from "./component/SignIn";
+import SignUp from "./component/SignUp";
 
 const App =()=> {
-  const user = useSelector(selectuser);
-  //const name="zahra";
-
-
 
   
   return (
@@ -29,8 +24,8 @@ const App =()=> {
     <div>
     <ToastContainer/>
       <switch>
-        <Route exact path="/" component={Login}    />
-        <Route path="/person" component={FormSignup} />
+        <Route exact path="/" component={SignIn}    />
+        <Route path="/person" component={SignUp} />
         <Route path="/company" component={FormSignupCompany} />
         <Route path="/auth/password" component={ForgetPass} />
         <Route path="/profileuser" component={profileuser} />

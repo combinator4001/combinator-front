@@ -1,0 +1,230 @@
+.main_part{
+    display: flex;
+    justify-content: left;
+    align-items: flex-start;
+    background-color: #0077b6;
+    height: 100%;
+    /* background-image :linear-gradient(90deg,#3a0480 ,#00a6ca ) ; */
+}
+.profile{
+    width: auto;
+    border: 2px #00a6ca solid;
+    padding-bottom: 2%;
+    padding-top: 2%;
+    padding-left: 3%;
+    padding-right: 3%;
+    margin: 2%;
+    box-shadow: #caf0f8 0rem 0rem 15px 5px;
+    border-radius: 20px;
+    background-color: white;
+
+}
+.comppnent_aprt{
+    width: 65%;
+    margin: 2% 1% 2% 1%;
+    border: 2px #00a6ca solid;
+    box-shadow: #caf0f8 0rem 0rem 15px 5px;
+    border-radius: 20px;
+    padding: 2%;
+    padding-top: 0%;
+    background-color: white;
+}
+.comppnent_aprt_mainPart{
+    border: #0077b6 2px dashed;
+    border-radius: 20px;
+    padding: 2%;
+}
+.comppnent_aprt_btn_div{
+    width: auto;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: #0077b6 2px dashed;
+    border-radius: 20px;
+    margin-top: 2%;
+    margin-bottom: 2%;
+
+}
+.img5,.btn7{
+    height: 250px;
+    width: 250px;
+    object-fit: cover;
+    background-color: #88E3FF;
+    border-radius: 50%;
+    margin-top: 0px;
+    margin-left: 0px;
+
+}
+.info_content{
+    border: #0077b6 2px dashed;
+    border-radius: 20px;
+    padding-top: 8%;
+    padding-left: 3%;
+    margin-top: 4%;
+}
+.name5{
+    margin-top: 0px;
+    margin-left: 0px;
+    font-weight: bold;
+    font-size: 20px;
+}
+.usernam5{
+    margin-top: 5px;
+    margin-left: 0px;
+    font-size: 17px;
+    color: rgba(41, 40, 38, 0.623);
+}
+.bio5{
+    margin-top: 15px;
+    margin-left: 0px;
+    font-size: 18px;
+    border-left:2px #3a0480 solid ;
+    padding-left: 3%;
+}
+
+.btn5_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.btn5{
+    height: 100%;
+    border-radius: 50px;
+    border-top-right-radius: 0px;
+    font-size: 15px;
+
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10%;
+    padding-right: 10%;
+    margin-top: 4%;
+    margin-bottom: 4%;
+    background-color: #2177da;
+    border: none;
+    width: auto;
+    color: white;
+    margin-left: 0px;
+}
+.btn5:hover{
+    cursor: pointer;
+    background-color: #3a0480;
+    transition: background-color 1s ;
+}
+.namepro6{
+    width: 304px;
+    height: 30.4px;
+    margin-top: 19px;
+    margin-left: 0px;
+    border-radius: 5px;  
+}
+.email6{
+    width: 304px;
+    height: 30.4px;
+    margin-top: 19px;
+    margin-left: 0px;
+    border-radius: 5px;  
+}
+.form6{
+    display: flex;
+    flex-direction: column;
+}
+.lastpro6{
+    width: 304px;
+    height: 30.4px;
+    margin-top: 19px;
+    margin-left: 0px;
+    border-radius: 5px;  
+}
+.userpro6{
+    width: 304px;
+    height: 30.4px;
+    margin-top: 19px;
+    margin-left: 0px;
+    border-radius: 5px; 
+}
+.biopro6{
+    width: 304px;
+    height: 90px;
+    margin-top: 19px;
+    margin-left: 0px;
+    border-radius: 5px; 
+
+}
+.check6 p{
+    color:red;
+    font-size: 11.5px;
+    font-weight: bold;
+}
+
+
+.box6 input{
+    font-size: 16px;
+    height: 30px;
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border:1px solid #ccc;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+    padding-left:15px        
+}
+.box6 textarea{
+    font-size: 16px;
+    height: 90px;
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border:1px solid #ccc;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+    padding-left:15px        
+}
+.box6 input:focus,
+.box6 input:valid
+{
+    border-color:#2177da
+}
+
+.box6 textarea:focus,
+.box6 textarea:valid
+{
+    border-color:#2177da
+}
+
+.btn6{
+    height: 100%;
+    border-radius: 50px;
+    border-top-right-radius: 0px;
+    font-size: 15px;
+    margin-bottom: 2%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 5%;
+    padding-right: 5%;
+    background-color: #2177da;
+    margin-top: 10px;
+    border: none;
+    float: left;
+    width: 35%;
+    color: white;
+    margin-left: 0px;
+}
+.btn6:hover{
+    cursor: pointer;
+    background-color: #3a0480;
+    transition: background-color 1s ;
+}
+
+
+
+@media (max-width: 650px)
+{
+    .img5{
+        height: 104px;
+        width: 104px;
+    }
+}
+

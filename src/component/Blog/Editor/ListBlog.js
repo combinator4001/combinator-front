@@ -1,13 +1,9 @@
-import ReactQuill from 'react-quill'; // ES6
 import 'react-quill/dist/quill.snow.css';
 import React , {useState} from 'react';
-import {Button} from "@mui/material";
 import url from "../../../variables";
-import {useLocation, useParams} from "react-router-dom";
+import {useLocation } from "react-router-dom";
 import {toast} from "react-toastify";
-import { Message } from 'semantic-ui-react';
-import {  Comment, Form, Header } from 'semantic-ui-react';
-import { Grid } from 'semantic-ui-react';
+
 
 const ListBlog=()=>{
     const location=useLocation();

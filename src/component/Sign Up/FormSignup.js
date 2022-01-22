@@ -1,14 +1,11 @@
 import React , {useState} from 'react';
-import {useSelector , useDispatch} from 'react-redux';
-import {signUp} from '../../features/userSlice'
 import '../Login/Login.css'
 import validate from './validateInfo'
 import valid1 from './valid'
 import url from '../../variables';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import {  Link } from "react-router-dom";
 import { toast } from 'react-toastify';
-import SimpleReactValidator from "simple-react-validator";
-import { withRouter } from "react-router-dom";
+
 
 const FormSignup = ({history}) => {
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -59,9 +56,7 @@ const FormSignup = ({history}) => {
                 lastName : lastname,                
                 email
             };
-            //console.warn(item);
             
-
             fetch(url + "/person",{
                 crossDomain:true,
                 method:'POST',
@@ -100,34 +95,6 @@ const FormSignup = ({history}) => {
             })
             .catch( err => console.log(err));
 
-            // axios
-            //     .post(
-            //         url + "/FormSignup",
-            //         JSON.stringify(item),
-            //         {
-            //             headers: {
-            //                 'Content-Type' : 'application/json'} 
-            //         }
-            //     ).then(response => {
-            //         if(response.status === 200){
-            //             setMessage('sign up successfully!');
-            //             toast.success("jj");
-            //             reset();
-            //             return response.json();
-            //         }
-            //         else if(response.status === 400){
-            //             setMessage('Username already exists!');
-            //             throw new Error('Username already exists!\n' + response.statusText);
-            //         }else {
-            //             reset();                        
-            //             setMessage('Failed to register, try again later.');
-            //             throw new Error('Failed to register, try again later.\n' + response.statusText);
-            //         }
-
-            //     }
-            //     )
-            //     .then(response => alert(response))
-            //     .catch( err => console.log(err));
         }       
     }
 

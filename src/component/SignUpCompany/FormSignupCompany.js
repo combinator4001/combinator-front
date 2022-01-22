@@ -1,10 +1,8 @@
 import React , {useState} from 'react';
-import {useSelector , useDispatch} from 'react-redux';
-import {signUp} from '../../features/userSlice';
 import validate from './validateInfo';
 import valid1 from './valid';
 import url from '../../variables';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import {  Link } from "react-router-dom";
 import { toast } from 'react-toastify';
 import { withRouter } from "react-router-dom";
 

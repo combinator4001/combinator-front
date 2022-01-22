@@ -1,15 +1,7 @@
-import Box from '@mui/material/Box';
-import url from "../../../variables";
-import {toast} from "react-toastify";
 import './PostSumery.css'
-import {useLocation, useParams} from "react-router-dom";
-import React , {useState} from 'react';
+import React  from 'react';
 import SpeceficPost from "../SpecificPost/SpecificPost";
-const PostToShow=(id)=>{
-    const [content,Setcontent]=useState();
 
-
-}
 class PostSumery extends React.Component {
     constructor(props) {
         super(props)
