@@ -14,10 +14,8 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import validate from './Sign Up/validateInfo'
 import valid1 from './Sign Up/valid'
-import FormSignup from "./Sign Up/FormSignup";
 import url from "../variables";
 import {toast} from "react-toastify";
-import { makeStyles } from "@material-ui/core/styles";
 import {useState} from "react";
 
 

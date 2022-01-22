@@ -3,13 +3,14 @@ import {toast} from "react-toastify";
 import React , {useState,useEffect} from 'react';
 import PostSumery from "../PostSumery/PostSumery";
 import './AllPostSummery.css'
-
+import FeaturedPost from "../PostSumery/FeaturedPost";
+import Grid from '@mui/material/Grid';
 
 
 const AllPostSummery= ()=>{
 
+
     let [list,Setlist]=useState([]);
-    //const [list,Setlist]=useState();
 
     const [isConecting,SetisConecting]=useState(false);
     //get username
@@ -53,38 +54,24 @@ const AllPostSummery= ()=>{
             });
         }
 
-
-        // console.log(response);
-            /*.then( response => {
-                response.json().then(value => {
-                    //console.log(value);
-                    for ( var i = 0; i < value.length; i++) {
-                        list.push( value[i]);
-                    }
-                });
-            })*/
-
     },[])
 
 
-    const listItems=list.map((item)=>(
-        <PostSumery id={item.id} title={item.title} estimatedMinutes={item.estimatedMinutes} createdAt={item.createdAt}/>
-    ));
+
+
 
 
     return(
+        <>
 
         <div className="main_part_AllPostSumery">
-            {
-                //console.log(list[1].id.toString())
-                listItems
-                //console.log(Object.values(list))
-                // list.map((value,i) => console.log(value,i))
-                // list.forEach(value => {
-                //     console.log("v",value)
-                // })
-            }
+            <Grid container spacing={4}>
+                {list.map((post) => (
+                    <FeaturedPost key={post.title} post={post} />
+                ))}
+            </Grid>
         </div>
+            </>
     )
 }
 export default AllPostSummery;
