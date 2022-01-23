@@ -55,13 +55,14 @@ function SignUp({history }) {
 
         if(check){
             let item = {
-                username : data.get('usernam'),
+                username : data.get('userName'),
                 password : data.get('password'),
                 firstName: data.get('firstName'),
                 lastName : data.get('lastName'),
                 email : data.get('email')
             };
-            fetch(url + "/auth/login",{
+            fetch(url + "/person",{
+                crossDomain:true,
                 method:'POST',
                 mode: 'cors',
                 headers: {'Content-Type' : 'application/json'},

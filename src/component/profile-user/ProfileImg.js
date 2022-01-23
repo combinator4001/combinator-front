@@ -6,7 +6,9 @@ export default function Img() {
     const fileInputRef = React.createRef();
     const [preview, setPreview] = useState("");
     const [image, setImage] = useState("");
+    useEffect(()=>{
 
+    },[])
     useEffect(() => {
         if(image){
             const reader = new FileReader();

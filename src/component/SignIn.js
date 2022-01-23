@@ -36,11 +36,7 @@ function  SignInSide({history}) {
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
-        // eslint-disable-next-line no-console
-        /*console.log({
-            email: data.get('usernam'),
-            password: data.get('password'),
-        });*/
+
         if(data.get('usernam')&&data.get('password')){
             let item = {
                 username : data.get('usernam'),
@@ -61,27 +57,15 @@ function  SignInSide({history}) {
                         });
                         if(response.role==="PERSON")
                         {
-                            //setfirstname(response.firstName);
-                            //console.log(response.access_token);
                             localStorage.setItem('token',response.access_token);
                             history.push({
                                 pathname: '/Dashboard',
                                 access_token:response.access_token,
                             });
-                            //console.log(response.email);
                         }
                         if(response.role==="COMPANY"){
                             //console.log(response.owners[0]);
                             localStorage.setItem('token',response.access_token);
-                            /*history.push({
-                                access_token:response.access_token,
-                                pathname: '/Dashboard',
-                                name:response.name,
-                                username:response.username,
-                                email:response.email,
-                                bio:response.bio,
-                                owners:response.owners[0]
-                            });*/
                         }
                     }
                     else{
@@ -91,9 +75,6 @@ function  SignInSide({history}) {
                         });
                         throw new Error('Failed to login, try again later.\n' + response.statusText);
                     }
-                })
-                .then(response => {
-                    //console.log(response);
                 })
                 .catch( err => console.log(err));
         }

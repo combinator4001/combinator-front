@@ -1,2 +1,2 @@
-const url = 'http://37.152.183.213:5000';
+const url = 'https://combinatorapis.ir';
 export default url; 
